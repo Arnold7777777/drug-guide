@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Drug Guide &middot; When to Take It</title><style>:root{
+ --amethyst:157,92,255; --sapphire:47,107,255; --emerald:18,184,134; --teal:0,194,199;
+ --topaz:255,194,51;   --ruby:255,59,107;    --garnet:192,34,85;    --citrine:255,138,61;
+ --ink:#fff; --line:rgba(255,255,255,.30);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
+ background-color:#140b24;
+ background-image:url("bg.jpg");
+ background-size:cover;background-position:center;background-attachment:fixed;
+ background-repeat:no-repeat}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
+
+/* sticky top bar */
+.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:10px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+.barrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.brand{font-weight:900;font-size:1rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.tab{background:rgba(255,255,255,.10);border:1px solid var(--line);color:#fff;text-decoration:none;
+ border-radius:20px;padding:7px 13px;font-weight:800;font-size:.8rem;white-space:nowrap;cursor:pointer}
+.tab:hover{background:rgba(var(--amethyst),.75)}
+.tab.on{background:rgba(var(--amethyst),.88);border-color:rgba(255,255,255,.55)}
+.tab.od.on{background:rgba(var(--ruby),.88)}
+.tab.bl.on{background:rgba(var(--garnet),.88)}
+.tab.fl.on{background:rgba(var(--teal),.88)}
+#q{flex:1 1 220px;min-width:170px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
+ border:1px solid var(--line);background:rgba(0,0,0,.44);color:#fff}
+#q::placeholder{color:#c9b8e8}
+
+h1{font-size:1.8rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.78)}
+.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.72);font-size:.94rem}
+h2.sec{font-size:1.2rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.78)}
+
+/* cards: jewel tone at 60% + blur */
+.card{background:rgba(var(--amethyst),.60);
+ backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);
+ border-radius:16px;padding:15px 17px;margin:11px 0;box-shadow:0 8px 26px rgba(0,0,0,.38)}
+.ruby{background:rgba(var(--ruby),.60)} .emerald{background:rgba(var(--emerald),.60)}
+.sapphire{background:rgba(var(--sapphire),.60)} .teal{background:rgba(var(--teal),.60)}
+.garnet{background:rgba(var(--garnet),.60)} .citrine{background:rgba(var(--citrine),.60)}
+.amethyst{background:rgba(var(--amethyst),.60)}
+.topaz{background:rgba(var(--topaz),.62);color:#231a02;border-left-color:rgba(0,0,0,.35)}
+.topaz b,.topaz a,.topaz .why,.topaz .flab{color:#231a02}
+
+/* typography variation */
+.hero{font-size:1.5rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
+.why{font-style:italic;opacity:.95}
+.never{text-decoration:underline wavy rgba(255,255,255,.92);font-weight:800}
+mark{background:rgba(var(--topaz),.95);color:#231a02;padding:1px 5px;border-radius:4px;font-weight:700}
+code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32);
+ padding:1px 6px;border-radius:5px;font-weight:700;font-size:.92em}
+
+/* pills */
+.pill{display:inline-block;font-size:.67rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+ padding:3px 9px;border-radius:11px;margin:0 5px 5px 0;border:1px solid rgba(255,255,255,.4)}
+.p-ha{background:rgba(var(--ruby),.95)} .p-bbw{background:rgba(var(--garnet),.95)}
+.p-od{background:rgba(var(--topaz),.95);color:#231a02} .p-rx{background:rgba(var(--sapphire),.9)}
+.p-cls{background:rgba(0,0,0,.42);text-transform:none;font-weight:700;letter-spacing:0}
+
+/* search results */
+.hit{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
+ background:rgba(var(--sapphire),.58);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.5);border-radius:14px;
+ padding:12px 15px;margin:8px 0;box-shadow:0 6px 20px rgba(0,0,0,.34)}
+.hit:hover{background:rgba(var(--amethyst),.68)}
+.hit .nm{font-size:1.06rem;font-weight:900;display:block}
+.hit .sub{font-size:.82rem;opacity:.95;display:block;margin-top:2px}
+.hit.alert{background:rgba(var(--ruby),.55)} .hit.alert:hover{background:rgba(var(--ruby),.68)}
+
+/* the seven labelled fields */
+.fld{background:rgba(0,0,0,.26);border:1px solid var(--line);border-left:4px solid rgba(255,255,255,.5);
+ border-radius:12px;margin:8px 0;padding:10px 14px}
+.fld.ruby{border-left-color:rgb(var(--ruby))} .fld.emerald{border-left-color:rgb(var(--emerald))}
+.fld.sapphire{border-left-color:rgb(var(--sapphire))} .fld.teal{border-left-color:rgb(var(--teal))}
+.fld.garnet{border-left-color:rgb(var(--garnet))} .fld.topaz{border-left-color:rgb(var(--topaz))}
+.fld.citrine{border-left-color:rgb(var(--citrine))} .fld.amethyst{border-left-color:rgb(var(--amethyst))}
+.fld{background:rgba(0,0,0,.28)}
+.flab{font-size:.72rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin-bottom:4px}
+.fbody p{margin:4px 0;font-size:.91rem}
+
+.bbwbox{background:rgba(var(--ruby),.88);border:2px solid #fff;border-radius:12px;
+ padding:11px 14px;margin:9px 0;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.bbwbox .flab{color:#fff}
+.bbwbox p{margin:4px 0;font-size:.9rem;font-weight:600}
+.bbwline{background:rgba(var(--ruby),.85);border-radius:8px;padding:8px 11px;margin:6px 0;font-weight:700}
+
+/* monograph header */
+.mono h3{margin:0 0 2px;font-size:1.42rem;font-weight:900}
+.mono .pron{font-style:italic;opacity:.9;font-size:.88rem}
+.mono .brands{font-size:.89rem;margin:5px 0}
+
+/* A-Z */
+.az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.az button{background:rgba(0,0,0,.38);border:1px solid var(--line);color:#fff;border-radius:9px;
+ width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.85rem}
+.az button:hover{background:rgba(var(--amethyst),.85)}
+.az button.on{background:rgba(var(--amethyst),.9);border-color:#fff}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th{background:rgba(0,0,0,.44);padding:9px 11px;border:1px solid var(--line);text-align:left;
+ font-size:.71rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
+.step{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:11px;
+ padding:9px 13px;font-weight:800;font-size:.84rem}
+.arrow{font-weight:900;opacity:.9}
+
+/* tonicity bar */
+.tonic{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+ margin:9px 0 3px;font-size:.75rem;font-weight:800}
+.tonic div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px}
+.t-hypo{background:rgba(var(--sapphire),.9);flex:1}
+.t-iso{background:rgba(var(--emerald),.9);flex:1}
+.t-hyper{background:rgba(var(--ruby),.9);flex:1}
+
+.count{font-size:.84rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.foot{margin-top:38px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:.79rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.top{position:fixed;right:14px;bottom:14px;z-index:70;background:rgba(var(--amethyst),.92);
+ color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;width:46px;height:46px;
+ font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+@media(max-width:560px){h1{font-size:1.35rem}.brand{font-size:.86rem}table{min-width:420px}
+ .tab{padding:6px 11px;font-size:.75rem}}
+
+/* ============ collapsible sidebar ============ */
+.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:9px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+#menuBtn{background:linear-gradient(135deg,rgba(var(--amethyst),.95),rgba(var(--garnet),.95));
+ color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 15px;
+ font-weight:900;font-size:.85rem;cursor:pointer;white-space:nowrap;line-height:1}
+#menuBtn:hover{filter:brightness(1.12)}
+#side{position:fixed;top:0;left:0;width:min(86vw,290px);height:100dvh;max-height:100dvh;
+ overflow-y:auto;z-index:100000;transform:translateX(-102%);transition:transform .22s ease;
+ background:rgba(10,6,20,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border-right:1px solid var(--line);box-shadow:6px 0 30px rgba(0,0,0,.6);padding:16px 14px 30px}
+body.nav-open #side{transform:translateX(0)}
+#side .sbrand{font-weight:900;font-size:1.1rem;margin:2px 0 14px;display:block}
+#side a.nav{display:block;background:rgba(255,255,255,.08);border:1px solid var(--line);
+ border-left:4px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;margin:0 0 8px;
+ color:#fff;text-decoration:none;font-weight:800;font-size:.92rem}
+#side a.nav:hover{background:rgba(var(--amethyst),.7)}
+#side a.nav.on{background:rgba(var(--amethyst),.85);border-left-color:#fff}
+#side a.nav.od.on{background:rgba(var(--ruby),.85)}
+#side a.nav.bl.on{background:rgba(var(--garnet),.85)}
+#side a.nav.fl.on{background:rgba(var(--teal),.85)}
+#side .nsub{display:block;font-weight:600;font-size:.75rem;opacity:.9;margin-top:2px}
+#side .shead{font-size:.7rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin:16px 0 7px}
+#navBg{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:99999;opacity:0;
+ pointer-events:none;transition:opacity .2s ease}
+body.nav-open #navBg{opacity:1;pointer-events:auto}
+@media print{#side,#navBg,#menuBtn,.bar{display:none}}
+#side a.nav.tm.on{background:rgba(var(--citrine),.85)}
+#side a.nav.hb.on{background:rgba(var(--emerald),.85)}
+</style></head><body>
+<div id="navBg"></div>
+<nav id="side" aria-label="Site menu">
+  <span class="sbrand">&#128138; Drug Guide</span>
+  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav tm on" href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl " href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <div class="shead">Reminder</div>
+  <p style="font-size:.79rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
+</nav>
+<div class="bar"><div class="barrow">
+  <button id="menuBtn" type="button" aria-expanded="false" aria-controls="side">&#9776; Menu</button>
+  <input id="q" type="search" placeholder="Search timing rules&hellip;" autocomplete="off">
+</div></div>
+<div class="wrap">
+
+<h1>&#9200; When to Take It &mdash; and Why</h1>
+<p class="lede">Timing rules are not arbitrary. Each one exists because something goes wrong without it.
+Learn the <b>reason</b> and you will not have to memorize the list.</p>
+
+<div class="card ruby">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#128680; The four that hurt people</h3>
+ <p style="margin:4px 0"><b>Bisphosphonates</b> &mdash; <span class="never">full glass of water, upright 30 minutes</span>. Lying down burns the esophagus.</p>
+ <p style="margin:4px 0"><b>Extended-release</b> &mdash; <span class="never">never crush</span>. Crushing an ER opioid delivers a whole day at once.</p>
+ <p style="margin:4px 0"><b>Steroids and beta blockers</b> &mdash; <span class="never">never stop abruptly</span>. Adrenal crisis, rebound hypertension, MI.</p>
+ <p style="margin:4px 0"><b>Grapefruit</b> &mdash; blocks the enzyme that clears the drug, so a normal tablet acts like an overdose.</p>
+</div>
+
+<div class="card topaz">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#11088; Empty stomach or with food? The one-line version</h3>
+ <p style="margin:5px 0"><b>Empty stomach</b> = food would <i>block absorption</i>.</p>
+ <p style="margin:5px 0"><b>With food</b> = the drug would <i>tear up the stomach</i>, or food helps it absorb.</p>
+ <p style="margin:5px 0"><b>Before meals</b> = it has to be <i>in place before the food arrives</i>.</p>
+</div>
+
+<h2 class="sec">&#9200; The rules and the reasons</h2>
+<p class="count" id="c1"></p>
+<div id="g1"><div class="card sapphire ref" data-t="empty stomach &amp;mdash; 1 hour before or 2 hours after food levothyroxine, bisphosphonates (alendronate), sucralfate, ampicillin, tetracycline, captopril, iron food, and especially &lt;b&gt;calcium, iron, dairy and antacids&lt;/b&gt;, binds these drugs in the gut and blocks absorption. the drug never reaches the blood in a therapeutic amount, so the client looks like a treatment failure when really it was a timing problem."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#127869;&#65039; Empty stomach &mdash; 1 hour before or 2 hours after food</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>levothyroxine, bisphosphonates (alendronate), sucralfate, ampicillin, tetracycline, captopril, iron</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>Food, and especially <b>calcium, iron, dairy and antacids</b>, binds these drugs in the gut and blocks absorption. The drug never reaches the blood in a therapeutic amount, so the client looks like a treatment failure when really it was a timing problem.</p></div></div><div class="card emerald ref" data-t="with food or right after a meal nsaids, corticosteroids, metformin, iron (if gi upset), carbamazepine, most antibiotics that irritate, hiv protease inhibitors two different reasons. for &lt;b&gt;gi irritants&lt;/b&gt; like nsaids, steroids and metformin, food buffers the stomach and prevents ulcers and nausea. for &lt;b&gt;fat-soluble drugs&lt;/b&gt;, food (particularly fat) actually increases absorption. either way, food is protecting the client or improving the dose."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#127860; With food or right after a meal</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>NSAIDs, corticosteroids, metformin, iron (if GI upset), carbamazepine, most antibiotics that irritate, HIV protease inhibitors</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>Two different reasons. For <b>GI irritants</b> like NSAIDs, steroids and metformin, food buffers the stomach and prevents ulcers and nausea. For <b>fat-soluble drugs</b>, food (particularly fat) actually increases absorption. Either way, food is protecting the client or improving the dose.</p></div></div><div class="card amethyst ref" data-t="at bedtime statins (simvastatin, lovastatin), sedating antihistamines, trazodone, some antihypertensives, hydroxyzine for &lt;b&gt;statins&lt;/b&gt;, the liver makes most of its cholesterol overnight, so a night dose hits the enzyme when it is busiest &amp;mdash; though long-acting ones like atorvastatin and rosuvastatin work any time. for &lt;b&gt;sedating drugs&lt;/b&gt;, bedtime turns the side effect into the point, and keeps the client from falling during the day."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#127769; At bedtime</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>statins (simvastatin, lovastatin), sedating antihistamines, trazodone, some antihypertensives, hydroxyzine</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>For <b>statins</b>, the liver makes most of its cholesterol overnight, so a night dose hits the enzyme when it is busiest &mdash; though long-acting ones like atorvastatin and rosuvastatin work any time. For <b>sedating drugs</b>, bedtime turns the side effect into the point, and keeps the client from falling during the day.</p></div></div><div class="card topaz ref" data-t="in the morning diuretics (furosemide, hctz), corticosteroids, levothyroxine, stimulants, ssris that activate &lt;b&gt;diuretics&lt;/b&gt; in the morning so the client is not up all night urinating &amp;mdash; a real fall risk in the dark. &lt;b&gt;corticosteroids&lt;/b&gt; in the morning to match the body&#x27;s natural cortisol peak, which reduces adrenal suppression. &lt;b&gt;levothyroxine&lt;/b&gt; on waking, on an empty stomach, before anything else."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#127749; In the morning</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>diuretics (furosemide, HCTZ), corticosteroids, levothyroxine, stimulants, SSRIs that activate</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p><b>Diuretics</b> in the morning so the client is not up all night urinating &mdash; a real fall risk in the dark. <b>Corticosteroids</b> in the morning to match the body's natural cortisol peak, which reduces adrenal suppression. <b>Levothyroxine</b> on waking, on an empty stomach, before anything else.</p></div></div><div class="card citrine ref" data-t="30 minutes before meals sucralfate, proton pump inhibitors, metoclopramide, rapid-acting insulin, alpha-glucosidase inhibitors (with the first bite) these need to be &lt;b&gt;in place before the food arrives&lt;/b&gt;. sucralfate has to coat the ulcer before acid and food hit it. ppis must reach the proton pumps as they activate at the start of a meal. rapid insulin has to peak when the glucose does. acarbose works only if it is in the gut with the carbohydrate, hence &lt;i&gt;with the first bite&lt;/i&gt;."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#9200; 30 minutes before meals</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>sucralfate, proton pump inhibitors, metoclopramide, rapid-acting insulin, alpha-glucosidase inhibitors (with the first bite)</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>These need to be <b>in place before the food arrives</b>. Sucralfate has to coat the ulcer before acid and food hit it. PPIs must reach the proton pumps as they activate at the start of a meal. Rapid insulin has to peak when the glucose does. Acarbose works only if it is in the gut with the carbohydrate, hence <i>with the first bite</i>.</p></div></div><div class="card ruby ref" data-t="sit upright for 30 minutes, full glass of water bisphosphonates (alendronate, risedronate), potassium chloride tablets, doxycycline, nsaids these drugs cause &lt;b&gt;severe esophagitis and esophageal ulceration&lt;/b&gt; if they sit in the esophagus. gravity plus a full glass of water carries the tablet all the way into the stomach. &lt;span class=&#x27;never&#x27;&gt;lying down after a bisphosphonate can burn a hole in the esophagus.&lt;/span&gt;"><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#129489; Sit upright for 30 minutes, full glass of water</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>bisphosphonates (alendronate, risedronate), potassium chloride tablets, doxycycline, NSAIDs</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>These drugs cause <b>severe esophagitis and esophageal ulceration</b> if they sit in the esophagus. Gravity plus a full glass of water carries the tablet all the way into the stomach. <span class='never'>Lying down after a bisphosphonate can burn a hole in the esophagus.</span></p></div></div><div class="card garnet ref" data-t="separate from other drugs by 2 hours antacids, calcium, iron, magnesium, sucralfate, cholestyramine, levothyroxine, quinolones, tetracyclines &lt;b&gt;chelation.&lt;/b&gt; divalent and trivalent cations (calcium, iron, magnesium, aluminum) physically grab the other drug and form a complex the gut cannot absorb. quinolones and tetracyclines are the classic victims. bile acid sequestrants like cholestyramine bind almost anything, so give other drugs 1 hour before or 4 hours after."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#8596;&#65039; Separate from other drugs by 2 hours</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>antacids, calcium, iron, magnesium, sucralfate, cholestyramine, levothyroxine, quinolones, tetracyclines</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p><b>Chelation.</b> Divalent and trivalent cations (calcium, iron, magnesium, aluminum) physically grab the other drug and form a complex the gut cannot absorb. Quinolones and tetracyclines are the classic victims. Bile acid sequestrants like cholestyramine bind almost anything, so give other drugs 1 hour before or 4 hours after.</p></div></div><div class="card ruby ref" data-t="do not crush, chew or break extended-release (xl, er, sr, cd, la), enteric-coated (ec), sublingual, capsules with beads crushing an &lt;b&gt;extended-release&lt;/b&gt; tablet dumps the entire 12 or 24 hour dose at once &amp;mdash; that is a &lt;b&gt;fatal overdose&lt;/b&gt; with opioids, and dangerous with cardiac drugs. crushing &lt;b&gt;enteric coating&lt;/b&gt; exposes the stomach to an irritant, or exposes the drug to acid that destroys it. if the client cannot swallow, ask the pharmacist for a liquid form &amp;mdash; do not improvise."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#128683; Do not crush, chew or break</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>extended-release (XL, ER, SR, CD, LA), enteric-coated (EC), sublingual, capsules with beads</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>Crushing an <b>extended-release</b> tablet dumps the entire 12 or 24 hour dose at once &mdash; that is a <b>fatal overdose</b> with opioids, and dangerous with cardiac drugs. Crushing <b>enteric coating</b> exposes the stomach to an irritant, or exposes the drug to acid that destroys it. If the client cannot swallow, ask the pharmacist for a liquid form &mdash; do not improvise.</p></div></div><div class="card citrine ref" data-t="no grapefruit juice statins (simvastatin, atorvastatin), calcium channel blockers (nifedipine, felodipine), cyclosporine, amiodarone, some benzodiazepines grapefruit inhibits &lt;b&gt;intestinal cyp3a4&lt;/b&gt;, the enzyme that normally destroys a good share of the dose before it reaches the blood. block that enzyme and far more drug gets absorbed &amp;mdash; effectively an overdose from a normal tablet. with statins this means rhabdomyolysis risk; with calcium channel blockers, severe hypotension. the effect lasts about 3 days."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#127818; No grapefruit juice</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>statins (simvastatin, atorvastatin), calcium channel blockers (nifedipine, felodipine), cyclosporine, amiodarone, some benzodiazepines</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>Grapefruit inhibits <b>intestinal CYP3A4</b>, the enzyme that normally destroys a good share of the dose before it reaches the blood. Block that enzyme and far more drug gets absorbed &mdash; effectively an overdose from a normal tablet. With statins this means rhabdomyolysis risk; with calcium channel blockers, severe hypotension. The effect lasts about 3 days.</p></div></div><div class="card teal ref" data-t="around the clock, not as needed antibiotics, antiretrovirals, anticonvulsants, scheduled pain regimens these depend on a &lt;b&gt;steady blood level&lt;/b&gt;. letting the level dip lets bacteria regrow and select for resistance, lets a seizure through, or lets pain escalate to where it is much harder to control. &#x27;every 8 hours&#x27; genuinely means every 8 hours, including overnight &amp;mdash; it is not the same as three times a day with meals."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#128337; Around the clock, not as needed</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>antibiotics, antiretrovirals, anticonvulsants, scheduled pain regimens</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>These depend on a <b>steady blood level</b>. Letting the level dip lets bacteria regrow and select for resistance, lets a seizure through, or lets pain escalate to where it is much harder to control. 'Every 8 hours' genuinely means every 8 hours, including overnight &mdash; it is not the same as three times a day with meals.</p></div></div><div class="card emerald ref" data-t="take the full course even when you feel better all antibiotics, antifungals, tb therapy symptoms resolve once the most susceptible organisms die. the &lt;b&gt;hardiest ones survive longest&lt;/b&gt;, so stopping early leaves exactly the population most able to resist that drug. that is how resistant infections and relapse happen."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#9989; Take the full course even when you feel better</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>all antibiotics, antifungals, TB therapy</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p>Symptoms resolve once the most susceptible organisms die. The <b>hardiest ones survive longest</b>, so stopping early leaves exactly the population most able to resist that drug. That is how resistant infections and relapse happen.</p></div></div><div class="card ruby ref" data-t="do not stop abruptly &amp;mdash; taper corticosteroids, beta blockers, clonidine, benzodiazepines, opioids, ssris, anticonvulsants &lt;b&gt;steroids:&lt;/b&gt; the adrenal glands have stopped making cortisol, and sudden withdrawal causes an adrenal crisis. &lt;b&gt;beta blockers:&lt;/b&gt; receptors are upregulated, so stopping causes rebound tachycardia, hypertension and angina, even mi. &lt;b&gt;clonidine:&lt;/b&gt; severe rebound hypertension. &lt;b&gt;benzodiazepines:&lt;/b&gt; withdrawal seizures."><h3 style="margin:0 0 5px;font-size:1.08rem;font-weight:900">&#9888;&#65039; Do not stop abruptly &mdash; taper</h3><div class="fld sapphire"><div class="flab">&#128138; Typical drugs</div><div class="fbody"><p>corticosteroids, beta blockers, clonidine, benzodiazepines, opioids, SSRIs, anticonvulsants</p></div></div><div class="bbwbox" style="background:rgba(0,0,0,.34);border-color:rgba(255,255,255,.45)"><div class="flab">&#129504; Why &mdash; the rationale</div><p><b>Steroids:</b> the adrenal glands have stopped making cortisol, and sudden withdrawal causes an adrenal crisis. <b>Beta blockers:</b> receptors are upregulated, so stopping causes rebound tachycardia, hypertension and angina, even MI. <b>Clonidine:</b> severe rebound hypertension. <b>Benzodiazepines:</b> withdrawal seizures.</p></div></div></div>
+
+<div class="card sapphire">
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#128300; Per-drug timing</h3>
+ <p style="margin:4px 0">Timing is on the individual cards too. Open a drug on the
+ <a class="tab" href="index.html">&#128138; Drug Cards</a> page and look for the
+ <b>&#9200; When to Take It</b> and <b>&#128483;&#65039; Patient Education</b> sections.</p>
+</div>
+
+<div class="foot">Drug Guide &middot; study summary only, <b>no dosing</b> &middot; always check the current package insert, your course materials and facility policy.</div>
+</div>
+<button class="top" onclick="scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('menuBtn'),s=document.getElementById('side'),bg=document.getElementById('navBg');
+  function set(o){document.body.classList.toggle('nav-open',o);
+    b.innerHTML=o?'✕ Close':'☰ Menu';b.setAttribute('aria-expanded',o?'true':'false');}
+  b.addEventListener('click',function(e){e.stopPropagation();set(!document.body.classList.contains('nav-open'));});
+  bg.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  s.addEventListener('click',function(e){if(e.target.closest('a'))setTimeout(function(){set(false);},120);});
+  set(false);
+})();
+
+
+window.DG=window.DG||{store:{},want:{},put:function(k,v){
+  this.store[k]=v;var w=this.want[k];if(w){delete this.want[k];w.forEach(function(f){f(v);});}}};
+DG.get=function(k,cb){
+  if(this.store[k])return cb(this.store[k]);
+  if(this.want[k]){this.want[k].push(cb);return;}
+  this.want[k]=[cb];
+  var s=document.createElement('script');s.src='data/'+k+'.js';
+  s.onerror=function(){(DG.want[k]||[]).forEach(function(f){f([]);});delete DG.want[k];};
+  document.head.appendChild(s);};
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+
+var q=document.getElementById('q');
+function filterRefs(){
+  var t=q.value.trim().toLowerCase();
+  ['g1','g2'].forEach(function(id){
+    var g=document.getElementById(id); if(!g)return;
+    var n=0;
+    [...g.children].forEach(function(c){
+      var hit=!t||(c.dataset.t||c.textContent.toLowerCase()).indexOf(t)>-1;
+      c.style.display=hit?'':'none'; if(hit)n++;
+    });
+    var lbl=document.getElementById(id==='g1'?'c1':'c2');
+    if(lbl)lbl.textContent=n+' shown'+(t?' matching "'+q.value.trim()+'"':'');
+  });
+}
+q.addEventListener('input',filterRefs);
+filterRefs();
+</script></body></html>

@@ -164,11 +164,13 @@ body.nav-open #side{transform:translateX(0)}
  pointer-events:none;transition:opacity .2s ease}
 body.nav-open #navBg{opacity:1;pointer-events:auto}
 @media print{#side,#navBg,#menuBtn,.bar{display:none}}
+#side a.nav.tm.on{background:rgba(var(--citrine),.85)}
+#side a.nav.hb.on{background:rgba(var(--emerald),.85)}
 </style></head><body>
 <div id="navBg"></div>
 <nav id="side" aria-label="Site menu">
   <span class="sbrand">&#128138; Drug Guide</span>
-  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav bl on" href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav tm " href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl on" href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
   <div class="shead">Reminder</div>
   <p style="font-size:.79rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
 </nav>

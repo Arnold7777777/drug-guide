@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Drug Guide &middot; Blood Products</title><style>:root{
+ --amethyst:157,92,255; --sapphire:47,107,255; --emerald:18,184,134; --teal:0,194,199;
+ --topaz:255,194,51;   --ruby:255,59,107;    --garnet:192,34,85;    --citrine:255,138,61;
+ --ink:#fff; --line:rgba(255,255,255,.30);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
+ background-color:#140b24;
+ background-image:url("bg.jpg");
+ background-size:cover;background-position:center;background-attachment:fixed;
+ background-repeat:no-repeat}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
+
+/* sticky top bar */
+.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:10px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+.barrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.brand{font-weight:900;font-size:1rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.tab{background:rgba(255,255,255,.10);border:1px solid var(--line);color:#fff;text-decoration:none;
+ border-radius:20px;padding:7px 13px;font-weight:800;font-size:.8rem;white-space:nowrap;cursor:pointer}
+.tab:hover{background:rgba(var(--amethyst),.75)}
+.tab.on{background:rgba(var(--amethyst),.88);border-color:rgba(255,255,255,.55)}
+.tab.od.on{background:rgba(var(--ruby),.88)}
+.tab.bl.on{background:rgba(var(--garnet),.88)}
+.tab.fl.on{background:rgba(var(--teal),.88)}
+#q{flex:1 1 220px;min-width:170px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
+ border:1px solid var(--line);background:rgba(0,0,0,.44);color:#fff}
+#q::placeholder{color:#c9b8e8}
+
+h1{font-size:1.8rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.78)}
+.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.72);font-size:.94rem}
+h2.sec{font-size:1.2rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.78)}
+
+/* cards: jewel tone at 60% + blur */
+.card{background:rgba(var(--amethyst),.60);
+ backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);
+ border-radius:16px;padding:15px 17px;margin:11px 0;box-shadow:0 8px 26px rgba(0,0,0,.38)}
+.ruby{background:rgba(var(--ruby),.60)} .emerald{background:rgba(var(--emerald),.60)}
+.sapphire{background:rgba(var(--sapphire),.60)} .teal{background:rgba(var(--teal),.60)}
+.garnet{background:rgba(var(--garnet),.60)} .citrine{background:rgba(var(--citrine),.60)}
+.amethyst{background:rgba(var(--amethyst),.60)}
+.topaz{background:rgba(var(--topaz),.62);color:#231a02;border-left-color:rgba(0,0,0,.35)}
+.topaz b,.topaz a,.topaz .why,.topaz .flab{color:#231a02}
+
+/* typography variation */
+.hero{font-size:1.5rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
+.why{font-style:italic;opacity:.95}
+.never{text-decoration:underline wavy rgba(255,255,255,.92);font-weight:800}
+mark{background:rgba(var(--topaz),.95);color:#231a02;padding:1px 5px;border-radius:4px;font-weight:700}
+code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32);
+ padding:1px 6px;border-radius:5px;font-weight:700;font-size:.92em}
+
+/* pills */
+.pill{display:inline-block;font-size:.67rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+ padding:3px 9px;border-radius:11px;margin:0 5px 5px 0;border:1px solid rgba(255,255,255,.4)}
+.p-ha{background:rgba(var(--ruby),.95)} .p-bbw{background:rgba(var(--garnet),.95)}
+.p-od{background:rgba(var(--topaz),.95);color:#231a02} .p-rx{background:rgba(var(--sapphire),.9)}
+.p-cls{background:rgba(0,0,0,.42);text-transform:none;font-weight:700;letter-spacing:0}
+
+/* search results */
+.hit{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
+ background:rgba(var(--sapphire),.58);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.5);border-radius:14px;
+ padding:12px 15px;margin:8px 0;box-shadow:0 6px 20px rgba(0,0,0,.34)}
+.hit:hover{background:rgba(var(--amethyst),.68)}
+.hit .nm{font-size:1.06rem;font-weight:900;display:block}
+.hit .sub{font-size:.82rem;opacity:.95;display:block;margin-top:2px}
+.hit.alert{background:rgba(var(--ruby),.55)} .hit.alert:hover{background:rgba(var(--ruby),.68)}
+
+/* the seven labelled fields */
+.fld{background:rgba(0,0,0,.26);border:1px solid var(--line);border-left:4px solid rgba(255,255,255,.5);
+ border-radius:12px;margin:8px 0;padding:10px 14px}
+.fld.ruby{border-left-color:rgb(var(--ruby))} .fld.emerald{border-left-color:rgb(var(--emerald))}
+.fld.sapphire{border-left-color:rgb(var(--sapphire))} .fld.teal{border-left-color:rgb(var(--teal))}
+.fld.garnet{border-left-color:rgb(var(--garnet))} .fld.topaz{border-left-color:rgb(var(--topaz))}
+.fld.citrine{border-left-color:rgb(var(--citrine))} .fld.amethyst{border-left-color:rgb(var(--amethyst))}
+.fld{background:rgba(0,0,0,.28)}
+.flab{font-size:.72rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin-bottom:4px}
+.fbody p{margin:4px 0;font-size:.91rem}
+
+.bbwbox{background:rgba(var(--ruby),.88);border:2px solid #fff;border-radius:12px;
+ padding:11px 14px;margin:9px 0;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.bbwbox .flab{color:#fff}
+.bbwbox p{margin:4px 0;font-size:.9rem;font-weight:600}
+.bbwline{background:rgba(var(--ruby),.85);border-radius:8px;padding:8px 11px;margin:6px 0;font-weight:700}
+
+/* monograph header */
+.mono h3{margin:0 0 2px;font-size:1.42rem;font-weight:900}
+.mono .pron{font-style:italic;opacity:.9;font-size:.88rem}
+.mono .brands{font-size:.89rem;margin:5px 0}
+
+/* A-Z */
+.az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.az button{background:rgba(0,0,0,.38);border:1px solid var(--line);color:#fff;border-radius:9px;
+ width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.85rem}
+.az button:hover{background:rgba(var(--amethyst),.85)}
+.az button.on{background:rgba(var(--amethyst),.9);border-color:#fff}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th{background:rgba(0,0,0,.44);padding:9px 11px;border:1px solid var(--line);text-align:left;
+ font-size:.71rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
+.step{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:11px;
+ padding:9px 13px;font-weight:800;font-size:.84rem}
+.arrow{font-weight:900;opacity:.9}
+
+/* tonicity bar */
+.tonic{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+ margin:9px 0 3px;font-size:.75rem;font-weight:800}
+.tonic div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px}
+.t-hypo{background:rgba(var(--sapphire),.9);flex:1}
+.t-iso{background:rgba(var(--emerald),.9);flex:1}
+.t-hyper{background:rgba(var(--ruby),.9);flex:1}
+
+.count{font-size:.84rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.foot{margin-top:38px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:.79rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.top{position:fixed;right:14px;bottom:14px;z-index:70;background:rgba(var(--amethyst),.92);
+ color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;width:46px;height:46px;
+ font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+@media(max-width:560px){h1{font-size:1.35rem}.brand{font-size:.86rem}table{min-width:420px}
+ .tab{padding:6px 11px;font-size:.75rem}}
+
+/* ============ collapsible sidebar ============ */
+.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:9px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+#menuBtn{background:linear-gradient(135deg,rgba(var(--amethyst),.95),rgba(var(--garnet),.95));
+ color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 15px;
+ font-weight:900;font-size:.85rem;cursor:pointer;white-space:nowrap;line-height:1}
+#menuBtn:hover{filter:brightness(1.12)}
+#side{position:fixed;top:0;left:0;width:min(86vw,290px);height:100dvh;max-height:100dvh;
+ overflow-y:auto;z-index:100000;transform:translateX(-102%);transition:transform .22s ease;
+ background:rgba(10,6,20,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border-right:1px solid var(--line);box-shadow:6px 0 30px rgba(0,0,0,.6);padding:16px 14px 30px}
+body.nav-open #side{transform:translateX(0)}
+#side .sbrand{font-weight:900;font-size:1.1rem;margin:2px 0 14px;display:block}
+#side a.nav{display:block;background:rgba(255,255,255,.08);border:1px solid var(--line);
+ border-left:4px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;margin:0 0 8px;
+ color:#fff;text-decoration:none;font-weight:800;font-size:.92rem}
+#side a.nav:hover{background:rgba(var(--amethyst),.7)}
+#side a.nav.on{background:rgba(var(--amethyst),.85);border-left-color:#fff}
+#side a.nav.od.on{background:rgba(var(--ruby),.85)}
+#side a.nav.bl.on{background:rgba(var(--garnet),.85)}
+#side a.nav.fl.on{background:rgba(var(--teal),.85)}
+#side .nsub{display:block;font-weight:600;font-size:.75rem;opacity:.9;margin-top:2px}
+#side .shead{font-size:.7rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin:16px 0 7px}
+#navBg{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:99999;opacity:0;
+ pointer-events:none;transition:opacity .2s ease}
+body.nav-open #navBg{opacity:1;pointer-events:auto}
+@media print{#side,#navBg,#menuBtn,.bar{display:none}}
+</style></head><body>
+<div id="navBg"></div>
+<nav id="side" aria-label="Site menu">
+  <span class="sbrand">&#128138; Drug Guide</span>
+  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav bl on" href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <div class="shead">Reminder</div>
+  <p style="font-size:.79rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
+</nav>
+<div class="bar"><div class="barrow">
+  <button id="menuBtn" type="button" aria-expanded="false" aria-controls="side">&#9776; Menu</button>
+  <input id="q" type="search" placeholder="Search blood products &amp; reactions&hellip;" autocomplete="off">
+</div></div>
+<div class="wrap">
+
+<h1>&#129656; Blood Products</h1>
+<p class="lede">What each product is for, when not to give it, what can go wrong, and exactly what you do about it.</p>
+
+<div class="card ruby">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#128680; The rules that apply to every transfusion</h3>
+ <p style="margin:4px 0"><b>Two RNs verify</b> client ID, blood type and unit number <i>at the bedside</i>.</p>
+ <p style="margin:4px 0"><span class="never">Normal saline is the ONLY compatible fluid.</span> <span class="why">Lactated Ringer's clots the line; dextrose lyses the cells.</span></p>
+ <p style="margin:4px 0"><b>Stay with the client for the first 15 minutes</b> and run slowly &mdash; that is when reactions show.</p>
+ <p style="margin:4px 0">Vitals before, at 15 minutes, then per policy. Finish within <b>4 hours</b>.</p>
+</div>
+
+<div class="card topaz">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#11088; Any reaction &mdash; the order of actions</h3>
+ <div class="flow">
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">1. STOP the transfusion</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">2. NS with NEW tubing</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">3. Vitals + assess</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">4. Notify provider + blood bank</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">5. Send bag, tubing &amp; samples</span>
+ </div>
+ <p class="why" style="margin:2px 0 0"><b>New tubing matters</b> &mdash; if you keep the old line open you keep infusing the product.</p>
+</div>
+
+<h2 class="sec">&#129656; The products</h2>
+<p class="count" id="c1"></p>
+<div id="g1"><div class="card ruby ref" data-t="packed red blood cells (prbcs) ~250-350 ml &amp;middot; raises hgb ~1 g/dl per unit symptomatic anemia, usually &lt;b&gt;hgb below 7 g/dl&lt;/b&gt; (below 8 with cardiac disease) acute blood loss with signs of poor oxygen delivery chronic anemia that is not correctable another way anemia correctable with iron, b12 or folate &amp;mdash; treat the cause instead client refusal, including documented religious objection volume overload risk means transfuse slowly, not never"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Packed Red Blood Cells (PRBCs)</h3><div class="pron" style="margin-bottom:6px">~250-350 mL &middot; raises Hgb ~1 g/dL per unit</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Symptomatic anemia, usually <b>Hgb below 7 g/dL</b> (below 8 with cardiac disease)</p><p>&bull; Acute blood loss with signs of poor oxygen delivery</p><p>&bull; Chronic anemia that is not correctable another way</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Anemia correctable with iron, B12 or folate &mdash; treat the cause instead</p><p>&bull; Client refusal, including documented religious objection</p><p>&bull; Volume overload risk means transfuse slowly, not never</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Fever, chills, urticaria</p><p>&bull; Hemolytic reaction</p><p>&bull; Circulatory overload (TACO)</p><p>&bull; Iron overload with repeated transfusion</p><p>&bull; Hyperkalemia from older units</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; <b>Two RNs verify</b> client ID, blood type and unit number at the bedside</p><p>&bull; <span class='never'>Normal saline ONLY</span> &mdash; LR clots the line, dextrose lyses the cells</p><p>&bull; Start slow and <b>stay with the client the first 15 minutes</b>, when reactions usually appear</p><p>&bull; Complete within <b>4 hours</b>; use a filtered Y-set and an 18-20 gauge line</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>STOP the transfusion, keep the line open with normal saline using <b>new tubing</b>, take vitals, notify the provider and the blood bank, and send the bag and tubing back.</p></div></div><div class="card citrine ref" data-t="platelets pooled or apheresis &amp;middot; raises count ~30-60k platelet count below &lt;b&gt;10,000&lt;/b&gt;, or below 50,000 with active bleeding or before a procedure functional platelet defect with bleeding massive transfusion protocol thrombotic thrombocytopenic purpura (ttp) and heparin-induced thrombocytopenia (hit) &amp;mdash; platelets can worsen clotting immune thrombocytopenia without bleeding"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Platelets</h3><div class="pron" style="margin-bottom:6px">Pooled or apheresis &middot; raises count ~30-60k</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Platelet count below <b>10,000</b>, or below 50,000 with active bleeding or before a procedure</p><p>&bull; Functional platelet defect with bleeding</p><p>&bull; Massive transfusion protocol</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Thrombotic thrombocytopenic purpura (TTP) and heparin-induced thrombocytopenia (HIT) &mdash; platelets can worsen clotting</p><p>&bull; Immune thrombocytopenia without bleeding</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Fever and chills (most common of any product)</p><p>&bull; Allergic and urticarial reactions</p><p>&bull; Bacterial contamination &mdash; highest risk of any product because platelets are stored at room temperature</p><p>&bull; Alloimmunization with repeat transfusions</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; Do <b>not</b> refrigerate</p><p>&bull; Infuse fast, usually over 15-30 minutes</p><p>&bull; ABO compatibility is preferred but not always required</p><p>&bull; Expect a post-transfusion count 1 hour after</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>Same stop-and-notify sequence. For a febrile reaction, an antipyretic and a leukocyte-reduced product next time.</p></div></div><div class="card sapphire ref" data-t="fresh frozen plasma (ffp) ~200-250 ml &amp;middot; all clotting factors active bleeding with multiple factor deficiencies &lt;b&gt;urgent warfarin reversal&lt;/b&gt; when bleeding &amp;mdash; give with vitamin k massive transfusion, dic, liver failure with bleeding volume expansion &amp;mdash; use crystalloid or albumin instead correcting a mildly high inr when there is no bleeding nutritional supplementation"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Fresh Frozen Plasma (FFP)</h3><div class="pron" style="margin-bottom:6px">~200-250 mL &middot; all clotting factors</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Active bleeding with multiple factor deficiencies</p><p>&bull; <b>Urgent warfarin reversal</b> when bleeding &mdash; give with vitamin K</p><p>&bull; Massive transfusion, DIC, liver failure with bleeding</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Volume expansion &mdash; use crystalloid or albumin instead</p><p>&bull; Correcting a mildly high INR when there is no bleeding</p><p>&bull; Nutritional supplementation</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Circulatory overload (large volume)</p><p>&bull; Allergic and anaphylactic reactions</p><p>&bull; <b>TRALI</b> &mdash; plasma products carry the highest risk</p><p>&bull; Citrate toxicity causing low calcium</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; Must be <b>ABO compatible</b></p><p>&bull; Infuse as soon as it is thawed</p><p>&bull; Watch for <span class='never'>tingling around the mouth, tetany, tremors</span> &mdash; that is citrate binding calcium</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>For citrate toxicity, <b>IV calcium gluconate</b>. For TRALI, respiratory support &mdash; <b>do not diurese</b>, it is not volume overload.</p></div></div><div class="card garnet ref" data-t="cryoprecipitate ~15 ml/unit &amp;middot; fibrinogen, viii, xiii, vwf &lt;b&gt;fibrinogen below 100 mg/dl&lt;/b&gt;, especially in dic massive transfusion with ongoing bleeding hemophilia a or von willebrand disease when factor concentrate is unavailable bleeding from uremic platelet dysfunction routine volume replacement factor deficiencies where a specific concentrate exists &amp;mdash; use the concentrate"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Cryoprecipitate</h3><div class="pron" style="margin-bottom:6px">~15 mL/unit &middot; fibrinogen, VIII, XIII, vWF</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; <b>Fibrinogen below 100 mg/dL</b>, especially in DIC</p><p>&bull; Massive transfusion with ongoing bleeding</p><p>&bull; Hemophilia A or von Willebrand disease when factor concentrate is unavailable</p><p>&bull; Bleeding from uremic platelet dysfunction</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Routine volume replacement</p><p>&bull; Factor deficiencies where a specific concentrate exists &mdash; use the concentrate</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Allergic reactions</p><p>&bull; Rarely, thrombosis with large repeat doses</p><p>&bull; Same infectious risk profile as other pooled products</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; Small volume, infuse fast</p><p>&bull; Usually given as a pool of several units</p><p>&bull; Recheck fibrinogen after</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>Standard stop-and-notify. Recheck fibrinogen and give more if bleeding continues.</p></div></div><div class="card emerald ref" data-t="albumin (5% and 25%) colloid &amp;middot; pulls fluid into the vessels &lt;b&gt;5%&lt;/b&gt;: hypovolemia, burns, plasmapheresis replacement &lt;b&gt;25%&lt;/b&gt;: hypoalbuminemia with edema, ascites, nephrotic syndrome large-volume paracentesis to prevent circulatory dysfunction &lt;b&gt;heart failure and pulmonary edema&lt;/b&gt; &amp;mdash; it pulls fluid into an already overloaded circulation severe anemia known albumin hypersensitivity"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Albumin (5% and 25%)</h3><div class="pron" style="margin-bottom:6px">Colloid &middot; pulls fluid into the vessels</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; <b>5%</b>: hypovolemia, burns, plasmapheresis replacement</p><p>&bull; <b>25%</b>: hypoalbuminemia with edema, ascites, nephrotic syndrome</p><p>&bull; Large-volume paracentesis to prevent circulatory dysfunction</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <b>Heart failure and pulmonary edema</b> &mdash; it pulls fluid into an already overloaded circulation</p><p>&bull; Severe anemia</p><p>&bull; Known albumin hypersensitivity</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Fluid overload and pulmonary edema</p><p>&bull; Hypertension from a fast rise in volume</p><p>&bull; Fever, chills, urticaria</p><p>&bull; Dilutional anemia and coagulopathy</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; <span class='never'>25% albumin pulls roughly 3-4 times its volume into the vasculature</span></p><p>&bull; Monitor lung sounds, JVD and blood pressure closely</p><p>&bull; No ABO matching and no crossmatch needed</p><p>&bull; Normal saline is the only compatible line fluid</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>There is no reversal agent. Stop the infusion, sit the client upright, give oxygen, and expect an order for a <b>loop diuretic</b>.</p></div></div><div class="card amethyst ref" data-t="prothrombin complex concentrate (pcc) factors ii, vii, ix, x &amp;mdash; warfarin reversal &lt;b&gt;life-threatening bleeding on warfarin&lt;/b&gt; &amp;mdash; works faster and in less volume than ffp urgent surgery on a client who is anticoagulated some formulations are used for factor ix deficiency &lt;b&gt;active thrombosis, recent mi or stroke, dic&lt;/b&gt; heparin-induced thrombocytopenia if the product contains heparin"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Prothrombin Complex Concentrate (PCC)</h3><div class="pron" style="margin-bottom:6px">Factors II, VII, IX, X &mdash; warfarin reversal</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; <b>Life-threatening bleeding on warfarin</b> &mdash; works faster and in less volume than FFP</p><p>&bull; Urgent surgery on a client who is anticoagulated</p><p>&bull; Some formulations are used for factor IX deficiency</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <b>Active thrombosis, recent MI or stroke, DIC</b></p><p>&bull; Heparin-induced thrombocytopenia if the product contains heparin</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Thromboembolism &mdash; the main risk</p><p>&bull; Headache, nausea</p><p>&bull; Allergic reactions</p><p>&bull; Rarely DIC</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; <b>Always give vitamin K with it</b> &mdash; PCC wears off long before the warfarin does</p><p>&bull; Recheck INR after the dose</p><p>&bull; Watch for signs of clotting: chest pain, dyspnea, leg swelling</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>There is no antidote for over-correction. Watch for thrombosis and treat it if it occurs.</p></div></div><div class="card teal ref" data-t="ivig (immune globulin) pooled antibodies primary immunodeficiency immune thrombocytopenia (itp) guillain-barr&amp;eacute; syndrome, myasthenic crisis, kawasaki disease &lt;b&gt;iga deficiency&lt;/b&gt; &amp;mdash; risk of anaphylaxis severe renal impairment, especially sucrose-containing products history of thrombosis"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">IVIG (Immune Globulin)</h3><div class="pron" style="margin-bottom:6px">Pooled antibodies</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Primary immunodeficiency</p><p>&bull; Immune thrombocytopenia (ITP)</p><p>&bull; Guillain-Barr&eacute; syndrome, myasthenic crisis, Kawasaki disease</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <b>IgA deficiency</b> &mdash; risk of anaphylaxis</p><p>&bull; Severe renal impairment, especially sucrose-containing products</p><p>&bull; History of thrombosis</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Headache, and <b>aseptic meningitis</b> especially with fast infusion</p><p>&bull; Renal failure</p><p>&bull; Thrombosis</p><p>&bull; Flu-like symptoms, flushing, chest tightness</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; <b>Infuse slowly</b> and hydrate well &mdash; most reactions are rate-related</p><p>&bull; Premedicate with acetaminophen and diphenhydramine when ordered</p><p>&bull; Baseline renal function before starting</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>Slow or stop the infusion for reactions. Anaphylaxis is treated with <b>epinephrine</b>; supportive care for the rest.</p></div></div><div class="card ruby ref" data-t="whole blood rarely used outside trauma massive hemorrhage where both volume and oxygen-carrying capacity are lost some trauma and military protocols exchange transfusion in neonates chronic anemia &amp;mdash; prbcs are the right product any client at risk of circulatory overload"><h3 style="margin:0 0 2px;font-size:1.2rem;font-weight:900">Whole Blood</h3><div class="pron" style="margin-bottom:6px">Rarely used outside trauma</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Massive hemorrhage where both volume and oxygen-carrying capacity are lost</p><p>&bull; Some trauma and military protocols</p><p>&bull; Exchange transfusion in neonates</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Chronic anemia &mdash; PRBCs are the right product</p><p>&bull; Any client at risk of circulatory overload</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Circulatory overload</p><p>&bull; All the same reactions as PRBCs</p><p>&bull; Electrolyte shifts with large volumes</p></div></div><div class="fld citrine"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><div class="fbody"><p>&bull; Same two-RN verification and normal saline rule</p><p>&bull; Warm large volumes to prevent hypothermia</p><p>&bull; Monitor calcium and potassium in massive transfusion</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; IF IT GOES WRONG</div><p>Same stop-and-notify sequence as PRBCs.</p></div></div></div>
+
+<h2 class="sec">&#9888;&#65039; Transfusion reactions</h2>
+<p class="count" id="c2"></p>
+<div id="g2"><div class="card ruby ref" data-t="acute hemolytic minutes into the transfusion abo incompatibility &amp;mdash; the wrong unit, usually a clerical error fever, chills, &lt;b&gt;low back or flank pain&lt;/b&gt;, dark or red urine, hypotension, a feeling of impending doom, dic"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Acute Hemolytic</h3><div class="pron" style="margin-bottom:6px">Minutes into the transfusion</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>ABO incompatibility &mdash; the wrong unit, usually a clerical error</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Fever, chills, <b>low back or flank pain</b>, dark or red urine, hypotension, a feeling of impending doom, DIC</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>STOP immediately.</b> New tubing with normal saline. Notify provider and blood bank. Send the bag, tubing and blood and urine samples. Support blood pressure, maintain urine output, watch for renal failure and DIC.</p></div></div><div class="card citrine ref" data-t="febrile non-hemolytic within 1-6 hours recipient antibodies reacting to donor white cells &amp;mdash; the most common reaction temperature rise of 1&amp;deg;c or more, chills, headache; &lt;b&gt;no&lt;/b&gt; hemolysis"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Febrile Non-Hemolytic</h3><div class="pron" style="margin-bottom:6px">Within 1-6 hours</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Recipient antibodies reacting to donor white cells &mdash; the most common reaction</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Temperature rise of 1&deg;C or more, chills, headache; <b>no</b> hemolysis</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Stop the transfusion and rule out a hemolytic reaction first. Give an antipyretic. Use <b>leukocyte-reduced</b> products in future.</p></div></div><div class="card emerald ref" data-t="mild allergic / urticarial during or shortly after reaction to donor plasma proteins hives, itching, flushing &amp;mdash; no fever, no hypotension"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Mild Allergic / Urticarial</h3><div class="pron" style="margin-bottom:6px">During or shortly after</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Reaction to donor plasma proteins</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Hives, itching, flushing &mdash; no fever, no hypotension</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Pause the transfusion, give an <b>antihistamine</b>. This is the only reaction that may be restarted if symptoms fully resolve and the provider agrees.</p></div></div><div class="card ruby ref" data-t="anaphylactic within seconds to minutes often &lt;b&gt;iga deficiency&lt;/b&gt; in the recipient wheezing, stridor, angioedema, hypotension, shock &amp;mdash; usually &lt;b&gt;without&lt;/b&gt; fever"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Anaphylactic</h3><div class="pron" style="margin-bottom:6px">Within seconds to minutes</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Often <b>IgA deficiency</b> in the recipient</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Wheezing, stridor, angioedema, hypotension, shock &mdash; usually <b>without</b> fever</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>STOP. Epinephrine.</b> Airway support, oxygen, IV fluids, antihistamines and steroids. Future products must be <b>IgA-deficient or washed</b>.</p></div></div><div class="card sapphire ref" data-t="taco &amp;mdash; circulatory overload during or within 6 hours volume given faster than the heart can handle; older adults, cardiac and renal clients dyspnea, crackles, jvd, &lt;b&gt;hypertension&lt;/b&gt;, cough, rising oxygen requirement"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">TACO &mdash; Circulatory Overload</h3><div class="pron" style="margin-bottom:6px">During or within 6 hours</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Volume given faster than the heart can handle; older adults, cardiac and renal clients</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Dyspnea, crackles, JVD, <b>hypertension</b>, cough, rising oxygen requirement</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Slow or stop. Sit the client <b>upright</b> with legs dependent. Oxygen. Expect a <b>loop diuretic</b>. Transfuse slowly next time.</p></div></div><div class="card garnet ref" data-t="trali &amp;mdash; transfusion-related acute lung injury within 6 hours donor antibodies triggering pulmonary capillary leak; plasma-rich products sudden hypoxia, bilateral infiltrates, fever, &lt;b&gt;hypotension&lt;/b&gt; &amp;mdash; jugular veins are flat"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">TRALI &mdash; Transfusion-Related Acute Lung Injury</h3><div class="pron" style="margin-bottom:6px">Within 6 hours</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Donor antibodies triggering pulmonary capillary leak; plasma-rich products</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Sudden hypoxia, bilateral infiltrates, fever, <b>hypotension</b> &mdash; jugular veins are flat</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>STOP.</b> Aggressive respiratory support, often intubation. <span class='never'>Do NOT give a diuretic</span> &mdash; this is not fluid overload. That is the difference from TACO.</p></div></div><div class="card ruby ref" data-t="bacterial contamination / sepsis rapid, often within minutes contaminated unit &amp;mdash; highest risk with &lt;b&gt;platelets&lt;/b&gt; (room-temperature storage) high fever, rigors, hypotension, shock, gi symptoms"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Bacterial Contamination / Sepsis</h3><div class="pron" style="margin-bottom:6px">Rapid, often within minutes</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Contaminated unit &mdash; highest risk with <b>platelets</b> (room-temperature storage)</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>High fever, rigors, hypotension, shock, GI symptoms</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>STOP.</b> Blood cultures from the client and the bag. Broad-spectrum antibiotics. Vasopressors as needed.</p></div></div><div class="card amethyst ref" data-t="delayed hemolytic 3 days to 2 weeks later anamnestic antibody response in a previously sensitized client unexplained falling h&amp;amp;h, mild jaundice, low-grade fever"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Delayed Hemolytic</h3><div class="pron" style="margin-bottom:6px">3 days to 2 weeks later</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Anamnestic antibody response in a previously sensitized client</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Unexplained falling H&amp;H, mild jaundice, low-grade fever</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Usually supportive. Recheck H&amp;H, direct Coombs, bilirubin. Flag the antibody for future crossmatching.</p></div></div><div class="card teal ref" data-t="citrate toxicity / hypocalcemia during large or fast transfusion citrate preservative binds the client&#x27;s calcium &lt;b&gt;tingling around the mouth&lt;/b&gt;, tremors, muscle twitching, tetany, prolonged qt, dysrhythmias"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Citrate Toxicity / Hypocalcemia</h3><div class="pron" style="margin-bottom:6px">During large or fast transfusion</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Citrate preservative binds the client's calcium</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p><b>Tingling around the mouth</b>, tremors, muscle twitching, tetany, prolonged QT, dysrhythmias</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Slow the transfusion. <b>IV calcium gluconate</b> is the treatment. Monitor ionized calcium and the ECG.</p></div></div><div class="card citrine ref" data-t="hyperkalemia with older units or massive transfusion potassium leaks out of stored red cells over time peaked t waves, widening qrs, bradycardia, muscle weakness"><h3 style="margin:0 0 2px;font-size:1.1rem;font-weight:900">Hyperkalemia</h3><div class="pron" style="margin-bottom:6px">With older units or massive transfusion</div><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Potassium leaks out of stored red cells over time</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Peaked T waves, widening QRS, bradycardia, muscle weakness</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Use fresher units. Treat as any hyperkalemia: <b>calcium gluconate first</b>, then insulin with dextrose, albuterol, Kayexalate, dialysis.</p></div></div></div>
+
+<div class="card sapphire">
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#128300; TACO vs TRALI &mdash; the one they love to test</h3>
+ <div class="scroll"><table><thead><tr><th>&nbsp;</th><th>TACO (overload)</th><th>TRALI (lung injury)</th></tr></thead>
+ <tbody>
+  <tr><td><b>Blood pressure</b></td><td>HIGH</td><td>LOW</td></tr>
+  <tr><td><b>Neck veins</b></td><td>Distended</td><td>Flat</td></tr>
+  <tr><td><b>Cause</b></td><td>Too much volume, too fast</td><td>Donor antibodies, capillary leak</td></tr>
+  <tr><td><b>Treatment</b></td><td>Upright, oxygen, <b>diuretic</b></td><td>Respiratory support, <b>NO diuretic</b></td></tr>
+ </tbody></table></div>
+</div>
+
+<div class="foot">Drug Guide &middot; study summary only, <b>no dosing</b> &middot; always check the current package insert, your course materials and facility policy.</div>
+</div>
+<button class="top" onclick="scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('menuBtn'),s=document.getElementById('side'),bg=document.getElementById('navBg');
+  function set(o){document.body.classList.toggle('nav-open',o);
+    b.innerHTML=o?'✕ Close':'☰ Menu';b.setAttribute('aria-expanded',o?'true':'false');}
+  b.addEventListener('click',function(e){e.stopPropagation();set(!document.body.classList.contains('nav-open'));});
+  bg.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  s.addEventListener('click',function(e){if(e.target.closest('a'))setTimeout(function(){set(false);},120);});
+  set(false);
+})();
+
+
+window.DG=window.DG||{store:{},want:{},put:function(k,v){
+  this.store[k]=v;var w=this.want[k];if(w){delete this.want[k];w.forEach(function(f){f(v);});}}};
+DG.get=function(k,cb){
+  if(this.store[k])return cb(this.store[k]);
+  if(this.want[k]){this.want[k].push(cb);return;}
+  this.want[k]=[cb];
+  var s=document.createElement('script');s.src='data/'+k+'.js';
+  s.onerror=function(){(DG.want[k]||[]).forEach(function(f){f([]);});delete DG.want[k];};
+  document.head.appendChild(s);};
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+
+var q=document.getElementById('q');
+function filterRefs(){
+  var t=q.value.trim().toLowerCase();
+  ['g1','g2'].forEach(function(id){
+    var g=document.getElementById(id); if(!g)return;
+    var n=0;
+    [...g.children].forEach(function(c){
+      var hit=!t||(c.dataset.t||c.textContent.toLowerCase()).indexOf(t)>-1;
+      c.style.display=hit?'':'none'; if(hit)n++;
+    });
+    var lbl=document.getElementById(id==='g1'?'c1':'c2');
+    if(lbl)lbl.textContent=n+' shown'+(t?' matching "'+q.value.trim()+'"':'');
+  });
+}
+q.addEventListener('input',filterRefs);
+filterRefs();
+</script></body></html>

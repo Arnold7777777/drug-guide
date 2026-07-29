@@ -1,7 +1,8 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Drug Guide &middot; Drug Cards</title><style>
-:root{
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Drug Guide &middot; Drug Cards</title><style>:root{
  --amethyst:157,92,255; --sapphire:47,107,255; --emerald:18,184,134; --teal:0,194,199;
  --topaz:255,194,51;   --ruby:255,59,107;    --garnet:192,34,85;    --citrine:255,138,61;
  --ink:#fff; --line:rgba(255,255,255,.30);
@@ -15,26 +16,28 @@ body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
  background-repeat:no-repeat}
 .wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
 
-/* ---------- sticky top bar (never a tall menu block) ---------- */
+/* sticky top bar */
 .bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:10px 16px;
- background:rgba(14,8,26,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
  border-bottom:1px solid var(--line)}
-.barrow{display:flex;gap:9px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
-.brand{font-weight:900;font-size:1.02rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.barrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.brand{font-weight:900;font-size:1rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
 .tab{background:rgba(255,255,255,.10);border:1px solid var(--line);color:#fff;text-decoration:none;
- border-radius:20px;padding:7px 14px;font-weight:800;font-size:.82rem;white-space:nowrap}
+ border-radius:20px;padding:7px 13px;font-weight:800;font-size:.8rem;white-space:nowrap;cursor:pointer}
 .tab:hover{background:rgba(var(--amethyst),.75)}
-.tab.on{background:rgba(var(--amethyst),.85);border-color:rgba(255,255,255,.55)}
-.tab.od.on{background:rgba(var(--ruby),.85)}
-#q{flex:1 1 260px;min-width:180px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
- border:1px solid var(--line);background:rgba(0,0,0,.42);color:#fff}
+.tab.on{background:rgba(var(--amethyst),.88);border-color:rgba(255,255,255,.55)}
+.tab.od.on{background:rgba(var(--ruby),.88)}
+.tab.bl.on{background:rgba(var(--garnet),.88)}
+.tab.fl.on{background:rgba(var(--teal),.88)}
+#q{flex:1 1 220px;min-width:170px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
+ border:1px solid var(--line);background:rgba(0,0,0,.44);color:#fff}
 #q::placeholder{color:#c9b8e8}
 
-h1{font-size:1.85rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.75)}
-.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.7);font-size:.95rem}
-h2.sec{font-size:1.22rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+h1{font-size:1.8rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.78)}
+.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.72);font-size:.94rem}
+h2.sec{font-size:1.2rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.78)}
 
-/* ---------- the card: jewel at 60% + blur ---------- */
+/* cards: jewel tone at 60% + blur */
 .card{background:rgba(var(--amethyst),.60);
  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
  border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);
@@ -42,95 +45,162 @@ h2.sec{font-size:1.22rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.75
 .ruby{background:rgba(var(--ruby),.60)} .emerald{background:rgba(var(--emerald),.60)}
 .sapphire{background:rgba(var(--sapphire),.60)} .teal{background:rgba(var(--teal),.60)}
 .garnet{background:rgba(var(--garnet),.60)} .citrine{background:rgba(var(--citrine),.60)}
+.amethyst{background:rgba(var(--amethyst),.60)}
 .topaz{background:rgba(var(--topaz),.62);color:#231a02;border-left-color:rgba(0,0,0,.35)}
-.topaz b,.topaz a,.topaz .why{color:#231a02}
+.topaz b,.topaz a,.topaz .why,.topaz .flab{color:#231a02}
 
-/* ---------- typography variation ---------- */
-.hero{font-size:1.55rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
+/* typography variation */
+.hero{font-size:1.5rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
 .why{font-style:italic;opacity:.95}
 .never{text-decoration:underline wavy rgba(255,255,255,.92);font-weight:800}
 mark{background:rgba(var(--topaz),.95);color:#231a02;padding:1px 5px;border-radius:4px;font-weight:700}
 code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32);
  padding:1px 6px;border-radius:5px;font-weight:700;font-size:.92em}
 
-/* ---------- pills ---------- */
-.pill{display:inline-block;font-size:.68rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+/* pills */
+.pill{display:inline-block;font-size:.67rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
  padding:3px 9px;border-radius:11px;margin:0 5px 5px 0;border:1px solid rgba(255,255,255,.4)}
 .p-ha{background:rgba(var(--ruby),.95)} .p-bbw{background:rgba(var(--garnet),.95)}
 .p-od{background:rgba(var(--topaz),.95);color:#231a02} .p-rx{background:rgba(var(--sapphire),.9)}
 .p-cls{background:rgba(0,0,0,.42);text-transform:none;font-weight:700;letter-spacing:0}
 
-/* ---------- results ---------- */
+/* search results */
 .hit{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
  background:rgba(var(--sapphire),.58);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
  border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.5);border-radius:14px;
  padding:12px 15px;margin:8px 0;box-shadow:0 6px 20px rgba(0,0,0,.34)}
 .hit:hover{background:rgba(var(--amethyst),.68)}
-.hit .nm{font-size:1.08rem;font-weight:900;display:block}
-.hit .sub{font-size:.83rem;opacity:.95;display:block;margin-top:2px}
+.hit .nm{font-size:1.06rem;font-weight:900;display:block}
+.hit .sub{font-size:.82rem;opacity:.95;display:block;margin-top:2px}
 .hit.alert{background:rgba(var(--ruby),.55)} .hit.alert:hover{background:rgba(var(--ruby),.68)}
 
-/* ---------- monograph ---------- */
-.mono h3{margin:0 0 2px;font-size:1.45rem;font-weight:900}
-.mono .pron{font-style:italic;opacity:.9;font-size:.9rem}
-.mono .brands{font-size:.9rem;margin:5px 0}
-details.s{background:rgba(0,0,0,.26);border:1px solid var(--line);border-radius:12px;margin:8px 0}
-details.s>summary{cursor:pointer;padding:11px 14px;font-weight:800;font-size:.94rem;list-style:none}
-details.s>summary::-webkit-details-marker{display:none}
-details.s>summary::before{content:'\25B8';margin-right:9px;display:inline-block;transition:.15s;color:#ffd75e}
-details.s[open]>summary::before{transform:rotate(90deg)}
-details.s .b{padding:0 15px 13px;font-size:.92rem}
-details.s .b p{margin:5px 0}
+/* the seven labelled fields */
+.fld{background:rgba(0,0,0,.26);border:1px solid var(--line);border-left:4px solid rgba(255,255,255,.5);
+ border-radius:12px;margin:8px 0;padding:10px 14px}
+.fld.ruby{border-left-color:rgb(var(--ruby))} .fld.emerald{border-left-color:rgb(var(--emerald))}
+.fld.sapphire{border-left-color:rgb(var(--sapphire))} .fld.teal{border-left-color:rgb(var(--teal))}
+.fld.garnet{border-left-color:rgb(var(--garnet))} .fld.topaz{border-left-color:rgb(var(--topaz))}
+.fld.citrine{border-left-color:rgb(var(--citrine))} .fld.amethyst{border-left-color:rgb(var(--amethyst))}
+.fld{background:rgba(0,0,0,.28)}
+.flab{font-size:.72rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin-bottom:4px}
+.fbody p{margin:4px 0;font-size:.91rem}
+
+.bbwbox{background:rgba(var(--ruby),.88);border:2px solid #fff;border-radius:12px;
+ padding:11px 14px;margin:9px 0;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.bbwbox .flab{color:#fff}
+.bbwbox p{margin:4px 0;font-size:.9rem;font-weight:600}
 .bbwline{background:rgba(var(--ruby),.85);border-radius:8px;padding:8px 11px;margin:6px 0;font-weight:700}
 
-/* ---------- A-Z ---------- */
+/* monograph header */
+.mono h3{margin:0 0 2px;font-size:1.42rem;font-weight:900}
+.mono .pron{font-style:italic;opacity:.9;font-size:.88rem}
+.mono .brands{font-size:.89rem;margin:5px 0}
+
+/* A-Z */
 .az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
 .az button{background:rgba(0,0,0,.38);border:1px solid var(--line);color:#fff;border-radius:9px;
- width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.86rem}
+ width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.85rem}
 .az button:hover{background:rgba(var(--amethyst),.85)}
 .az button.on{background:rgba(var(--amethyst),.9);border-color:#fff}
 
-/* ---------- tables ---------- */
+/* tables */
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;min-width:520px;font-size:.9rem}
-th{background:rgba(0,0,0,.42);padding:9px 11px;border:1px solid var(--line);text-align:left;
- font-size:.72rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th{background:rgba(0,0,0,.44);padding:9px 11px;border:1px solid var(--line);text-align:left;
+ font-size:.71rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
 td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
 tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
 
-/* ---------- flow diagram ---------- */
+/* flow */
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
 .step{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:11px;
- padding:9px 13px;font-weight:800;font-size:.85rem}
+ padding:9px 13px;font-weight:800;font-size:.84rem}
 .arrow{font-weight:900;opacity:.9}
 
-.count{font-size:.85rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+/* tonicity bar */
+.tonic{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+ margin:9px 0 3px;font-size:.75rem;font-weight:800}
+.tonic div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px}
+.t-hypo{background:rgba(var(--sapphire),.9);flex:1}
+.t-iso{background:rgba(var(--emerald),.9);flex:1}
+.t-hyper{background:rgba(var(--ruby),.9);flex:1}
+
+.count{font-size:.84rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.72)}
 .foot{margin-top:38px;padding-top:14px;border-top:1px solid var(--line);
- font-size:.8rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+ font-size:.79rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.72)}
 .top{position:fixed;right:14px;bottom:14px;z-index:70;background:rgba(var(--amethyst),.92);
  color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;width:46px;height:46px;
  font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
-@media(max-width:560px){h1{font-size:1.4rem}.brand{font-size:.9rem}table{min-width:420px}}
+@media(max-width:560px){h1{font-size:1.35rem}.brand{font-size:.86rem}table{min-width:420px}
+ .tab{padding:6px 11px;font-size:.75rem}}
+
+/* ============ collapsible sidebar ============ */
+.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:9px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+#menuBtn{background:linear-gradient(135deg,rgba(var(--amethyst),.95),rgba(var(--garnet),.95));
+ color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 15px;
+ font-weight:900;font-size:.85rem;cursor:pointer;white-space:nowrap;line-height:1}
+#menuBtn:hover{filter:brightness(1.12)}
+#side{position:fixed;top:0;left:0;width:min(86vw,290px);height:100dvh;max-height:100dvh;
+ overflow-y:auto;z-index:100000;transform:translateX(-102%);transition:transform .22s ease;
+ background:rgba(10,6,20,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border-right:1px solid var(--line);box-shadow:6px 0 30px rgba(0,0,0,.6);padding:16px 14px 30px}
+body.nav-open #side{transform:translateX(0)}
+#side .sbrand{font-weight:900;font-size:1.1rem;margin:2px 0 14px;display:block}
+#side a.nav{display:block;background:rgba(255,255,255,.08);border:1px solid var(--line);
+ border-left:4px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;margin:0 0 8px;
+ color:#fff;text-decoration:none;font-weight:800;font-size:.92rem}
+#side a.nav:hover{background:rgba(var(--amethyst),.7)}
+#side a.nav.on{background:rgba(var(--amethyst),.85);border-left-color:#fff}
+#side a.nav.od.on{background:rgba(var(--ruby),.85)}
+#side a.nav.bl.on{background:rgba(var(--garnet),.85)}
+#side a.nav.fl.on{background:rgba(var(--teal),.85)}
+#side .nsub{display:block;font-weight:600;font-size:.75rem;opacity:.9;margin-top:2px}
+#side .shead{font-size:.7rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin:16px 0 7px}
+#navBg{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:99999;opacity:0;
+ pointer-events:none;transition:opacity .2s ease}
+body.nav-open #navBg{opacity:1;pointer-events:auto}
+@media print{#side,#navBg,#menuBtn,.bar{display:none}}
 </style></head><body>
+<div id="navBg"></div>
+<nav id="side" aria-label="Site menu">
+  <span class="sbrand">&#128138; Drug Guide</span>
+  <a class="nav  on" href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav bl " href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <div class="shead">Reminder</div>
+  <p style="font-size:.79rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
+</nav>
 <div class="bar"><div class="barrow">
-  <span class="brand">&#128138; Drug Guide</span>
-  <a class="tab on" href="index.html">&#128138; Drug Cards</a>
-  <a class="tab od " href="antidotes.html">&#9760;&#65039; Antidotes</a>
-  <input id="q" type="search" placeholder="Search 1,264 drugs — name, brand or class…" autocomplete="off">
+  <button id="menuBtn" type="button" aria-expanded="false" aria-controls="side">&#9776; Menu</button>
+  <input id="q" type="search" placeholder="Search by name, brand, class&hellip;" autocomplete="off">
 </div></div>
 <div class="wrap">
 
 <h1>&#128138; Drug Cards</h1>
-<p class="lede">Every drug in your guide, searchable by <b>generic name</b>, <b>brand name</b> or <b>drug class</b>.
-Tap a result to open the full card.</p>
+<p class="lede">1166 drugs. Search by <b>generic name</b>, <b>brand name</b> or <b>class</b>.
+Every card has the same seven parts, so your eye lands in the same place every time.</p>
 
 <div class="card topaz">
- <h3 style="margin:0 0 6px;font-size:1.05rem">&#11088; How to use this fast</h3>
- <p style="margin:4px 0"><b>Type any part of a name</b> — <code>metop</code> finds metoprolol, <code>Lasix</code> finds furosemide.</p>
- <p style="margin:4px 0"><b>Or search a class</b> — try <code>beta blocker</code>, <code>anticoagulant</code>, <code>opioid</code>.</p>
- <p style="margin:4px 0"><b>Filter chips</b> below narrow to the dangerous ones. <mark>Red = high alert</mark>.</p>
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#11088; Every card, same seven parts</h3>
+ <div class="flow">
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Name</span>
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Class</span>
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Mechanism</span>
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Indication</span>
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Contraindication</span>
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Adverse effects</span>
+  <span class="step" style="background:rgba(0,0,0,.16);color:#231a02">Black Box</span>
+ </div>
 </div>
 
+<div class="card citrine">
+ <h3 style="margin:0 0 5px;font-size:1rem">&#8505;&#65039; No dosages here, on purpose</h3>
+ <p style="margin:3px 0;font-size:.9rem">This copy carries <b>class, mechanism, indications, contraindications,
+ adverse effects and black box warnings</b> &mdash; the parts you get tested on.
+ <span class="why">Dosing lives in your personal copy and the package insert, where it stays current.</span></p>
+</div>
 <div class="card sapphire" style="padding:13px 15px">
  <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center">
   <button class="tab flt on" data-f="all" type="button">All</button>
@@ -140,168 +210,131 @@ Tap a result to open the full card.</p>
  </div>
  <div class="az" id="az"></div>
 </div>
-
-<p class="count" id="count">Loading…</p>
+<p class="count" id="count">Loading&hellip;</p>
 <div id="results"></div>
 <div id="mono"></div>
 
-<div class="foot">Drug Guide &middot; built from your own drug reference file &middot;
- always verify against your current course materials, the package insert and facility policy before giving any medication.</div>
+<div class="foot">Drug Guide &middot; study summary only, <b>no dosing</b> &middot; always check the current package insert, your course materials and facility policy.</div>
 </div>
 <button class="top" onclick="scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
 <script>
-var IDX=[],CACHE={},filt='all',letter='',viewing=null;
+(function(){
+  var b=document.getElementById('menuBtn'),s=document.getElementById('side'),bg=document.getElementById('navBg');
+  function set(o){document.body.classList.toggle('nav-open',o);
+    b.innerHTML=o?'✕ Close':'☰ Menu';b.setAttribute('aria-expanded',o?'true':'false');}
+  b.addEventListener('click',function(e){e.stopPropagation();set(!document.body.classList.contains('nav-open'));});
+  bg.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  s.addEventListener('click',function(e){if(e.target.closest('a'))setTimeout(function(){set(false);},120);});
+  set(false);
+})();
 
-// plain-English class words -> what the book actually calls them
-var SYNMAP={
- 'beta blocker':['β-blocker','β1-blocker','β2-blocker','beta-blocker','adrenergic blocker'],
- 'beta blockers':['β-blocker','β1-blocker','beta-blocker','adrenergic blocker'],
- 'ace inhibitor':['angiotensin-converting','ace inhibitor'],
- 'arb':['angiotensin ii receptor','angiotensin receptor'],
- 'ccb':['calcium channel blocker'],
- 'calcium channel blocker':['calcium channel blocker'],
- 'ppi':['proton pump inhibitor'],
- 'nsaid':['nonsteroidal antiinflammatory','nsaid'],
- 'blood thinner':['anticoagulant','antiplatelet','thrombolytic'],
- 'water pill':['diuretic'],
- 'statin':['antilipemic','hmg-coa','cholesterol'],
- 'painkiller':['analgesic'],
- 'antibiotic':['antiinfective','antibacterial'],
- 'steroid':['corticosteroid','glucocorticoid'],
- 'benzo':['benzodiazepine','antianxiety'],
- 'ssri':['ssri','antidepressant'],
- 'insulin':['antidiabetic','insulin'],
- 'seizure':['anticonvulsant'],
- 'antibiotics':['antiinfective','antibacterial']
-};
-function SYN(t){
-  if(!t) return [''];
-  var out=[t];
-  if(SYNMAP[t]) out=out.concat(SYNMAP[t]);
-  else {for(var k in SYNMAP){ if(k.indexOf(t)===0||t.indexOf(k)===0) out=out.concat(SYNMAP[k]); }}
-  return out;
-}
 
-var q=document.getElementById('q'),res=document.getElementById('results'),
-    cnt=document.getElementById('count'),mono=document.getElementById('mono');
-
+window.DG=window.DG||{store:{},want:{},put:function(k,v){
+  this.store[k]=v;var w=this.want[k];if(w){delete this.want[k];w.forEach(function(f){f(v);});}}};
+DG.get=function(k,cb){
+  if(this.store[k])return cb(this.store[k]);
+  if(this.want[k]){this.want[k].push(cb);return;}
+  this.want[k]=[cb];
+  var s=document.createElement('script');s.src='data/'+k+'.js';
+  s.onerror=function(){(DG.want[k]||[]).forEach(function(f){f([]);});delete DG.want[k];};
+  document.head.appendChild(s);};
 function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
 
-fetch('data/index.json').then(r=>r.json()).then(function(j){
+var SYNMAP={'beta blocker':['β-blocker','β1-blocker','beta-blocker','adrenergic blocker'],
+ 'beta blockers':['β-blocker','β1-blocker','adrenergic blocker'],
+ 'ace inhibitor':['angiotensin-converting'],'arb':['angiotensin ii receptor','angiotensin receptor'],
+ 'ccb':['calcium channel blocker'],'ppi':['proton pump inhibitor'],
+ 'nsaid':['nonsteroidal antiinflammatory'],'blood thinner':['anticoagulant','antiplatelet','thrombolytic'],
+ 'water pill':['diuretic'],'statin':['antilipemic','hmg-coa','cholesterol'],
+ 'painkiller':['analgesic'],'antibiotic':['antiinfective','antibacterial'],
+ 'steroid':['corticosteroid','glucocorticoid'],'benzo':['benzodiazepine','antianxiety'],
+ 'seizure':['anticonvulsant'],'sugar':['antidiabetic']};
+function SYN(t){if(!t)return[''];var o=[t];
+ if(SYNMAP[t])o=o.concat(SYNMAP[t]);
+ else{for(var k in SYNMAP){if(k.indexOf(t)===0||t.indexOf(k)===0)o=o.concat(SYNMAP[k]);}}
+ return o;}
+var IDX=[],filt='all',letter='';
+var q=document.getElementById('q'),res=document.getElementById('results'),
+    cnt=document.getElementById('count'),mono=document.getElementById('mono');
+DG.get('index',function(j){
   IDX=j;
-  var ks=[...new Set(IDX.map(x=>x.k))].sort();
-  document.getElementById('az').innerHTML=ks.map(k=>'<button data-k="'+k+'">'+k+'</button>').join('');
-  document.getElementById('az').addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b)return;
+  var ks=[...new Set(IDX.map(x=>x.k))].sort(), az=document.getElementById('az');
+  az.innerHTML=ks.map(k=>'<button data-k="'+k+'">'+k+'</button>').join('');
+  az.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
     letter=(letter===b.dataset.k)?'':b.dataset.k;
-    [...document.querySelectorAll('#az button')].forEach(x=>x.classList.toggle('on',x.dataset.k===letter));
-    render();
-  });
+    [...az.querySelectorAll('button')].forEach(x=>x.classList.toggle('on',x.dataset.k===letter));render();});
   render();
 });
-
-document.querySelectorAll('.flt').forEach(function(b){
-  b.addEventListener('click',function(){
-    filt=b.dataset.f;
-    document.querySelectorAll('.flt').forEach(x=>x.classList.toggle('on',x===b));
-    render();
-  });
-});
-
+document.querySelectorAll('.flt').forEach(function(b){b.addEventListener('click',function(){
+  filt=b.dataset.f;document.querySelectorAll('.flt').forEach(x=>x.classList.toggle('on',x===b));render();});});
 function match(x,t){
   if(filt==='ha'&&!x.ha)return false;
   if(filt==='bbw'&&!x.bbw)return false;
   if(filt==='od'&&!x.od)return false;
   if(letter&&x.k!==letter)return false;
   if(!t)return true;
-  var hay=(x.n+' '+x.a.join(' ')+' '+x.b.join(' ')+' '+x.fc+' '+(x.cc||'')).toLowerCase();
-  return SYN(t).some(function(term){return hay.indexOf(term)>-1;});
+  var hay=(x.n+' '+x.a.join(' ')+' '+x.b.join(' ')+' '+x.cls).toLowerCase();
+  return SYN(t).some(function(w){return hay.indexOf(w)>-1;});
 }
-
 function render(){
-  var t=q.value.trim().toLowerCase();
-  var hits=IDX.filter(x=>match(x,t));
+  var t=q.value.trim().toLowerCase(), hits=IDX.filter(x=>match(x,t));
   cnt.textContent=hits.length+' drug'+(hits.length===1?'':'s')
     +(t?' matching "'+q.value.trim()+'"':'')+(letter?' starting with '+letter:'');
   if(!t&&!letter&&filt==='all'){
-    res.innerHTML='<div class="card teal"><b>1,264 drugs are loaded.</b> '
-      +'<span class="why">Start typing above, tap a letter, or use a filter chip.</span></div>';
-    return;
-  }
+    res.innerHTML='<div class="card teal"><b>'+IDX.length+' drugs loaded.</b> '
+      +'<span class="why">Type a name above, tap a letter, or use a filter.</span></div>';return;}
   var show=hits.slice(0,300);
   res.innerHTML=show.map(function(x){
-    var sub=[x.b.length?'<b>'+esc(x.b.join(', '))+'</b>':'',esc(x.fc),esc(x.cc||'')].filter(Boolean).join(' &middot; ');
-    var pills=(x.ha?'<span class="pill p-ha">&#128680; High Alert</span>':'')
+    var sub=[x.b.length?'<b>'+esc(x.b.join(', '))+'</b>':'',esc(x.cls)].filter(Boolean).join(' &middot; ');
+    var pills=(x.ha?'<span class="pill p-ha">\u{1F6A8} High Alert</span>':'')
       +(x.bbw?'<span class="pill p-bbw">Black Box</span>':'')
       +(x.od?'<span class="pill p-od">Antidote</span>':'');
     return '<button class="hit'+(x.ha?' alert':'')+'" data-i="'+x.i+'" data-k="'+x.k+'">'
       +'<span class="nm">'+esc(x.n)+(x.a.length?' <span style="opacity:.85;font-weight:600;font-size:.85rem">('+esc(x.a.join(', '))+')</span>':'')+'</span>'
-      +(sub?'<span class="sub">'+sub+'</span>':'')+(pills?'<div style="margin-top:6px">'+pills+'</div>':'')
-      +'</button>';
+      +(sub?'<span class="sub">'+sub+'</span>':'')+(pills?'<div style="margin-top:6px">'+pills+'</div>':'')+'</button>';
   }).join('');
-  if(hits.length>show.length)
-    res.innerHTML+='<p class="count">Showing the first 300. Keep typing to narrow it down.</p>';
+  if(hits.length>show.length)res.innerHTML+='<p class="count">First 300 shown — keep typing.</p>';
 }
 q.addEventListener('input',function(){mono.innerHTML='';render();});
-
-var ORDER=['ACTION','USES','Unlabeled uses','CONTRAINDICATIONS','Precautions','DOSAGE AND ROUTES',
- 'Available forms','Administer','SIDE EFFECTS','PHARMACOKINETICS','INTERACTIONS',
- 'NURSING CONSIDERATIONS','TREATMENT OF OVERDOSE'];
-var TONE={'ACTION':'teal','USES':'emerald','CONTRAINDICATIONS':'ruby','Precautions':'citrine',
- 'DOSAGE AND ROUTES':'sapphire','SIDE EFFECTS':'garnet','NURSING CONSIDERATIONS':'amethyst',
- 'TREATMENT OF OVERDOSE':'topaz'};
-var ICON={'ACTION':'⚙️','USES':'✅','Unlabeled uses':'➕','CONTRAINDICATIONS':'⛔',
- 'Precautions':'⚠️','DOSAGE AND ROUTES':'📐','Available forms':'💊',
- 'Administer':'🩺','SIDE EFFECTS':'🪦','PHARMACOKINETICS':'📈',
- 'INTERACTIONS':'🔀','NURSING CONSIDERATIONS':'👩‍⚕️',
- 'TREATMENT OF OVERDOSE':'☠️'};
-
-res.addEventListener('click',function(e){
-  var b=e.target.closest('.hit'); if(!b)return;
-  openDrug(+b.dataset.i,b.dataset.k);
-});
-
+function fld(icon,label,tone,val,isList){
+  if(!val||(isList&&!val.length))return '';
+  var inner=isList? val.map(v=>'<p>'+esc(v)+'</p>').join('') : '<p>'+esc(val)+'</p>';
+  return '<div class="fld '+tone+'"><div class="flab">'+icon+' '+label+'</div><div class="fbody">'+inner+'</div></div>';
+}
+res.addEventListener('click',function(e){var b=e.target.closest('.hit');if(!b)return;openDrug(+b.dataset.i,b.dataset.k);});
 function openDrug(i,k){
   var f=(k==='#'?'hash':k);
-  var go=function(arr){
-    var x=arr.find(y=>y._i===i); if(!x)return;
-    viewing=x;
-    var body=ORDER.filter(s=>x.sec[s]).map(function(s){
-      var open=(s==='ACTION'||s==='USES'||s==='TREATMENT OF OVERDOSE')?' open':'';
-      var html=x.sec[s].map(function(line){
-        if(line.indexOf('Black Box Warning')===0) return '<div class="bbwline">⚠️ '+esc(line)+'</div>';
-        return '<p>'+esc(line)+'</p>';
-      }).join('');
-      return '<details class="s"'+open+'><summary>'+(ICON[s]||'•')+' '+esc(s)+'</summary><div class="b">'+html+'</div></details>';
-    }).join('');
+  mono.innerHTML='<div class="card"><b>Loading…</b></div>';
+  DG.get(f,function(arr){
+    var x=arr.find(y=>y.i===i);if(!x)return;
     var pills='<span class="pill p-rx">'+esc(x.rx)+'</span>'
-      +(x.ha?'<span class="pill p-ha">🚨 High Alert</span>':'')
-      +(x.bbw?'<span class="pill p-bbw">Black Box Warning</span>':'')
-      +(x.sec['TREATMENT OF OVERDOSE']?'<span class="pill p-od">☠️ Has Antidote</span>':'')
-      +(x.fc?'<span class="pill p-cls">'+esc(x.fc)+'</span>':'');
+      +(x.ha?'<span class="pill p-ha">\u{1F6A8} High Alert</span>':'')
+      +(x.bbw&&x.bbw.length?'<span class="pill p-bbw">Black Box Warning</span>':'')
+      +(x.od?'<span class="pill p-od">☠️ Has Antidote</span>':'');
+    var bbw=(x.bbw&&x.bbw.length)
+      ? '<div class="bbwbox"><div class="flab">\u{1F6A8} BLACK BOX WARNING</div>'
+        +x.bbw.map(b=>'<p>'+esc(b)+'</p>').join('')+'</div>':'';
     mono.innerHTML='<div class="card mono '+(x.ha?'ruby':'amethyst')+'" id="card">'
-      +'<h3>💊 '+esc(x.n)+'</h3>'
+      +'<h3>\u{1F48A} '+esc(x.n)+'</h3>'
       +(x.pron?'<div class="pron">'+esc(x.pron)+'</div>':'')
-      +(x.alias&&x.alias.length?'<div class="brands"><i>also listed as</i> <b>'+esc(x.alias.join(', '))+'</b></div>':'')
-      +(x.brands.length?'<div class="brands">🏷️ <b>'+esc(x.brands.join(' · '))+'</b></div>':'')
-      +(x.cc?'<div class="brands"><i>Chem class:</i> '+esc(x.cc)+'</div>':'')
-      +'<div style="margin:8px 0">'+pills+'</div>'
+      +(x.alias.length?'<div class="brands"><i>also listed as</i> <b>'+esc(x.alias.join(', '))+'</b></div>':'')
+      +(x.brands.length?'<div class="brands">\u{1F3F7}️ <b>'+esc(x.brands.join(' · '))+'</b></div>':'')
+      +'<div style="margin:8px 0">'+pills+'</div>'+bbw
       +(x.dnc?'<div class="bbwline">❌ <b>Do not confuse:</b> '+esc(x.dnc)+'</div>':'')
-      +body
-      +(x.sec['TREATMENT OF OVERDOSE']?'<p style="margin-top:10px"><a class="tab" href="antidotes.html?d='+encodeURIComponent(x.n)+'">☠️ See this on the Antidotes page</a></p>':'')
+      +fld('\u{1F3F7}️','Class','sapphire',x.cls)
+      +fld('⚙️','Mechanism of Action','teal',x.moa)
+      +fld('✅','Indications','emerald',x.ind)
+      +fld('⛔','Contraindications & Cautions','ruby',x.ci)
+      +fld('\u{1FAA6}','Adverse Effects','garnet',x.ae)
+      +fld('☠️','Overdose / Antidote','topaz',x.od)
+      
+      +(x.od?'<p style="margin-top:10px"><a class="tab" href="antidotes.html?d='+encodeURIComponent(x.n)+'">☠️ See it on the Antidotes page</a></p>':'')
       +'</div>';
     document.getElementById('card').scrollIntoView({block:'start'});
-  };
-  if(CACHE[f]) return go(CACHE[f]);
-  mono.innerHTML='<div class="card"><b>Loading…</b></div>';
-  fetch('data/'+f+'.json').then(r=>r.json()).then(function(a){CACHE[f]=a;go(a);});
+  });
 }
-
-// deep link: index.html?d=warfarin
-(function(){
-  var p=new URLSearchParams(location.search).get('d');
-  if(p){ q.value=p; var t=setInterval(function(){ if(IDX.length){clearInterval(t);
-     render(); var m=IDX.find(x=>x.n.toLowerCase()===p.toLowerCase());
-     if(m)openDrug(m.i,m.k);} },120); }
-})();
+(function(){var p=new URLSearchParams(location.search).get('d');
+ if(p){q.value=p;var t=setInterval(function(){if(IDX.length){clearInterval(t);render();
+   var m=IDX.find(x=>x.n.toLowerCase()===p.toLowerCase());if(m)openDrug(m.i,m.k);}},120);}})();
 </script></body></html>

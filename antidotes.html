@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drug Guide &middot; Antidotes</title><style>
+:root{
+ --amethyst:157,92,255; --sapphire:47,107,255; --emerald:18,184,134; --teal:0,194,199;
+ --topaz:255,194,51;   --ruby:255,59,107;    --garnet:192,34,85;    --citrine:255,138,61;
+ --ink:#fff; --line:rgba(255,255,255,.30);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
+ background-color:#140b24;
+ background-image:url("bg.jpg");
+ background-size:cover;background-position:center;background-attachment:fixed;
+ background-repeat:no-repeat}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
+
+/* ---------- sticky top bar (never a tall menu block) ---------- */
+.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:10px 16px;
+ background:rgba(14,8,26,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+.barrow{display:flex;gap:9px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.brand{font-weight:900;font-size:1.02rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.tab{background:rgba(255,255,255,.10);border:1px solid var(--line);color:#fff;text-decoration:none;
+ border-radius:20px;padding:7px 14px;font-weight:800;font-size:.82rem;white-space:nowrap}
+.tab:hover{background:rgba(var(--amethyst),.75)}
+.tab.on{background:rgba(var(--amethyst),.85);border-color:rgba(255,255,255,.55)}
+.tab.od.on{background:rgba(var(--ruby),.85)}
+#q{flex:1 1 260px;min-width:180px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
+ border:1px solid var(--line);background:rgba(0,0,0,.42);color:#fff}
+#q::placeholder{color:#c9b8e8}
+
+h1{font-size:1.85rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.75)}
+.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.7);font-size:.95rem}
+h2.sec{font-size:1.22rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+
+/* ---------- the card: jewel at 60% + blur ---------- */
+.card{background:rgba(var(--amethyst),.60);
+ backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);
+ border-radius:16px;padding:15px 17px;margin:11px 0;box-shadow:0 8px 26px rgba(0,0,0,.38)}
+.ruby{background:rgba(var(--ruby),.60)} .emerald{background:rgba(var(--emerald),.60)}
+.sapphire{background:rgba(var(--sapphire),.60)} .teal{background:rgba(var(--teal),.60)}
+.garnet{background:rgba(var(--garnet),.60)} .citrine{background:rgba(var(--citrine),.60)}
+.topaz{background:rgba(var(--topaz),.62);color:#231a02;border-left-color:rgba(0,0,0,.35)}
+.topaz b,.topaz a,.topaz .why{color:#231a02}
+
+/* ---------- typography variation ---------- */
+.hero{font-size:1.55rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
+.why{font-style:italic;opacity:.95}
+.never{text-decoration:underline wavy rgba(255,255,255,.92);font-weight:800}
+mark{background:rgba(var(--topaz),.95);color:#231a02;padding:1px 5px;border-radius:4px;font-weight:700}
+code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32);
+ padding:1px 6px;border-radius:5px;font-weight:700;font-size:.92em}
+
+/* ---------- pills ---------- */
+.pill{display:inline-block;font-size:.68rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+ padding:3px 9px;border-radius:11px;margin:0 5px 5px 0;border:1px solid rgba(255,255,255,.4)}
+.p-ha{background:rgba(var(--ruby),.95)} .p-bbw{background:rgba(var(--garnet),.95)}
+.p-od{background:rgba(var(--topaz),.95);color:#231a02} .p-rx{background:rgba(var(--sapphire),.9)}
+.p-cls{background:rgba(0,0,0,.42);text-transform:none;font-weight:700;letter-spacing:0}
+
+/* ---------- results ---------- */
+.hit{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
+ background:rgba(var(--sapphire),.58);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.5);border-radius:14px;
+ padding:12px 15px;margin:8px 0;box-shadow:0 6px 20px rgba(0,0,0,.34)}
+.hit:hover{background:rgba(var(--amethyst),.68)}
+.hit .nm{font-size:1.08rem;font-weight:900;display:block}
+.hit .sub{font-size:.83rem;opacity:.95;display:block;margin-top:2px}
+.hit.alert{background:rgba(var(--ruby),.55)} .hit.alert:hover{background:rgba(var(--ruby),.68)}
+
+/* ---------- monograph ---------- */
+.mono h3{margin:0 0 2px;font-size:1.45rem;font-weight:900}
+.mono .pron{font-style:italic;opacity:.9;font-size:.9rem}
+.mono .brands{font-size:.9rem;margin:5px 0}
+details.s{background:rgba(0,0,0,.26);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+details.s>summary{cursor:pointer;padding:11px 14px;font-weight:800;font-size:.94rem;list-style:none}
+details.s>summary::-webkit-details-marker{display:none}
+details.s>summary::before{content:'\25B8';margin-right:9px;display:inline-block;transition:.15s;color:#ffd75e}
+details.s[open]>summary::before{transform:rotate(90deg)}
+details.s .b{padding:0 15px 13px;font-size:.92rem}
+details.s .b p{margin:5px 0}
+.bbwline{background:rgba(var(--ruby),.85);border-radius:8px;padding:8px 11px;margin:6px 0;font-weight:700}
+
+/* ---------- A-Z ---------- */
+.az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.az button{background:rgba(0,0,0,.38);border:1px solid var(--line);color:#fff;border-radius:9px;
+ width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.86rem}
+.az button:hover{background:rgba(var(--amethyst),.85)}
+.az button.on{background:rgba(var(--amethyst),.9);border-color:#fff}
+
+/* ---------- tables ---------- */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.9rem}
+th{background:rgba(0,0,0,.42);padding:9px 11px;border:1px solid var(--line);text-align:left;
+ font-size:.72rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
+
+/* ---------- flow diagram ---------- */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
+.step{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:11px;
+ padding:9px 13px;font-weight:800;font-size:.85rem}
+.arrow{font-weight:900;opacity:.9}
+
+.count{font-size:.85rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.foot{margin-top:38px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:.8rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.top{position:fixed;right:14px;bottom:14px;z-index:70;background:rgba(var(--amethyst),.92);
+ color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;width:46px;height:46px;
+ font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+@media(max-width:560px){h1{font-size:1.4rem}.brand{font-size:.9rem}table{min-width:420px}}
+</style></head><body>
+<div class="bar"><div class="barrow">
+  <span class="brand">&#128138; Drug Guide</span>
+  <a class="tab " href="index.html">&#128138; Drug Cards</a>
+  <a class="tab od on" href="antidotes.html">&#9760;&#65039; Antidotes</a>
+  <input id="q" type="search" placeholder="Search antidotes and overdose treatment…" autocomplete="off">
+</div></div>
+<div class="wrap">
+
+<h1>&#9760;&#65039; Antidotes &amp; Overdose</h1>
+<p class="lede">The reversal agents you get tested on, plus the <b>121 drugs</b> in your guide that carry a
+documented overdose treatment.</p>
+
+<div class="card ruby">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#128680; The three that show up most</h3>
+ <p style="margin:5px 0"><b>acetaminophen</b> &rarr; <span class="never">acetylcysteine</span></p>
+ <p style="margin:5px 0"><b>opioids</b> &rarr; <span class="never">naloxone</span></p>
+ <p style="margin:5px 0"><b>benzodiazepines</b> &rarr; <span class="never">flumazenil</span></p>
+ <p class="why" style="margin:8px 0 0">If you remember nothing else on this page, remember these three pairs.</p>
+</div>
+
+<div class="card topaz">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#11088; Hyperkalemia — the order they ask for</h3>
+ <div class="flow">
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">1. Calcium gluconate</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">2. Insulin + D50</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">3. Albuterol</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">4. Kayexalate</span><span class="arrow">&rarr;</span>
+  <span class="step" style="background:rgba(0,0,0,.18);color:#231a02">5. Dialysis</span>
+ </div>
+ <p class="why" style="margin:2px 0 0">Calcium is <b>first</b> because it stabilizes the myocardium. It does <b>not</b> lower the potassium.</p>
+</div>
+
+<h2 class="sec">&#128737;&#65039; Antidote pairs to memorize</h2>
+<p class="count">28 pairs. The search box at the top filters these too.</p>
+<div id="pairs"><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; acetaminophen (Tylenol)</h3><span class="hero">&#128737;&#65039; acetylcysteine</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Give within 8–10 hr for best effect. Watch the rising AST/ALT, not the symptoms — the client can look fine while the liver is failing.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; opioids (morphine, fentanyl, heroin)</h3><span class="hero">&#128737;&#65039; naloxone</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Shorter half-life than most opioids — <b>it can wear off and the client re-sedates</b>. Keep monitoring, be ready to redose.</p></div><div class="card citrine"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; benzodiazepines (lorazepam, midazolam)</h3><span class="hero">&#128737;&#65039; flumazenil</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Can trigger seizures in chronic users or mixed TCA overdose. Use cautiously.</p></div><div class="card garnet"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; warfarin (Coumadin)</h3><span class="hero">&#128737;&#65039; vitamin K (phytonadione)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Add fresh frozen plasma or PCC when the bleeding is active — vitamin K alone is too slow.</p></div><div class="card garnet"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; heparin</h3><span class="hero">&#128737;&#65039; protamine sulfate</span><p class="why" style="margin:2px 0 0;font-size:.9rem">1 mg protamine per ~100 units heparin. Monitor aPTT.</p></div><div class="card citrine"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; enoxaparin (Lovenox)</h3><span class="hero">&#128737;&#65039; protamine sulfate (partial)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Only reverses about 60% — low-molecular-weight heparin is not fully reversible.</p></div><div class="card sapphire"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; dabigatran (Pradaxa)</h3><span class="hero">&#128737;&#65039; idarucizumab (Praxbind)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Direct thrombin inhibitor, its own dedicated antidote.</p></div><div class="card sapphire"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; rivaroxaban / apixaban</h3><span class="hero">&#128737;&#65039; andexanet alfa</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Factor Xa inhibitors. Very expensive, not stocked everywhere.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; digoxin</h3><span class="hero">&#128737;&#65039; digoxin immune Fab (DigiFab)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Suspect toxicity with anorexia, nausea, <b>yellow-green halos</b>. <mark>Hypokalemia makes toxicity worse.</mark></p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; magnesium sulfate</h3><span class="hero">&#128737;&#65039; calcium gluconate</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Classic in OB. First sign of trouble is <b>loss of deep tendon reflexes</b>, then respiratory depression.</p></div><div class="card citrine"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; iron</h3><span class="hero">&#128737;&#65039; deferoxamine</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Urine turns a reddish 'vin rosé' color as iron is chelated out.</p></div><div class="card citrine"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; lead</h3><span class="hero">&#128737;&#65039; succimer, edetate calcium disodium (EDTA)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Chelation. Check the source of exposure before discharge.</p></div><div class="card emerald"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; organophosphates / insecticides</h3><span class="hero">&#128737;&#65039; atropine + pralidoxime</span><p class="why" style="margin:2px 0 0;font-size:.9rem">SLUDGE symptoms — salivation, lacrimation, urination, defecation, GI upset, emesis.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; cyanide</h3><span class="hero">&#128737;&#65039; hydroxocobalamin, or the cyanide kit</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Suspect it after enclosed-space smoke inhalation. Turns urine and skin red.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; carbon monoxide</h3><span class="hero">&#128737;&#65039; 100% oxygen (hyperbaric if severe)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Pulse ox reads falsely normal — <b>you must draw a carboxyhemoglobin level</b>.</p></div><div class="card emerald"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; methotrexate</h3><span class="hero">&#128737;&#65039; leucovorin (folinic acid)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Called 'leucovorin rescue'. Hydrate and alkalinize the urine.</p></div><div class="card emerald"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; ethylene glycol / methanol</h3><span class="hero">&#128737;&#65039; fomepizole (or ethanol)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Antifreeze. Blocks alcohol dehydrogenase so the toxic metabolite never forms.</p></div><div class="card sapphire"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; beta blockers (metoprolol, atenolol)</h3><span class="hero">&#128737;&#65039; glucagon</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Glucagon bypasses the blocked beta receptor. Atropine first for the bradycardia.</p></div><div class="card sapphire"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; calcium channel blockers</h3><span class="hero">&#128737;&#65039; IV calcium + glucagon + high-dose insulin</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Verapamil and diltiazem overdose drops both rate and pressure.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; tricyclic antidepressants</h3><span class="hero">&#128737;&#65039; sodium bicarbonate</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Watch for a <b>widening QRS</b> — that is the sign to treat, not the level.</p></div><div class="card sapphire"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; neuromuscular blockers (rocuronium)</h3><span class="hero">&#128737;&#65039; sugammadex, or neostigmine + glycopyrrolate</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Sugammadex directly encapsulates rocuronium and vecuronium.</p></div><div class="card citrine"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; anticholinergics</h3><span class="hero">&#128737;&#65039; physostigmine</span><p class="why" style="margin:2px 0 0;font-size:.9rem">'Mad as a hatter, red as a beet, dry as a bone, hot as a hare, blind as a bat.'</p></div><div class="card emerald"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; insulin / sulfonylureas</h3><span class="hero">&#128737;&#65039; dextrose 50% (D50), glucagon</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Conscious and able to swallow? 15 g fast carbs, recheck in 15 min.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; volatile anesthetics + succinylcholine</h3><span class="hero">&#128737;&#65039; dantrolene</span><p class="why" style="margin:2px 0 0;font-size:.9rem"><b>Malignant hyperthermia.</b> Earliest sign is a rising end-tidal CO2, not the fever.</p></div><div class="card citrine"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; vasopressor extravasation (norepinephrine)</h3><span class="hero">&#128737;&#65039; phentolamine</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Infiltrate the site. Stop the infusion, leave the catheter in to aspirate first.</p></div><div class="card garnet"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; alteplase / thrombolytic bleed</h3><span class="hero">&#128737;&#65039; aminocaproic acid</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Stop the infusion first. Have blood products ready.</p></div><div class="card ruby"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; potassium (hyperkalemia)</h3><span class="hero">&#128737;&#65039; calcium gluconate first</span><p class="why" style="margin:2px 0 0;font-size:.9rem"><b>Calcium protects the heart, it does not lower the potassium.</b> Then insulin+D50, albuterol, Kayexalate, dialysis.</p></div><div class="card emerald"><h3 style="margin:0 0 4px;font-size:1.02rem">&#128138; isoniazid</h3><span class="hero">&#128737;&#65039; pyridoxine (vitamin B6)</span><p class="why" style="margin:2px 0 0;font-size:.9rem">Also given routinely with INH to prevent peripheral neuropathy.</p></div></div>
+
+<h2 class="sec">&#128209; From your drug guide — documented overdose treatment</h2>
+<p class="count" id="odcount"></p>
+<div id="odlist"></div>
+
+<div class="foot">Drug Guide &middot; built from your own drug reference file &middot;
+ always verify against your current course materials, the package insert and facility policy before giving any medication.</div>
+</div>
+<button class="top" onclick="scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+<script>
+var OD=[],q=document.getElementById('q'),list=document.getElementById('odlist'),
+    odc=document.getElementById('odcount'),pairs=document.getElementById('pairs');
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+
+fetch('data/overdose.json').then(r=>r.json()).then(function(j){OD=j;render();});
+
+function render(){
+  var t=q.value.trim().toLowerCase();
+  // filter the memorize cards
+  [...pairs.children].forEach(function(c){
+    c.style.display=(!t||c.textContent.toLowerCase().indexOf(t)>-1)?'':'none';
+  });
+  var hits=OD.filter(x=>!t||(x.n+' '+x.fc+' '+x.t).toLowerCase().indexOf(t)>-1);
+  odc.textContent=hits.length+' drug'+(hits.length===1?'':'s')+(t?' matching "'+q.value.trim()+'"':'');
+  list.innerHTML=hits.map(function(x){
+    return '<div class="card '+(x.ha?'ruby':'garnet')+'">'
+      +'<h3 style="margin:0 0 3px;font-size:1.05rem">☠️ '+esc(x.n)
+      +(x.ha?' <span class="pill p-ha">High Alert</span>':'')+'</h3>'
+      +(x.fc?'<div style="font-size:.82rem;opacity:.95;margin-bottom:5px">'+esc(x.fc)+'</div>':'')
+      +'<p style="margin:4px 0"><b>Treatment:</b> '+esc(x.t)+'</p>'
+      +'<p style="margin:6px 0 0"><a class="tab" href="index.html?d='+encodeURIComponent(x.n)+'">💊 Open the full drug card</a></p>'
+      +'</div>';
+  }).join('');
+}
+q.addEventListener('input',render);
+(function(){var p=new URLSearchParams(location.search).get('d'); if(p){q.value=p;}})();
+</script></body></html>

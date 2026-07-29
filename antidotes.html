@@ -209,7 +209,8 @@ body.nav-open #navBg{opacity:1;pointer-events:auto}
 <div class="foot">Drug Guide &middot; study summary only, <b>no dosing</b> &middot; always check the current package insert, your course materials and facility policy.</div>
 </div>
 <button class="top" onclick="scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
-<script>
+<script>window.DATA_V='fa01e9d4';
+
 (function(){
   var b=document.getElementById('menuBtn'),s=document.getElementById('side'),bg=document.getElementById('navBg');
   function set(o){document.body.classList.toggle('nav-open',o);
@@ -228,7 +229,7 @@ DG.get=function(k,cb){
   if(this.store[k])return cb(this.store[k]);
   if(this.want[k]){this.want[k].push(cb);return;}
   this.want[k]=[cb];
-  var s=document.createElement('script');s.src='data/'+k+'.js';
+  var s=document.createElement('script');s.src='data/'+k+'.js?v='+(window.DATA_V||'1');
   s.onerror=function(){(DG.want[k]||[]).forEach(function(f){f([]);});delete DG.want[k];};
   document.head.appendChild(s);};
 function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}

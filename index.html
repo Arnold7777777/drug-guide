@@ -172,7 +172,26 @@ body.nav-open #navBg{opacity:1;pointer-events:auto}
 #side a.nav.tm.on{background:rgba(var(--citrine),.85)}
 #side a.nav.hb.on{background:rgba(var(--emerald),.85)}
 </style></head><body>
-<a href="https://arnold7777777.github.io/ABSN-Study-Hub/" class="hubHomeBtn" title="Back to the ABSN Study Hub" style="position:fixed;top:10px;right:12px;z-index:99999;background:linear-gradient(135deg,#5a2d82,#8e2d6b);color:#fff;text-decoration:none;font:800 .85rem 'Segoe UI',system-ui,sans-serif;padding:10px 18px;border-radius:24px;box-shadow:0 4px 16px rgba(0,0,0,.55);border:1.5px solid rgba(255,255,255,.30)">🏠 ABSN Hub</a>
+<style id="navbtnCSS">
+#navBtns{position:fixed;top:10px;right:12px;z-index:2147483000;display:flex;gap:7px;align-items:center}
+#navBtns a,#navBtns button{
+  display:inline-block;font:700 .8rem 'Segoe UI',system-ui,sans-serif;
+  padding:7px 13px;border-radius:22px;text-decoration:none;cursor:pointer;
+  border:1px solid rgba(255,255,255,.22);box-shadow:0 4px 14px rgba(0,0,0,.5);
+  color:#fff;white-space:nowrap;line-height:1.3;
+}
+#navBtns .nbHome{background:linear-gradient(135deg,#5a2d82,#8e2d6b)}
+#navBtns .nbAbsn{background:linear-gradient(135deg,#0f7d6b,#12b886)}
+#navBtns a:hover,#navBtns button:hover{filter:brightness(1.15)}
+@media(max-width:560px){
+  #navBtns{top:6px;right:6px;gap:5px}
+  #navBtns a,#navBtns button{padding:6px 10px;font-size:.72rem}
+  #navBtns .nbLabel{display:none}
+}
+@media print{#navBtns{display:none}}
+</style>
+<div id="navBtns"><a class="nbAbsn" href="https://arnold7777777.github.io/ABSN-Study-Hub/" title="Go to the ABSN Study Hub">&#127891;<span class="nbLabel"> ABSN Hub</span></a></div>
+
 
 <div id="navBg"></div>
 <nav id="side" aria-label="Site menu">

@@ -1,0 +1,642 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Drug Guide &middot; Suffix Quick Reference</title><style>:root{
+ --amethyst:157,92,255; --sapphire:47,107,255; --emerald:18,184,134; --teal:0,194,199;
+ --topaz:255,194,51;   --ruby:255,59,107;    --garnet:192,34,85;    --citrine:255,138,61;
+ --ink:#fff; --line:rgba(255,255,255,.30);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
+ background-color:#140b24;
+ background-image:url("bg.jpg");
+ background-size:cover;background-position:center;background-attachment:fixed;
+ background-repeat:no-repeat}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
+
+/* sticky top bar */
+.bar{position:sticky;top:0;z-index:60;margin:0 0 14px;padding:10px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+.barrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.brand{font-weight:900;font-size:1rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.tab{background:rgba(255,255,255,.10);border:1px solid var(--line);color:#fff;text-decoration:none;
+ border-radius:20px;padding:7px 13px;font-weight:800;font-size:0.82rem;white-space:nowrap;cursor:pointer}
+.tab:hover{background:rgba(var(--amethyst),.75)}
+.tab.on{background:rgba(var(--amethyst),.88);border-color:rgba(255,255,255,.55)}
+.tab.od.on{background:rgba(var(--ruby),.88)}
+.tab.bl.on{background:rgba(var(--garnet),.88)}
+.tab.fl.on{background:rgba(var(--teal),.88)}
+#q{flex:1 1 220px;min-width:170px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
+ border:1px solid var(--line);background:rgba(0,0,0,.44);color:#fff}
+#q::placeholder{color:#c9b8e8}
+
+h1{font-size:1.8rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.78)}
+.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.72);font-size:.94rem}
+h2.sec{font-size:1.2rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.78)}
+
+/* cards: jewel tone at 60% + blur */
+.card{background:rgba(var(--amethyst),.60);
+ backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);
+ border-radius:16px;padding:15px 17px;margin:11px 0;box-shadow:0 8px 26px rgba(0,0,0,.38)}
+.ruby{background:rgba(var(--ruby),.60)} .emerald{background:rgba(var(--emerald),.60)}
+.sapphire{background:rgba(var(--sapphire),.60)} .teal{background:rgba(var(--teal),.60)}
+.garnet{background:rgba(var(--garnet),.60)} .citrine{background:rgba(var(--citrine),.60)}
+.amethyst{background:rgba(var(--amethyst),.60)}
+.topaz{background:rgba(var(--topaz),.62);color:#231a02;border-left-color:rgba(0,0,0,.35)}
+.topaz b,.topaz a,.topaz .why,.topaz .flab{color:#231a02}
+/* the Overdose/Antidote field sits on a dark box, so keep its text light */
+.fld.topaz{color:#f3efff}
+.fld.topaz b,.fld.topaz a,.fld.topaz .why,.fld.topaz p,.fld.topaz li{color:#f6f3ff}
+.fld.topaz .flab{color:#ffd75e}
+.fld.topaz mark{color:#231a02}
+
+/* typography variation */
+.hero{font-size:1.5rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
+.why{font-style:italic;opacity:.95}
+.never{text-decoration:underline wavy rgba(255,255,255,.92);font-weight:800}
+mark{background:rgba(var(--topaz),.95);color:#231a02;padding:1px 5px;border-radius:4px;font-weight:700}
+code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32);
+ padding:1px 6px;border-radius:5px;font-weight:700;font-size:.92em}
+
+/* pills */
+.pill{display:inline-block;font-size:0.82rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+ padding:3px 9px;border-radius:11px;margin:0 5px 5px 0;border:1px solid rgba(255,255,255,.4)}
+.p-ha{background:rgba(var(--ruby),.95)} .p-bbw{background:rgba(var(--garnet),.95)}
+.p-od{background:rgba(var(--topaz),.95);color:#231a02} .p-rx{background:rgba(var(--sapphire),.9)}
+.p-cls{background:rgba(0,0,0,.42);text-transform:none;font-weight:700;letter-spacing:0}
+
+/* search results */
+.hit{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
+ background:rgba(var(--sapphire),.58);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.5);border-radius:14px;
+ padding:12px 15px;margin:8px 0;box-shadow:0 6px 20px rgba(0,0,0,.34)}
+.hit:hover{background:rgba(var(--amethyst),.68)}
+.hit .nm{font-size:1.06rem;font-weight:900;display:block}
+.hit .sub{font-size:.82rem;opacity:.95;display:block;margin-top:2px}
+.hit.alert{background:rgba(var(--ruby),.55)} .hit.alert:hover{background:rgba(var(--ruby),.68)}
+
+/* the seven labelled fields */
+.fld{background:rgba(0,0,0,.26);border:1px solid var(--line);border-left:4px solid rgba(255,255,255,.5);
+ border-radius:12px;margin:8px 0;padding:10px 14px}
+.fld.ruby{border-left-color:rgb(var(--ruby))} .fld.emerald{border-left-color:rgb(var(--emerald))}
+.fld.sapphire{border-left-color:rgb(var(--sapphire))} .fld.teal{border-left-color:rgb(var(--teal))}
+.fld.garnet{border-left-color:rgb(var(--garnet))} .fld.topaz{border-left-color:rgb(var(--topaz))}
+.fld.citrine{border-left-color:rgb(var(--citrine))} .fld.amethyst{border-left-color:rgb(var(--amethyst))}
+.fld{background:rgba(0,0,0,.28)}
+.flab{font-size:0.82rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin-bottom:4px}
+.fbody p{margin:4px 0;font-size:.91rem}
+
+.bbwbox{background:rgba(var(--ruby),.88);border:2px solid #fff;border-radius:12px;
+ padding:11px 14px;margin:9px 0;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.bbwbox .flab{color:#fff}
+.bbwbox p{margin:4px 0;font-size:.9rem;font-weight:600}
+.bbwline{background:rgba(var(--ruby),.85);border-radius:8px;padding:8px 11px;margin:6px 0;font-weight:700}
+
+/* monograph header */
+.mono h3{margin:0 0 2px;font-size:1.42rem;font-weight:900}
+.mono .pron{font-style:italic;opacity:.9;font-size:.88rem}
+.mono .brands{font-size:.89rem;margin:5px 0}
+
+/* A-Z */
+.az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.az button{background:rgba(0,0,0,.38);border:1px solid var(--line);color:#fff;border-radius:9px;
+ width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.85rem}
+.az button:hover{background:rgba(var(--amethyst),.85)}
+.az button.on{background:rgba(var(--amethyst),.9);border-color:#fff}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th{background:rgba(0,0,0,.44);padding:9px 11px;border:1px solid var(--line);text-align:left;
+ font-size:0.82rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
+.step{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:11px;
+ padding:9px 13px;font-weight:800;font-size:.84rem}
+.arrow{font-weight:900;opacity:.9}
+
+/* tonicity bar */
+.tonic{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+ margin:9px 0 3px;font-size:0.82rem;font-weight:800}
+.tonic div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px}
+.t-hypo{background:rgba(var(--sapphire),.9);flex:1}
+.t-iso{background:rgba(var(--emerald),.9);flex:1}
+.t-hyper{background:rgba(var(--ruby),.9);flex:1}
+
+.count{font-size:.84rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.foot{margin-top:38px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:0.82rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.top{position:fixed;right:14px;bottom:14px;z-index:70;background:rgba(var(--amethyst),.92);
+ color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;width:46px;height:46px;
+ font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+@media(max-width:560px){h1{font-size:1.35rem}.brand{font-size:.86rem}table{min-width:420px}
+ .tab{padding:6px 11px;font-size:0.82rem}}
+
+/* ============ collapsible sidebar ============ */
+.bar{position:sticky;top:0;z-index:60;margin:0 0 14px;padding:9px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+#menuBtn{background:linear-gradient(135deg,rgba(var(--amethyst),.95),rgba(var(--garnet),.95));
+ color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 15px;
+ font-weight:900;font-size:.85rem;cursor:pointer;white-space:nowrap;line-height:1}
+#menuBtn:hover{filter:brightness(1.12)}
+#side{position:fixed;top:0;left:0;width:min(86vw,290px);height:100dvh;max-height:100dvh;
+ overflow-y:auto;z-index:100000;transform:translateX(-102%);transition:transform .22s ease;
+ background:rgba(10,6,20,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border-right:1px solid var(--line);box-shadow:6px 0 30px rgba(0,0,0,.6);padding:16px 14px 30px}
+body.nav-open #side{transform:translateX(0)}
+#side .sbrand{font-weight:900;font-size:1.1rem;margin:2px 0 14px;display:block}
+#side a.nav{display:block;background:rgba(255,255,255,.08);border:1px solid var(--line);
+ border-left:4px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;margin:0 0 8px;
+ color:#fff;text-decoration:none;font-weight:800;font-size:.92rem}
+#side a.nav:hover{background:rgba(var(--amethyst),.7)}
+#side a.nav.on{background:rgba(var(--amethyst),.85);border-left-color:#fff}
+#side a.nav.od.on{background:rgba(var(--ruby),.85)}
+#side a.nav.bl.on{background:rgba(var(--garnet),.85)}
+#side a.nav.fl.on{background:rgba(var(--teal),.85)}
+#side .nsub{display:block;font-weight:600;font-size:0.82rem;opacity:.9;margin-top:2px}
+#side .shead{font-size:0.82rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin:16px 0 7px}
+#navBg{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:99999;opacity:0;
+ pointer-events:none;transition:opacity .2s ease}
+body.nav-open #navBg{opacity:1;pointer-events:auto}
+@media print{#side,#navBg,#menuBtn,.bar{display:none}}
+#side a.nav.tm.on{background:rgba(var(--citrine),.85)}
+#side a.nav.hb.on{background:rgba(var(--emerald),.85)}
+#side a.nav.sx.on{background:rgba(var(--sapphire),.85)}
+.sfx{font-family:Consolas,ui-monospace,monospace;font-weight:900;letter-spacing:.5px}
+.sxgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:11px}
+.sxcard{background:rgba(var(--sapphire),.60);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);border-radius:15px;padding:13px 15px;box-shadow:0 8px 24px rgba(0,0,0,.36)}
+.sxcard .sfx{font-size:1.45rem;display:block;line-height:1.1}
+.sxcard .cls{font-weight:800;font-size:.95rem;margin:3px 0 7px;display:block}
+.sxcard .pt{font-size:.90rem;margin:0 0 7px}
+.sxcard .eg{font-size:.85rem;background:rgba(0,0,0,.30);border-radius:9px;padding:6px 9px}
+.sxcard .eg b{color:#ffd75e;letter-spacing:.7px;font-size:0.82rem;text-transform:uppercase;display:block;margin-bottom:2px}
+.sxcard.ruby{background:rgba(var(--ruby),.60)}
+.sxcard.emerald{background:rgba(var(--emerald),.60)}
+.sxcard.teal{background:rgba(var(--teal),.60)}
+.sxcard.citrine{background:rgba(var(--citrine),.60)}
+.sxcard.garnet{background:rgba(var(--garnet),.60)}
+.sxcard.amethyst{background:rgba(var(--amethyst),.60)}
+.sxcard.topaz{background:rgba(var(--topaz),.62);color:#231a02}
+.sxcard.topaz .eg{background:rgba(0,0,0,.18)}
+.sxcard.topaz .eg b{color:#4a3500}
+.sxsec{scroll-margin-top:70px}
+
+</style></head><body>
+<style id="a11yCSS">
+/* keep wide things inside the viewport so magnifying never forces sideways scrolling */
+img,svg,video,canvas{max-width:100%;height:auto}
+pre,code,kbd{white-space:pre-wrap;overflow-wrap:anywhere}
+.a11y-tblwrap{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+@media(max-width:1024px){
+  #nav a{white-space:normal}
+  .bar{margin-left:0 !important;margin-right:0 !important;max-width:100% !important}
+}
+
+/* rem (not em) so these can never compound down to unreadable sizes */
+small,.eyebrow,.rail-sep,.sm-txt,.tiny,.fine,.cap,.foot{font-size:.82rem}
+sub,sup{font-size:.72rem}
+
+/* keep the fixed Home/ABSN cluster from sitting on top of page titles */
+@media(max-width:1024px){
+  header h1, header p, h1:first-of-type{padding-right:92px}
+}
+@media(max-width:560px){
+  header h1, header p, h1:first-of-type{padding-right:80px}
+}
+
+/* The fixed Home / ABSN cluster floats over the top-right corner, which was
+   covering the right end of the search box - including its clear button.
+   Reserve room for it so nothing hides underneath. */
+.bar .barrow{padding-right:228px}
+@media(max-width:1024px){.bar .barrow{padding-right:98px}}
+@media(max-width:560px){.bar .barrow{padding-right:92px}}
+</style>
+
+<style id="navbtnCSS">
+#navBtns{position:fixed;top:10px;right:12px;z-index:2147483000;display:flex;gap:7px;align-items:center}
+#navBtns a,#navBtns button{
+  display:inline-block;font:700 .8rem 'Segoe UI',system-ui,sans-serif;
+  padding:7px 13px;border-radius:22px;text-decoration:none;cursor:pointer;
+  border:1px solid rgba(255,255,255,.22);box-shadow:0 4px 14px rgba(0,0,0,.5);
+  color:#fff;white-space:nowrap;line-height:1.3;
+}
+#navBtns .nbHome{background:linear-gradient(135deg,#5a2d82,#8e2d6b)}
+#navBtns .nbAbsn{background:linear-gradient(135deg,#0f7d6b,#12b886)}
+#navBtns a:hover,#navBtns button:hover{filter:brightness(1.15)}
+#navBtns a,#navBtns button{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+/* magnified viewports report a narrow CSS width - shed the labels early so the
+   cluster stops sitting on top of page headings */
+@media(max-width:1024px){
+  #navBtns{top:6px;right:6px;gap:5px}
+  #navBtns .nbLabel{display:none}
+  #navBtns a,#navBtns button{padding:8px 11px;font-size:1rem;line-height:1}
+}
+@media(max-width:560px){
+  #navBtns a,#navBtns button{padding:7px 9px;font-size:.95rem}
+}
+@media print{#navBtns{display:none}}
+</style>
+<div id="navBtns"><a class="nbHome" href="index.html" title="Back to this course's study hub">&#127968;<span class="nbLabel"> Home</span></a><a class="nbAbsn" href="https://arnold7777777.github.io/ABSN-Study-Hub/" onclick="return nbToAbsn(event)" title="Close this page and go back toward the ABSN Study Hub">&#127891;<span class="nbLabel"> ABSN Hub</span></a></div>
+<script>if(window.top!==window.self){var _nb=document.getElementById("navBtns");if(_nb)_nb.style.display="none";}</script>
+<script>
+(function(){
+  var ABSN='https://arnold7777777.github.io/ABSN-Study-Hub/';
+  window.nbToAbsn=function(ev){
+    if(ev&&ev.preventDefault)ev.preventDefault();
+    /* On a sub-page: try to close this tab so the study hub behind it is revealed.
+       Browsers only allow close() on script-opened tabs, so fall back to navigating. */
+    try{ window.close(); }catch(e){}
+    setTimeout(function(){ if(!window.closed) window.location.href=ABSN; },120);
+    return false;
+  };
+})();
+</script>
+
+<div id="navBg"></div>
+<nav id="side" aria-label="Site menu">
+  <span class="sbrand">&#128138; Drug Guide</span>
+  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav sx on" href="suffixes.html">&#128273; Suffix Reference<span class="nsub">endings &rarr; class &rarr; nursing point</span></a><a class="nav tm " href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl " href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <div class="shead">Reminder</div>
+  <p style="font-size:0.82rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
+</nav>
+<div class="bar"><div class="barrow">
+  <button id="menuBtn" type="button" aria-expanded="false" aria-controls="side">&#9776; Menu</button>
+  <input id="q" type="search" placeholder="Search suffixes, classes, drugs&hellip;" autocomplete="off">
+</div></div>
+<div class="wrap">
+
+<h1>&#128273; Suffix Quick Reference</h1>
+<p class="lede">Learn the ending, get the class and the nursing point for free. <b>26 suffixes</b>
+covering most of what gets tested. Search filters everything below.</p>
+
+<div class="card topaz">
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#11088; The potassium cluster</h3>
+ <p style="margin:5px 0"><b>-pril</b> &middot; <b>-sartan</b> &middot; <b>-one</b> (spironolactone, eplerenone)
+ all <b>RAISE potassium</b>.</p>
+ <p style="margin:5px 0">Teach every one of these patients to <mark>avoid salt substitutes</mark> &mdash;
+ they are potassium chloride.</p>
+ <p style="margin:5px 0" class="why">The diuretics below (-ide, -thiazide) do the opposite and drop it.
+ Getting this pair straight is worth several questions.</p>
+</div>
+
+<div class="card ruby">
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#128680; Five suffixes that lie</h3>
+ <p style="margin:5px 0">The shortcut works until it doesn't. These five are where it breaks:</p>
+ <p style="margin:6px 0"><span class="sfx">-mycin</span> is <b>not</b> always an aminoglycoside.
+ gentamicin, tobramycin and amikacin are. <b>Vancomycin</b> is a glycopeptide, <b>azithromycin</b> and
+ <b>erythromycin</b> are macrolides, <b>clindamycin</b> is a lincosamide.
+ <i>Reliable version: <b>-micin</b> and gentamicin/tobramycin/amikacin by name.</i></p>
+ <p style="margin:6px 0"><span class="sfx">-ase</span> is any enzyme, not just a clot buster.
+ The thrombolytics are specifically <b>-plase</b> (alteplase, tenecteplase, reteplase).
+ pancrelipase is a digestive enzyme.</p>
+ <p style="margin:6px 0"><span class="sfx">-ide</span> is far too common to mean loop diuretic
+ (glipizide, chlorhexidine, amiloride). The loops are <b>-semide / -anide</b>:
+ furosemide, torsemide, bumetanide.</p>
+ <p style="margin:6px 0"><span class="sfx">-one</span> means potassium-sparing only in
+ spironolactone and eplerenone. <b>prednisone</b>, <b>amiodarone</b> and <b>methadone</b> also end in -one
+ and have nothing to do with potassium sparing.</p>
+ <p style="margin:6px 0"><span class="sfx">-azole</span> spans three groups: antifungals
+ (fluconazole), PPIs (omeprazole &mdash; really <b>-prazole</b>), and metronidazole, an antibiotic.
+ Read the whole word.</p>
+ <p style="margin:6px 0" class="why">Rule of thumb: use the suffix to narrow it down, then confirm with
+ the drug name. Never answer on the ending alone.</p>
+</div>
+
+<div class="card sapphire">
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#127919; How to use this</h3>
+ <p style="margin:5px 0">Cover the middle column and say the class out loud from the ending.
+ Then cover the right column and say the nursing point. Two passes a day beats one long session.</p>
+ <p style="margin:5px 0">Tap any drug name below to open its full card.</p>
+</div>
+
+<p class="count" id="sxnote"></p>
+<h2 class="sec sxsec" id="cv">🫀 Heart &amp; blood pressure</h2>
+<div class="sxgrid">
+  <div class="sxcard ruby" data-kw="potassium hyperkalemia blood pressure hypertension heart failure raas cough angioedema ace">
+   <span class="sfx">-pril</span>
+   <span class="cls">ACE inhibitors</span>
+   <p class="pt">Monitor for dry cough &amp; angioedema; watch K&#8314; (hyperkalemia); 1st-dose hypotension</p>
+   <div class="eg"><b>For example</b>lisinopril, enalapril, ramipril, captopril, benazepril</div>
+  </div>
+  <div class="sxcard ruby" data-kw="potassium hyperkalemia blood pressure hypertension raas arb pregnancy">
+   <span class="sfx">-sartan</span>
+   <span class="cls">ARBs</span>
+   <p class="pt">Like ACE-I but <b>NO cough</b>; still watch K&#8314;; teratogenic</p>
+   <div class="eg"><b>For example</b>losartan, valsartan, olmesartan, irbesartan</div>
+  </div>
+  <div class="sxcard ruby" data-kw="blood pressure hypertension heart rate bradycardia angina glucose diabetes hypoglycemia beta">
+   <span class="sfx">-olol</span>
+   <span class="cls">Beta blockers</span>
+   <p class="pt">&darr;HR/BP; hold if HR &lt;60 or SBP &lt;90; <span class="never">don't stop abruptly</span>; masks hypoglycemia</p>
+   <div class="eg"><b>For example</b>metoprolol, atenolol, carvedilol, propranolol, labetalol</div>
+  </div>
+  <div class="sxcard garnet" data-kw="blood pressure hypertension angina calcium edema grapefruit">
+   <span class="sfx">-dipine</span>
+   <span class="cls">Ca&sup2;&#8314; channel blockers (dihydropyridine)</span>
+   <p class="pt">Peripheral edema, reflex tachycardia; avoid grapefruit juice</p>
+   <div class="eg"><b>For example</b>amlodipine, nifedipine, nicardipine, felodipine</div>
+  </div>
+  <div class="sxcard garnet" data-kw="cholesterol lipids ldl muscle rhabdomyolysis liver lft">
+   <span class="sfx">-statin</span>
+   <span class="cls">HMG-CoA reductase inhibitors</span>
+   <p class="pt">Take in evening; <mark>report muscle pain</mark> (rhabdomyolysis); monitor LFTs</p>
+   <div class="eg"><b>For example</b>atorvastatin, simvastatin, rosuvastatin, pravastatin</div>
+  </div>
+</div>
+<h2 class="sec sxsec" id="clot">🩸 Clotting &amp; bleeding</h2>
+<div class="sxgrid">
+  <div class="sxcard ruby" data-kw="anticoagulant blood thinner clot bleeding aptt protamine dvt pe">
+   <span class="sfx">-parin</span>
+   <span class="cls">Heparins / LMWH</span>
+   <p class="pt">Bleeding; monitor aPTT (heparin) / no routine labs (enoxaparin); antidote <b>protamine</b></p>
+   <div class="eg"><b>For example</b>heparin, enoxaparin, dalteparin</div>
+  </div>
+  <div class="sxcard ruby" data-kw="anticoagulant clot stroke mi bleeding thrombolytic tpa">
+   <span class="sfx">-ase</span>
+   <span class="cls">Thrombolytics ("clot busters")</span>
+   <p class="pt">Massive bleeding risk; strict time window; many contraindications</p>
+   <div class="eg"><b>For example</b>alteplase, tenecteplase, reteplase</div>
+  </div>
+</div>
+<h2 class="sec sxsec" id="gi">🍽️ Stomach &amp; gut</h2>
+<div class="sxgrid">
+  <div class="sxcard citrine" data-kw="acid reflux gerd ulcer heartburn calcium magnesium b12 cdiff ppi">
+   <span class="sfx">-prazole</span>
+   <span class="cls">Proton pump inhibitors</span>
+   <p class="pt">Take <b>before meals</b>; long-term &rarr; &darr;Ca/Mg/B12, <i>C. diff</i>, fractures</p>
+   <div class="eg"><b>For example</b>omeprazole, pantoprazole, esomeprazole, lansoprazole</div>
+  </div>
+  <div class="sxcard citrine" data-kw="acid reflux gerd ulcer heartburn histamine">
+   <span class="sfx">-tidine</span>
+   <span class="cls">H&#8322; receptor blockers</span>
+   <p class="pt">Take at bedtime; <b>famotidine preferred</b> (cimetidine = many interactions)</p>
+   <div class="eg"><b>For example</b>famotidine, cimetidine, nizatidine</div>
+  </div>
+  <div class="sxcard citrine" data-kw="nausea vomiting emesis qt antiemetic">
+   <span class="sfx">-setron</span>
+   <span class="cls">Antiemetics (5-HT&#8323;)</span>
+   <p class="pt">QT prolongation; ondansetron for N/V</p>
+   <div class="eg"><b>For example</b>ondansetron, granisetron, palonosetron</div>
+  </div>
+</div>
+<h2 class="sec sxsec" id="abx">🦠 Anti-infectives</h2>
+<div class="sxgrid">
+  <div class="sxcard emerald" data-kw="antibiotic infection tendon achilles qt sun photosensitivity">
+   <span class="sfx">-floxacin</span>
+   <span class="cls">Fluoroquinolones</span>
+   <p class="pt"><span class="never">Tendon rupture</span>, QT prolongation, photosensitivity; avoid in children</p>
+   <div class="eg"><b>For example</b>ciprofloxacin, levofloxacin, moxifloxacin</div>
+  </div>
+  <div class="sxcard emerald" data-kw="antibiotic infection dairy calcium sun photosensitivity teeth pregnancy">
+   <span class="sfx">-cycline</span>
+   <span class="cls">Tetracyclines</span>
+   <p class="pt">No dairy/antacids; photosensitivity; not in &lt;8 yr or pregnancy (teeth)</p>
+   <div class="eg"><b>For example</b>doxycycline, minocycline, tetracycline</div>
+  </div>
+  <div class="sxcard emerald" data-kw="antibiotic infection kidney nephrotoxic ears hearing ototoxic trough peak creatinine">
+   <span class="sfx">-mycin / -micin</span>
+   <span class="cls">Aminoglycosides</span>
+   <p class="pt">Nephrotoxic &amp; ototoxic &mdash; monitor <b>trough</b>, creatinine, hearing</p>
+   <div class="eg"><b>For example</b>gentamicin, tobramycin, amikacin</div>
+  </div>
+  <div class="sxcard emerald" data-kw="antibiotic infection allergy anaphylaxis penicillin">
+   <span class="sfx">-cillin</span>
+   <span class="cls">Penicillins</span>
+   <p class="pt">Ask about allergy (cross-reacts with cephalosporins); anaphylaxis risk</p>
+   <div class="eg"><b>For example</b>penicillin G, amoxicillin, ampicillin, piperacillin</div>
+  </div>
+  <div class="sxcard emerald" data-kw="antibiotic infection allergy penicillin alcohol disulfiram">
+   <span class="sfx">cef- / ceph-</span>
+   <span class="cls">Cephalosporins</span>
+   <p class="pt">Cross-allergy with PCN; no alcohol (disulfiram rxn with some)</p>
+   <div class="eg"><b>For example</b>cefazolin, ceftriaxone, cephalexin, cefepime</div>
+  </div>
+  <div class="sxcard emerald" data-kw="antibiotic infection qt stomach gi interactions">
+   <span class="sfx">-thromycin</span>
+   <span class="cls">Macrolides</span>
+   <p class="pt">QT prolongation, GI upset; many drug interactions</p>
+   <div class="eg"><b>For example</b>azithromycin, erythromycin, clarithromycin</div>
+  </div>
+  <div class="sxcard teal" data-kw="antiviral infection herpes hiv influenza flu kidney renal adherence">
+   <span class="sfx">-vir</span>
+   <span class="cls">Antivirals</span>
+   <p class="pt">Adherence critical; renal dosing</p>
+   <div class="eg"><b>For example</b>acyclovir, valacyclovir, oseltamivir, ritonavir</div>
+  </div>
+  <div class="sxcard teal" data-kw="antifungal fungus yeast liver hepatotoxic interactions">
+   <span class="sfx">-azole</span>
+   <span class="cls">Antifungals / some PPIs</span>
+   <p class="pt">Hepatotoxic (antifungals); many interactions</p>
+   <div class="eg"><b>For example</b>fluconazole, ketoconazole, itraconazole</div>
+  </div>
+</div>
+<h2 class="sec sxsec" id="diur">🚽 Diuretics</h2>
+<div class="sxgrid">
+  <div class="sxcard sapphire" data-kw="diuretic water pill potassium hypokalemia edema heart failure hearing ototoxic weight">
+   <span class="sfx">-ide (furosem-)</span>
+   <span class="cls">Loop diuretics</span>
+   <p class="pt">&darr;K&#8314;; <b>ototoxic if pushed fast</b>; monitor K&#8314;, daily weights, I&amp;O</p>
+   <div class="eg"><b>For example</b>furosemide, bumetanide, torsemide</div>
+  </div>
+  <div class="sxcard sapphire" data-kw="diuretic water pill potassium hypokalemia blood pressure hypertension glucose uric gout calcium sulfa">
+   <span class="sfx">-thiazide</span>
+   <span class="cls">Thiazide diuretics</span>
+   <p class="pt">&darr;K&#8314;, &uarr;glucose/uric acid/Ca&sup2;&#8314;; sulfa allergy caution</p>
+   <div class="eg"><b>For example</b>hydrochlorothiazide, chlorothiazide, metolazone</div>
+  </div>
+</div>
+<h2 class="sec sxsec" id="resp">🫁 Lungs &amp; steroids</h2>
+<div class="sxgrid">
+  <div class="sxcard teal" data-kw="asthma copd inhaler bronchodilator rescue wheeze breathing tremor">
+   <span class="sfx">-terol</span>
+   <span class="cls">Beta-2 agonists (bronchodilators)</span>
+   <p class="pt"><b>Rescue</b> (albuterol) vs <b>prevention</b> (salmeterol); tachycardia, tremor</p>
+   <div class="eg"><b>For example</b>albuterol, salmeterol, formoterol, levalbuterol</div>
+  </div>
+  <div class="sxcard topaz" data-kw="steroid corticosteroid glucose blood sugar infection immune taper adrenal inflammation">
+   <span class="sfx">-sone / -olone</span>
+   <span class="cls">Corticosteroids</span>
+   <p class="pt">&uarr;glucose, infection risk, &darr;immunity; <span class="never">never stop abruptly (taper)</span>; take with food</p>
+   <div class="eg"><b>For example</b>prednisone, methylprednisolone, dexamethasone, hydrocortisone</div>
+  </div>
+</div>
+<h2 class="sec sxsec" id="other">🧰 Everything else</h2>
+<div class="sxgrid">
+  <div class="sxcard amethyst" data-kw="osteoporosis bone calcium esophagitis upright water">
+   <span class="sfx">-dronate</span>
+   <span class="cls">Bisphosphonates</span>
+   <p class="pt">Take with a full glass of water, <mark>sit upright 30 min</mark> (esophagitis)</p>
+   <div class="eg"><b>For example</b>alendronate, risedronate, ibandronate, zoledronic acid</div>
+  </div>
+  <div class="sxcard amethyst" data-kw="anxiety sedation sleep seizure fall dependence flumazenil benzo">
+   <span class="sfx">-pam / -lam</span>
+   <span class="cls">Benzodiazepines</span>
+   <p class="pt">Sedation, fall risk, dependence; antidote <b>flumazenil</b></p>
+   <div class="eg"><b>For example</b>lorazepam, diazepam, midazolam, alprazolam</div>
+  </div>
+  <div class="sxcard amethyst" data-kw="anesthetic numbing pain local allergy toxicity">
+   <span class="sfx">-caine</span>
+   <span class="cls">Local anesthetics</span>
+   <p class="pt">Watch for systemic toxicity, allergy</p>
+   <div class="eg"><b>For example</b>lidocaine, bupivacaine, benzocaine</div>
+  </div>
+</div>
+
+
+<h2 class="sec sxsec" id="table">&#128203; The whole table on one screen</h2>
+<p class="count">All 26 suffixes as originally written &mdash; scroll sideways if it runs off.</p>
+<div class="scroll"><table>
+<thead><tr><th>Suffix</th><th>Drug class</th><th>Key nursing point</th></tr></thead>
+<tbody>
+<tr><td><span class="sfx">-pril</span></td><td>ACE inhibitors</td><td>Monitor for dry cough &amp; angioedema; watch K&#8314; (hyperkalemia); 1st-dose hypotension</td></tr>
+<tr><td><span class="sfx">-sartan</span></td><td>ARBs</td><td>Like ACE-I but NO cough; still watch K&#8314;; teratogenic</td></tr>
+<tr><td><span class="sfx">-olol</span></td><td>Beta blockers</td><td>&darr;HR/BP; hold if HR &lt;60 or SBP &lt;90; don't stop abruptly; masks hypoglycemia</td></tr>
+<tr><td><span class="sfx">-dipine</span></td><td>Ca&sup2;&#8314; channel blockers (dihydropyridine)</td><td>Peripheral edema, reflex tachycardia; avoid grapefruit juice</td></tr>
+<tr><td><span class="sfx">-statin</span></td><td>HMG-CoA reductase inhibitors</td><td>Take in evening; report muscle pain (rhabdomyolysis); monitor LFTs</td></tr>
+<tr><td><span class="sfx">-pril/-sartan/-one</span></td><td>RAAS + K&#8314;-sparing</td><td>All raise potassium &mdash; teach to avoid salt substitutes</td></tr>
+<tr><td><span class="sfx">-prazole</span></td><td>Proton pump inhibitors</td><td>Take before meals; long-term &rarr; &darr;Ca/Mg/B12, <i>C. diff</i>, fractures</td></tr>
+<tr><td><span class="sfx">-tidine</span></td><td>H&#8322; receptor blockers</td><td>Take at bedtime; famotidine preferred (cimetidine = many interactions)</td></tr>
+<tr><td><span class="sfx">-parin</span></td><td>Heparins / LMWH</td><td>Bleeding; monitor aPTT (heparin) / no routine labs (enoxaparin); antidote protamine</td></tr>
+<tr><td><span class="sfx">-ase</span></td><td>Thrombolytics ("clot busters")</td><td>Massive bleeding risk; strict time window; many contraindications</td></tr>
+<tr><td><span class="sfx">-floxacin</span></td><td>Fluoroquinolones</td><td>Tendon rupture, QT prolongation, photosensitivity; avoid in children</td></tr>
+<tr><td><span class="sfx">-cycline</span></td><td>Tetracyclines</td><td>No dairy/antacids; photosensitivity; not in &lt;8 yr or pregnancy (teeth)</td></tr>
+<tr><td><span class="sfx">-mycin/-micin</span></td><td>Aminoglycosides</td><td>Nephrotoxic &amp; ototoxic &mdash; monitor trough, creatinine, hearing</td></tr>
+<tr><td><span class="sfx">-cillin</span></td><td>Penicillins</td><td>Ask about allergy (cross-reacts with cephalosporins); anaphylaxis risk</td></tr>
+<tr><td><span class="sfx">cef-/-cef</span></td><td>Cephalosporins</td><td>Cross-allergy with PCN; no alcohol (disulfiram rxn with some)</td></tr>
+<tr><td><span class="sfx">-thromycin</span></td><td>Macrolides</td><td>QT prolongation, GI upset; many drug interactions</td></tr>
+<tr><td><span class="sfx">-ide (furosem-)</span></td><td>Loop diuretics</td><td>&darr;K&#8314;; ototoxic if pushed fast; monitor K&#8314;, daily weights, I&amp;O</td></tr>
+<tr><td><span class="sfx">-thiazide</span></td><td>Thiazide diuretics</td><td>&darr;K&#8314;, &uarr;glucose/uric acid/Ca&sup2;&#8314;; sulfa allergy caution</td></tr>
+<tr><td><span class="sfx">-terol</span></td><td>Beta-2 agonists (bronchodilators)</td><td>Rescue (albuterol) vs prevention (salmeterol); tachycardia, tremor</td></tr>
+<tr><td><span class="sfx">-sone/-olone</span></td><td>Corticosteroids</td><td>&uarr;glucose, infection risk, &darr;immunity; never stop abruptly (taper); take with food</td></tr>
+<tr><td><span class="sfx">-vir</span></td><td>Antivirals</td><td>Adherence critical; renal dosing</td></tr>
+<tr><td><span class="sfx">-azole</span></td><td>Antifungals / some PPIs</td><td>Hepatotoxic (antifungals); many interactions</td></tr>
+<tr><td><span class="sfx">-dronate</span></td><td>Bisphosphonates</td><td>Take with full glass water, sit upright 30 min (esophagitis)</td></tr>
+<tr><td><span class="sfx">-setron</span></td><td>Antiemetics (5-HT&#8323;)</td><td>QT prolongation; ondansetron for N/V</td></tr>
+<tr><td><span class="sfx">-pam/-lam</span></td><td>Benzodiazepines</td><td>Sedation, fall risk, dependence; antidote flumazenil</td></tr>
+<tr><td><span class="sfx">-caine</span></td><td>Local anesthetics</td><td>Watch for systemic toxicity, allergy</td></tr>
+</tbody></table></div>
+
+
+<div class="foot">Drug Guide &middot; study summary only, <b>no dosing</b> &middot; always check the current package insert, your course materials and facility policy.</div>
+</div>
+<button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+<script>window.DATA_V='fa01e9d4';
+
+(function(){
+  var b=document.getElementById('menuBtn'),s=document.getElementById('side'),bg=document.getElementById('navBg');
+  function set(o){document.body.classList.toggle('nav-open',o);
+    b.innerHTML=o?'\u2715 Close':'\u2630 Menu';b.setAttribute('aria-expanded',o?'true':'false');}
+  b.addEventListener('click',function(e){e.stopPropagation();set(!document.body.classList.contains('nav-open'));});
+  bg.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  s.addEventListener('click',function(e){if(e.target.closest('a'))setTimeout(function(){set(false);},120);});
+  set(false);
+})();
+
+/* the shared lazy data loader, same as the other pages */
+window.DG=window.DG||{store:{},want:{},put:function(k,v){
+  this.store[k]=v;var w=this.want[k];if(w){delete this.want[k];w.forEach(function(f){f(v);});}}};
+DG.get=function(k,cb){
+  if(this.store[k])return cb(this.store[k]);
+  if(this.want[k]){this.want[k].push(cb);return;}
+  this.want[k]=[cb];
+  var s=document.createElement('script');s.src='data/'+k+'.js?v='+(window.DATA_V||'1');
+  s.onerror=function(){(DG.want[k]||[]).forEach(function(f){f([]);});delete DG.want[k];};
+  document.head.appendChild(s);};
+
+/* Example drug names become links into the drug cards - but only the ones that
+   actually have a card. A few (heparin, cimetidine, bupivacaine, benzocaine,
+   penicillin G) are not in this data set, and a link that lands on an empty
+   search is worse than plain text. Checked against the live index so it stays
+   correct if the data changes. */
+DG.get('index',function(IX){
+  var have={};
+  (IX||[]).forEach(function(d){
+    have[(d.n||'').toLowerCase()]=d.n;
+    (d.a||[]).forEach(function(x){ have[String(x).toLowerCase()]=d.n; });
+  });
+  function match(n){
+    var k=n.toLowerCase();
+    if(have[k]) return have[k];
+    for(var h in have){ if(h.indexOf(k)>-1) return have[h]; }
+    return null;
+  }
+  document.querySelectorAll('.sxcard .eg').forEach(function(box){
+    var rest=box.lastChild;
+    if(!rest||rest.nodeType!==3) return;
+    var names=rest.textContent.split(',').map(function(x){return x.trim();}).filter(Boolean);
+    var frag=document.createDocumentFragment();
+    names.forEach(function(n,i){
+      var target=match(n);
+      if(target){
+        var a=document.createElement('a');
+        a.href='index.html?d='+encodeURIComponent(target);
+        a.textContent=n;
+        a.title='Open the '+target+' card';
+        a.style.cssText='color:inherit;text-decoration:underline dotted;text-underline-offset:2px';
+        frag.appendChild(a);
+      } else {
+        frag.appendChild(document.createTextNode(n));
+      }
+      if(i<names.length-1) frag.appendChild(document.createTextNode(', '));
+    });
+    box.replaceChild(frag,rest);
+  });
+});
+
+/* search filters the cards, the table rows and the section headings together */
+(function(){
+  var q=document.getElementById('q');
+  if(!q) return;
+  var cards=[].slice.call(document.querySelectorAll('.sxcard')),
+      rows =[].slice.call(document.querySelectorAll('tbody tr')),
+      secs =[].slice.call(document.querySelectorAll('h2.sxsec'));
+  var note=document.getElementById('sxnote');
+  function hay(c){return (c.textContent+' '+(c.getAttribute('data-kw')||'')).toLowerCase();}
+  function run(){
+    var t=q.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(c){
+      var hit=!t||hay(c).indexOf(t)>-1;
+      c.style.display=hit?'':'none'; if(hit)shown++;});
+    rows.forEach(function(r){
+      r.style.display=(!t||r.textContent.toLowerCase().indexOf(t)>-1)?'':'none';});
+    secs.forEach(function(h){
+      var g=h.nextElementSibling;
+      if(!g||!g.classList.contains('sxgrid')) return;
+      var any=[].slice.call(g.children).some(function(c){return c.style.display!=='none';});
+      h.style.display=any?'':'none'; g.style.display=any?'':'none';
+    });
+    if(note) note.textContent = !t ? '' :
+      (shown ? shown+' suffix'+(shown===1?'':'es')+' matching "'+q.value.trim()+'"'
+             : 'No suffix matches "'+q.value.trim()+'". Try the class, a drug name, or what it does \u2014 potassium, asthma, antibiotic.');
+  }
+  q.addEventListener('input',run);
+})();
+</script><script id="a11yJS">
+/* a table wider than the screen scrolls inside its own box rather than dragging
+   the whole page sideways */
+(function(){
+  function wrap(){
+    document.querySelectorAll('table').forEach(function(t){
+      var p=t.parentNode;
+      if(!p||p.classList&&p.classList.contains('a11y-tblwrap'))return;
+      var d=document.createElement('div'); d.className='a11y-tblwrap';
+      p.insertBefore(d,t); d.appendChild(t);
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wrap);
+  else wrap();
+  setTimeout(wrap,1200);   /* catch tables built by the page's own scripts */
+})();
+</script>
+</body></html>

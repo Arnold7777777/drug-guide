@@ -17,7 +17,7 @@ body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
 .wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
 
 /* sticky top bar */
-.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:10px 16px;
+.bar{position:sticky;top:0;z-index:60;margin:0 0 14px;padding:10px 16px;
  background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
  border-bottom:1px solid var(--line)}
 .barrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
@@ -141,7 +141,7 @@ tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
  .tab{padding:6px 11px;font-size:0.82rem}}
 
 /* ============ collapsible sidebar ============ */
-.bar{position:sticky;top:0;z-index:60;margin:0 -16px 14px;padding:9px 16px;
+.bar{position:sticky;top:0;z-index:60;margin:0 0 14px;padding:9px 16px;
  background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
  border-bottom:1px solid var(--line)}
 #menuBtn{background:linear-gradient(135deg,rgba(var(--amethyst),.95),rgba(var(--garnet),.95));
@@ -193,6 +193,13 @@ sub,sup{font-size:.72rem}
 @media(max-width:560px){
   header h1, header p, h1:first-of-type{padding-right:80px}
 }
+
+/* The fixed Home / ABSN cluster floats over the top-right corner, which was
+   covering the right end of the search box - including its clear button.
+   Reserve room for it so nothing hides underneath. */
+.bar .barrow{padding-right:228px}
+@media(max-width:1024px){.bar .barrow{padding-right:98px}}
+@media(max-width:560px){.bar .barrow{padding-right:92px}}
 </style>
 
 <style id="navbtnCSS">
@@ -238,7 +245,7 @@ sub,sup{font-size:.72rem}
 <div id="navBg"></div>
 <nav id="side" aria-label="Site menu">
   <span class="sbrand">&#128138; Drug Guide</span>
-  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav tm " href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl on" href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">1166 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav sx " href="suffixes.html">&#128273; Suffix Reference<span class="nsub">endings &rarr; class &rarr; nursing point</span></a><a class="nav tm " href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl on" href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
   <div class="shead">Reminder</div>
   <p style="font-size:0.82rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
 </nav>

@@ -172,6 +172,18 @@ body.nav-open #navBg{opacity:1;pointer-events:auto}
 #side a.nav.tm.on{background:rgba(var(--citrine),.85)}
 #side a.nav.hb.on{background:rgba(var(--emerald),.85)}
 </style></head><body>
+<style id="navDragCSS">
+#navBtns{touch-action:none}
+#navBtns.dragging{opacity:.9;cursor:grabbing}
+#navBtns.hidden-by-overlay{display:none !important}
+#nbGrip{cursor:grab;background:rgba(255,255,255,.16) !important;
+  border:1px solid rgba(255,255,255,.3) !important;color:#fff !important;
+  border-radius:22px;padding:7px 9px !important;font:900 .9rem 'Segoe UI',system-ui,sans-serif;
+  line-height:1;user-select:none;box-shadow:0 4px 14px rgba(0,0,0,.5);flex:0 0 auto}
+#nbGrip:hover{background:rgba(255,255,255,.32) !important}
+#navBtns.dragging #nbGrip{cursor:grabbing}
+@media print{#navBtns{display:none !important}}
+</style>
 <style id="a11yCSS">
 /* keep wide things inside the viewport so magnifying never forces sideways scrolling */
 img,svg,video,canvas{max-width:100%;height:auto}
@@ -342,6 +354,137 @@ q.addEventListener('input',render);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wrap);
   else wrap();
   setTimeout(wrap,1200);   /* catch tables built by the page's own scripts */
+})();
+</script>
+<script id="navDragJS">
+(function(){
+  var nb=document.getElementById('navBtns');
+  if(!nb||nb.dataset.dragReady) return;
+  nb.dataset.dragReady='1';
+
+  /* ── 1. modifier and middle clicks must open a new tab ───────────────
+     The ABSN link called preventDefault() every time, which killed
+     ctrl/cmd/shift-click and middle-click. Let those through. */
+  function passthrough(e){
+    return e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button===1;
+  }
+  nb.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a) return;
+    if(passthrough(e)){ e.stopImmediatePropagation(); }   /* before the page's own handler */
+  },true);
+  nb.addEventListener('auxclick',function(e){
+    var a=e.target.closest('a');
+    if(a&&e.button===1){ e.stopImmediatePropagation();
+      window.open(a.href,'_blank','noopener'); e.preventDefault(); }
+  },true);
+  /* every button in the cluster also gets a right-click / long-press menu that
+     works, because they stay real <a href> elements */
+
+  /* ── 2. a grip so it is obvious the cluster can be moved ───────────── */
+  var grip=document.createElement('button');
+  grip.id='nbGrip'; grip.type='button';
+  grip.title='Drag to move these buttons \u00b7 double-click to reset';
+  grip.setAttribute('aria-label','Move these buttons');
+  grip.textContent='\u2725';
+  nb.insertBefore(grip,nb.firstChild);
+
+  /* ── 3. drag, and remember where she put it ─────────────────────────── */
+  var KEY='nbPos';
+  function clampPos(l,t){
+    var r=nb.getBoundingClientRect();
+    var maxL=Math.max(0,window.innerWidth-r.width-4);
+    var maxT=Math.max(0,window.innerHeight-r.height-4);
+    return [Math.min(Math.max(0,l),maxL), Math.min(Math.max(0,t),maxT)];
+  }
+  function place(l,t){
+    var p=clampPos(l,t);
+    nb.style.left=p[0]+'px'; nb.style.top=p[1]+'px';
+    nb.style.right='auto'; nb.style.bottom='auto';
+  }
+  function save(){
+    try{ localStorage.setItem(KEY,JSON.stringify({l:parseFloat(nb.style.left)||0,
+                                                  t:parseFloat(nb.style.top)||0})); }catch(e){}
+  }
+  function reset(){
+    nb.style.left=''; nb.style.top=''; nb.style.right=''; nb.style.bottom='';
+    try{ localStorage.removeItem(KEY); }catch(e){}
+  }
+  try{
+    var s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s&&typeof s.l==='number') place(s.l,s.t);
+  }catch(e){}
+
+  var dragging=false,ox=0,oy=0,moved=false;
+  function down(x,y,e){
+    var r=nb.getBoundingClientRect();
+    dragging=true; moved=false; ox=x-r.left; oy=y-r.top;
+    nb.classList.add('dragging');
+    if(e&&e.preventDefault) e.preventDefault();
+  }
+  function move(x,y){
+    if(!dragging) return;
+    moved=true; place(x-ox,y-oy);
+  }
+  function up(){
+    if(!dragging) return;
+    dragging=false; nb.classList.remove('dragging');
+    if(moved) save();
+  }
+  grip.addEventListener('mousedown',function(e){ if(e.button===0) down(e.clientX,e.clientY,e); });
+  window.addEventListener('mousemove',function(e){ move(e.clientX,e.clientY); });
+  window.addEventListener('mouseup',up);
+  grip.addEventListener('touchstart',function(e){
+    var t=e.touches[0]; down(t.clientX,t.clientY,e); },{passive:false});
+  window.addEventListener('touchmove',function(e){
+    if(!dragging) return; var t=e.touches[0]; move(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
+  window.addEventListener('touchend',up);
+  grip.addEventListener('dblclick',function(e){ e.preventDefault(); reset(); });
+  /* keyboard: focus the grip and nudge with the arrows */
+  grip.addEventListener('keydown',function(e){
+    var step=e.shiftKey?24:6, r=nb.getBoundingClientRect(), l=r.left, t=r.top, hit=true;
+    if(e.key==='ArrowLeft') l-=step; else if(e.key==='ArrowRight') l+=step;
+    else if(e.key==='ArrowUp') t-=step; else if(e.key==='ArrowDown') t+=step;
+    else if(e.key==='Home'||e.key==='Escape'){ reset(); e.preventDefault(); return; }
+    else hit=false;
+    if(hit){ place(l,t); save(); e.preventDefault(); }
+  });
+  window.addEventListener('resize',function(){
+    if(nb.style.left) place(parseFloat(nb.style.left),parseFloat(nb.style.top));
+  });
+
+  /* ── 4. step aside for full-screen viewers ───────────────────────────
+     Some overlays (the NUR 175 image lightbox, the drug guide drawer) sit
+     below this cluster in the stacking order, so the cluster covered their
+     Close buttons. Find them once, then just watch whether they are shown. */
+  var overlays=[];
+  try{
+    document.querySelectorAll('body *').forEach(function(el){
+      if(overlays.length>40) return;
+      if(el===nb||nb.contains(el)) return;
+      var cs=getComputedStyle(el);
+      if(cs.position!=='fixed') return;
+      var z=parseInt(cs.zIndex,10);
+      if(!(z>=1000)) return;
+      /* covers most of the screen in at least one dimension */
+      var w=parseFloat(cs.width), h=parseFloat(cs.height);
+      var full=(cs.inset==='0px'||cs.top==='0px'&&cs.left==='0px'&&cs.right==='0px'&&cs.bottom==='0px');
+      if(full||(w>=window.innerWidth*0.9&&h>=window.innerHeight*0.9)) overlays.push(el);
+    });
+  }catch(e){}
+  function check(){
+    var open=overlays.some(function(el){
+      var cs=getComputedStyle(el);
+      return cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity||'1')>0.05;
+    });
+    nb.classList.toggle('hidden-by-overlay',open);
+  }
+  if(overlays.length){
+    check();
+    var t=null;
+    new MutationObserver(function(){ clearTimeout(t); t=setTimeout(check,60); })
+      .observe(document.body,{attributes:true,subtree:true,
+                              attributeFilter:['class','style','hidden']});
+  }
 })();
 </script>
 </body></html>

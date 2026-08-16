@@ -1,0 +1,30 @@
+{
+ "built": "2026-08-14",
+ "drugs": 979,
+ "sources": [
+  {
+   "name": "FDA Structured Product Labeling (openFDA / DailyMed)",
+   "url": "https://open.fda.gov/apis/drug/label/",
+   "note": "US government work, public domain"
+  },
+  {
+   "name": "RxNorm and RxClass, US National Library of Medicine",
+   "url": "https://rxnav.nlm.nih.gov/",
+   "note": "US government work, public domain"
+  },
+  {
+   "name": "MedlinePlus, US National Library of Medicine",
+   "url": "https://medlineplus.gov/",
+   "note": "US government work, public domain"
+  }
+ ],
+ "notIncluded": [
+  "pronunciation guides",
+  "do-not-confuse pairs",
+  "dosing information"
+ ],
+ "dropped": [
+  "ombitasvir/paritaprevir/ritonavir and dasabuvir",
+  "transdermal"
+ ]
+}

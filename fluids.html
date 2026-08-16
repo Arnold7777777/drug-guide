@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Drug Guide &middot; IV Fluids</title><style>:root{
+ --amethyst:157,92,255; --sapphire:47,107,255; --emerald:18,184,134; --teal:0,194,199;
+ --topaz:255,194,51;   --ruby:255,59,107;    --garnet:192,34,85;    --citrine:255,138,61;
+ --ink:#fff; --line:rgba(255,255,255,.30);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 'Segoe UI',system-ui,sans-serif;color:var(--ink);
+ background-color:#140b24;
+ background-image:url("bg.jpg");
+ background-size:cover;background-position:center;background-attachment:fixed;
+ background-repeat:no-repeat}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 90px}
+
+/* sticky top bar */
+.bar{position:sticky;top:0;z-index:60;margin:0 0 14px;padding:10px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+.barrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.brand{font-weight:900;font-size:1rem;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.tab{background:rgba(255,255,255,.10);border:1px solid var(--line);color:#fff;text-decoration:none;
+ border-radius:20px;padding:7px 13px;font-weight:800;font-size:0.82rem;white-space:nowrap;cursor:pointer}
+.tab:hover{background:rgba(var(--amethyst),.75)}
+.tab.on{background:rgba(var(--amethyst),.88);border-color:rgba(255,255,255,.55)}
+.tab.od.on{background:rgba(var(--ruby),.88)}
+.tab.bl.on{background:rgba(var(--garnet),.88)}
+.tab.fl.on{background:rgba(var(--teal),.88)}
+#q{flex:1 1 220px;min-width:170px;font-size:1rem;font-weight:600;padding:11px 15px;border-radius:14px;
+ border:1px solid var(--line);background:rgba(0,0,0,.44);color:#fff}
+#q::placeholder{color:#c9b8e8}
+
+h1{font-size:1.8rem;margin:6px 0 2px;text-shadow:0 2px 16px rgba(0,0,0,.78)}
+.lede{margin:0 0 14px;color:#f3e9ff;text-shadow:0 1px 12px rgba(0,0,0,.72);font-size:.94rem}
+h2.sec{font-size:1.2rem;margin:26px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.78)}
+
+/* cards: jewel tone at 60% + blur */
+.card{background:rgba(var(--amethyst),.60);
+ backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.55);
+ border-radius:16px;padding:15px 17px;margin:11px 0;box-shadow:0 8px 26px rgba(0,0,0,.38)}
+.ruby{background:rgba(var(--ruby),.60)} .emerald{background:rgba(var(--emerald),.60)}
+.sapphire{background:rgba(var(--sapphire),.60)} .teal{background:rgba(var(--teal),.60)}
+.garnet{background:rgba(var(--garnet),.60)} .citrine{background:rgba(var(--citrine),.60)}
+.amethyst{background:rgba(var(--amethyst),.60)}
+.topaz{background:rgba(var(--topaz),.62);color:#231a02;border-left-color:rgba(0,0,0,.35)}
+.topaz b,.topaz a,.topaz .why,.topaz .flab{color:#231a02}
+/* the Overdose/Antidote field sits on a dark box, so keep its text light */
+.fld.topaz{color:#f3efff}
+.fld.topaz b,.fld.topaz a,.fld.topaz .why,.fld.topaz p,.fld.topaz li{color:#f6f3ff}
+.fld.topaz .flab{color:#ffd75e}
+.fld.topaz mark{color:#231a02}
+
+/* typography variation */
+.hero{font-size:1.5rem;font-weight:900;line-height:1.15;display:block;margin:2px 0 4px}
+.why{font-style:italic;opacity:.95}
+.never{text-decoration:underline wavy rgba(255,255,255,.92);font-weight:800}
+mark{background:rgba(var(--topaz),.95);color:#231a02;padding:1px 5px;border-radius:4px;font-weight:700}
+code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32);
+ padding:1px 6px;border-radius:5px;font-weight:700;font-size:.92em}
+
+/* pills */
+.pill{display:inline-block;font-size:0.82rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+ padding:3px 9px;border-radius:11px;margin:0 5px 5px 0;border:1px solid rgba(255,255,255,.4)}
+.p-ha{background:rgba(var(--ruby),.95)} .p-bbw{background:rgba(var(--garnet),.95)}
+.p-od{background:rgba(var(--topaz),.95);color:#231a02} .p-rx{background:rgba(var(--sapphire),.9)}
+.p-cls{background:rgba(0,0,0,.42);text-transform:none;font-weight:700;letter-spacing:0}
+
+/* search results */
+.hit{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
+ background:rgba(var(--sapphire),.58);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ border:1px solid var(--line);border-left:5px solid rgba(255,255,255,.5);border-radius:14px;
+ padding:12px 15px;margin:8px 0;box-shadow:0 6px 20px rgba(0,0,0,.34)}
+.hit:hover{background:rgba(var(--amethyst),.68)}
+.hit .nm{font-size:1.06rem;font-weight:900;display:block}
+.hit .sub{font-size:.82rem;opacity:.95;display:block;margin-top:2px}
+.hit.alert{background:rgba(var(--ruby),.55)} .hit.alert:hover{background:rgba(var(--ruby),.68)}
+
+/* the seven labelled fields */
+.fld{background:rgba(0,0,0,.26);border:1px solid var(--line);border-left:4px solid rgba(255,255,255,.5);
+ border-radius:12px;margin:8px 0;padding:10px 14px}
+.fld.ruby{border-left-color:rgb(var(--ruby))} .fld.emerald{border-left-color:rgb(var(--emerald))}
+.fld.sapphire{border-left-color:rgb(var(--sapphire))} .fld.teal{border-left-color:rgb(var(--teal))}
+.fld.garnet{border-left-color:rgb(var(--garnet))} .fld.topaz{border-left-color:rgb(var(--topaz))}
+.fld.citrine{border-left-color:rgb(var(--citrine))} .fld.amethyst{border-left-color:rgb(var(--amethyst))}
+.fld{background:rgba(0,0,0,.28)}
+.flab{font-size:0.82rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin-bottom:4px}
+.fbody p{margin:4px 0;font-size:.91rem}
+
+.bbwbox{background:rgba(var(--ruby),.88);border:2px solid #fff;border-radius:12px;
+ padding:11px 14px;margin:9px 0;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.bbwbox .flab{color:#fff}
+.bbwbox p{margin:4px 0;font-size:.9rem;font-weight:600}
+.bbwline{background:rgba(var(--ruby),.85);border-radius:8px;padding:8px 11px;margin:6px 0;font-weight:700}
+
+/* monograph header */
+.mono h3{margin:0 0 2px;font-size:1.42rem;font-weight:900}
+.mono .pron{font-style:italic;opacity:.9;font-size:.88rem}
+.mono .brands{font-size:.89rem;margin:5px 0}
+
+/* A-Z */
+.az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.az button{background:rgba(0,0,0,.38);border:1px solid var(--line);color:#fff;border-radius:9px;
+ width:34px;height:34px;font-weight:900;cursor:pointer;font-size:.85rem}
+.az button:hover{background:rgba(var(--amethyst),.85)}
+.az button.on{background:rgba(var(--amethyst),.9);border-color:#fff}
+
+/* tables */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th{background:rgba(0,0,0,.44);padding:9px 11px;border:1px solid var(--line);text-align:left;
+ font-size:0.82rem;letter-spacing:.6px;text-transform:uppercase;color:#ffd75e}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.05)}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
+.step{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:11px;
+ padding:9px 13px;font-weight:800;font-size:.84rem}
+.arrow{font-weight:900;opacity:.9}
+
+/* tonicity bar */
+.tonic{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+ margin:9px 0 3px;font-size:0.82rem;font-weight:800}
+.tonic div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px}
+.t-hypo{background:rgba(var(--sapphire),.9);flex:1}
+.t-iso{background:rgba(var(--emerald),.9);flex:1}
+.t-hyper{background:rgba(var(--ruby),.9);flex:1}
+
+.count{font-size:.84rem;color:#e6d8ff;margin:6px 0 2px;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.foot{margin-top:38px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:0.82rem;color:#d9c9f5;text-shadow:0 1px 8px rgba(0,0,0,.72)}
+.top{position:fixed;right:14px;bottom:14px;z-index:70;background:rgba(var(--amethyst),.92);
+ color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;width:46px;height:46px;
+ font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+@media(max-width:560px){h1{font-size:1.35rem}.brand{font-size:.86rem}table{min-width:420px}
+ .tab{padding:6px 11px;font-size:0.82rem}}
+
+/* ============ collapsible sidebar ============ */
+.bar{position:sticky;top:0;z-index:60;margin:0 0 14px;padding:9px 16px;
+ background:rgba(14,8,26,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line)}
+#menuBtn{background:linear-gradient(135deg,rgba(var(--amethyst),.95),rgba(var(--garnet),.95));
+ color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 15px;
+ font-weight:900;font-size:.85rem;cursor:pointer;white-space:nowrap;line-height:1}
+#menuBtn:hover{filter:brightness(1.12)}
+#side{position:fixed;top:0;left:0;width:min(86vw,290px);height:100dvh;max-height:100dvh;
+ overflow-y:auto;z-index:100000;transform:translateX(-102%);transition:transform .22s ease;
+ background:rgba(10,6,20,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border-right:1px solid var(--line);box-shadow:6px 0 30px rgba(0,0,0,.6);padding:16px 14px 30px}
+body.nav-open #side{transform:translateX(0)}
+#side .sbrand{font-weight:900;font-size:1.1rem;margin:2px 0 14px;display:block}
+#side a.nav{display:block;background:rgba(255,255,255,.08);border:1px solid var(--line);
+ border-left:4px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;margin:0 0 8px;
+ color:#fff;text-decoration:none;font-weight:800;font-size:.92rem}
+#side a.nav:hover{background:rgba(var(--amethyst),.7)}
+#side a.nav.on{background:rgba(var(--amethyst),.85);border-left-color:#fff}
+#side a.nav.od.on{background:rgba(var(--ruby),.85)}
+#side a.nav.bl.on{background:rgba(var(--garnet),.85)}
+#side a.nav.fl.on{background:rgba(var(--teal),.85)}
+#side .nsub{display:block;font-weight:600;font-size:0.82rem;opacity:.9;margin-top:2px}
+#side .shead{font-size:0.82rem;font-weight:900;letter-spacing:.9px;text-transform:uppercase;
+ color:#ffd75e;margin:16px 0 7px}
+#navBg{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:99999;opacity:0;
+ pointer-events:none;transition:opacity .2s ease}
+body.nav-open #navBg{opacity:1;pointer-events:auto}
+@media print{#side,#navBg,#menuBtn,.bar{display:none}}
+#side a.nav.tm.on{background:rgba(var(--citrine),.85)}
+#side a.nav.hb.on{background:rgba(var(--emerald),.85)}
+</style>
+<style id="grpMenuCSS">
+#side .nav.bc.on,#side .nav.bc:hover{background:rgba(var(--emerald),.85)}
+#side .nav.bm.on,#side .nav.bm:hover{background:rgba(var(--sapphire),.85)}
+</style></head><body>
+<style id="navDragCSS">
+#navBtns{touch-action:none;cursor:grab}
+#navBtns.dragging{opacity:.9;cursor:grabbing}
+#navBtns.hidden-by-overlay{display:none !important}
+
+
+#navBtns.dragging 
+@media print{#navBtns{display:none !important}}
+</style>
+<style id="a11yCSS">
+/* keep wide things inside the viewport so magnifying never forces sideways scrolling */
+img,svg,video,canvas{max-width:100%;height:auto}
+pre,code,kbd{white-space:pre-wrap;overflow-wrap:anywhere}
+.a11y-tblwrap{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+@media(max-width:1024px){
+  #nav a{white-space:normal}
+  .bar{margin-left:0 !important;margin-right:0 !important;max-width:100% !important}
+}
+
+/* rem (not em) so these can never compound down to unreadable sizes */
+small,.eyebrow,.rail-sep,.sm-txt,.tiny,.fine,.cap,.foot{font-size:.82rem}
+sub,sup{font-size:.72rem}
+
+/* keep the fixed Home/ABSN cluster from sitting on top of page titles */
+@media(max-width:1024px){
+  header h1, header p, h1:first-of-type{padding-right:92px}
+}
+@media(max-width:560px){
+  header h1, header p, h1:first-of-type{padding-right:80px}
+}
+
+/* The fixed Home / ABSN cluster floats over the top-right corner, which was
+   covering the right end of the search box - including its clear button.
+   Reserve room for it so nothing hides underneath. */
+.bar .barrow{padding-right:228px}
+@media(max-width:1024px){.bar .barrow{padding-right:98px}}
+@media(max-width:560px){.bar .barrow{padding-right:92px}}
+</style>
+
+<style id="navbtnCSS">
+#navBtns{position:fixed;top:10px;right:12px;z-index:2147483000;display:flex;gap:7px;align-items:center}
+#navBtns a,#navBtns button{
+  display:inline-block;font:700 .8rem 'Segoe UI',system-ui,sans-serif;
+  padding:7px 13px;border-radius:22px;text-decoration:none;cursor:pointer;
+  border:1px solid rgba(255,255,255,.22);box-shadow:0 4px 14px rgba(0,0,0,.5);
+  color:#fff;white-space:nowrap;line-height:1.3;
+}
+#navBtns .nbLook{background:linear-gradient(135deg,#1d4ed8,#2f6bff)}
+#navBtns .nbHome{background:linear-gradient(135deg,#5a2d82,#8e2d6b)}
+#navBtns .nbAbsn{background:linear-gradient(135deg,#0f7d6b,#12b886)}
+#navBtns a:hover,#navBtns button:hover{filter:brightness(1.15)}
+#navBtns a,#navBtns button{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+/* magnified viewports report a narrow CSS width - shed the labels early so the
+   cluster stops sitting on top of page headings */
+@media(max-width:1024px){
+  #navBtns{top:6px;right:6px;gap:5px}
+  #navBtns .nbLabel{display:none}
+  #navBtns a,#navBtns button{padding:8px 11px;font-size:1rem;line-height:1}
+}
+@media(max-width:560px){
+  #navBtns a,#navBtns button{padding:7px 9px;font-size:.95rem}
+}
+@media print{#navBtns{display:none}}
+</style>
+<div id="navBtns"><a class="nbLook" href="https://arnold7777777.github.io/NUR-198-Study-Guide/Look%20It%20Up.html" target="_blank" rel="noopener" title="Look up any topic across all your sites">&#128269;<span class="nbLabel"> Look Up</span></a><a class="nbHome" href="index.html" title="Back to this course's study hub">&#127968;<span class="nbLabel"> Home</span></a><a class="nbAbsn" href="https://arnold7777777.github.io/ABSN-Study-Hub/" onclick="return nbToAbsn(event)" title="Close this page and go back toward the ABSN Study Hub">&#127891;<span class="nbLabel"> ABSN Hub</span></a></div>
+<script>if(window.top!==window.self){var _nb=document.getElementById("navBtns");if(_nb)_nb.style.display="none";}</script>
+<script>
+(function(){
+  var ABSN='https://arnold7777777.github.io/ABSN-Study-Hub/';
+  window.nbToAbsn=function(ev){
+    if(ev&&ev.preventDefault)ev.preventDefault();
+    /* On a sub-page: try to close this tab so the study hub behind it is revealed.
+       Browsers only allow close() on script-opened tabs, so fall back to navigating. */
+    try{ window.close(); }catch(e){}
+    setTimeout(function(){ if(!window.closed) window.location.href=ABSN; },120);
+    return false;
+  };
+})();
+</script>
+
+<div id="navBg"></div>
+<nav id="side" aria-label="Site menu">
+  <span class="sbrand">&#128138; Drug Guide</span>
+  <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">981 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav sx " href="suffixes.html">&#128273; Suffix Reference<span class="nsub">endings &rarr; class &rarr; nursing point</span></a><a class="nav bc " href="by-class.html">&#127991;&#65039; By Drug Class<span class="nsub">what it is for &middot; 70 classes</span></a><a class="nav bm " href="by-moa.html">&#9881;&#65039; By Mechanism<span class="nsub">how it works &middot; 70 mechanisms</span></a><a class="nav tm " href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl " href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl on" href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
+  <div class="shead">Reminder</div>
+  <p style="font-size:0.82rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>
+</nav>
+<div class="bar"><div class="barrow">
+  <button id="menuBtn" type="button" aria-expanded="false" aria-controls="side">&#9776; Menu</button>
+  <input id="q" type="search" placeholder="Search fluids &amp; complications&hellip;" autocomplete="off">
+</div></div>
+<div class="wrap">
+
+<h1>&#128167; IV Fluids</h1>
+<p class="lede">Which fluid, when, and what it does to the cells &mdash; plus what to do when the IV goes wrong.</p>
+
+<div class="card topaz">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#11088; Tonicity in one line</h3>
+ <div class="tonic">
+  <div class="t-hypo">HYPOTONIC &mdash; water INTO cells</div>
+  <div class="t-iso">ISOTONIC &mdash; stays in vessels</div>
+  <div class="t-hyper">HYPERTONIC &mdash; pulls water OUT of cells</div>
+ </div>
+ <p style="margin:7px 0 3px"><b>Hypotonic</b> swells cells. <span class="why">Dangerous in head injury &mdash; it worsens cerebral edema.</span></p>
+ <p style="margin:3px 0"><b>Isotonic</b> expands blood volume without shifting fluid. <span class="why">Your resuscitation fluid.</span></p>
+ <p style="margin:3px 0"><b>Hypertonic</b> shrinks cells and pulls fluid into the vessels. <span class="why">Watch for overload.</span></p>
+</div>
+
+<div class="card ruby">
+ <h3 style="margin:0 0 6px;font-size:1.05rem">&#128680; Three rules that keep you out of trouble</h3>
+ <p style="margin:4px 0"><span class="never">Only normal saline goes with blood.</span></p>
+ <p style="margin:4px 0"><span class="never">No LR in liver failure or hyperkalemia.</span> <span class="why">It contains potassium and needs the liver to convert lactate.</span></p>
+ <p style="margin:4px 0"><span class="never">Correct sodium slowly &mdash; no more than about 8-10 mEq/L in 24 hours.</span></p>
+</div>
+
+<h2 class="sec">&#128167; The fluids</h2>
+<p class="count" id="c1"></p>
+<div id="g1"><div class="card emerald ref" data-t="0.9% sodium chloride (normal saline) isotonic fluid resuscitation and hypovolemia &lt;b&gt;the only fluid compatible with blood products&lt;/b&gt; hyponatremia, metabolic alkalosis flushing lines, diluting medications dka initial resuscitation heart failure and pulmonary edema renal impairment with fluid retention hypernatremia cirrhosis with ascites"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">0.9% Sodium Chloride (Normal Saline)</h3><div class="pron" style="margin-bottom:6px"><b>Isotonic</b> &middot; Sodium 154 mEq/L, chloride 154 mEq/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Fluid resuscitation and hypovolemia</p><p>&bull; <b>The only fluid compatible with blood products</b></p><p>&bull; Hyponatremia, metabolic alkalosis</p><p>&bull; Flushing lines, diluting medications</p><p>&bull; DKA initial resuscitation</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Heart failure and pulmonary edema</p><p>&bull; Renal impairment with fluid retention</p><p>&bull; Hypernatremia</p><p>&bull; Cirrhosis with ascites</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Fluid overload, pulmonary edema</p><p>&bull; <b>Hyperchloremic metabolic acidosis</b> with large volumes</p><p>&bull; Hypernatremia</p><p>&bull; Peripheral edema</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; Stays in the vascular space &mdash; <b>no fluid shift</b></p><p>&bull; Monitor lung sounds and daily weights</p><p>&bull; Large volumes acidify the blood</p></div></div><div class="card emerald ref" data-t="lactated ringer&#x27;s (lr) isotonic fluid resuscitation, especially &lt;b&gt;burns and trauma&lt;/b&gt; surgical fluid losses, dehydration mild metabolic acidosis &amp;mdash; lactate converts to bicarbonate &lt;span class=&#x27;never&#x27;&gt;never with blood products&lt;/span&gt; &amp;mdash; the calcium causes clotting in the line &lt;b&gt;liver failure&lt;/b&gt; &amp;mdash; cannot convert the lactate lactic acidosis &lt;b&gt;hyperkalemia&lt;/b&gt; &amp;mdash; lr contains potassium ph above 7.5"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">Lactated Ringer's (LR)</h3><div class="pron" style="margin-bottom:6px"><b>Isotonic</b> &middot; Potassium 4 mEq/L, calcium 3 mEq/L, lactate 28 mEq/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Fluid resuscitation, especially <b>burns and trauma</b></p><p>&bull; Surgical fluid losses, dehydration</p><p>&bull; Mild metabolic acidosis &mdash; lactate converts to bicarbonate</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <span class='never'>NEVER with blood products</span> &mdash; the calcium causes clotting in the line</p><p>&bull; <b>Liver failure</b> &mdash; cannot convert the lactate</p><p>&bull; Lactic acidosis</p><p>&bull; <b>Hyperkalemia</b> &mdash; LR contains potassium</p><p>&bull; pH above 7.5</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Fluid overload</p><p>&bull; Worsening hyperkalemia</p><p>&bull; Metabolic alkalosis with large volumes</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; Closest fluid to plasma composition</p><p>&bull; Contains sodium, chloride, <b>potassium, calcium and lactate</b></p><p>&bull; Check potassium and liver function before large volumes</p></div></div><div class="card citrine ref" data-t="dextrose 5% in water (d5w) isotonic in the bag, hypotonic in the body free water replacement, hypernatremia a vehicle for iv medications some hypoglycemia protocols provides about 170 calories per liter &lt;span class=&#x27;never&#x27;&gt;not for fluid resuscitation&lt;/span&gt; &amp;mdash; the dextrose is metabolized and only water is left &lt;b&gt;head injury and increased icp&lt;/b&gt; &amp;mdash; free water worsens cerebral edema uncontrolled diabetes never with blood products"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">Dextrose 5% in Water (D5W)</h3><div class="pron" style="margin-bottom:6px"><b>Isotonic in the bag, hypotonic in the body</b> &middot; Dextrose 50 g/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Free water replacement, hypernatremia</p><p>&bull; A vehicle for IV medications</p><p>&bull; Some hypoglycemia protocols</p><p>&bull; Provides about 170 calories per liter</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <span class='never'>NOT for fluid resuscitation</span> &mdash; the dextrose is metabolized and only water is left</p><p>&bull; <b>Head injury and increased ICP</b> &mdash; free water worsens cerebral edema</p><p>&bull; Uncontrolled diabetes</p><p>&bull; Never with blood products</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Cerebral edema</p><p>&bull; Hyperglycemia</p><p>&bull; Dilutional hyponatremia</p><p>&bull; Cellular swelling</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; <b>Becomes hypotonic once the dextrose is used up</b></p><p>&bull; Monitor glucose and sodium</p><p>&bull; Do not use for volume replacement</p></div></div><div class="card sapphire ref" data-t="0.45% sodium chloride (half normal saline) hypotonic &lt;b&gt;cellular dehydration&lt;/b&gt; and hypernatremia dka after the initial saline resuscitation, once glucose starts falling maintenance fluid when sodium is high &lt;b&gt;increased icp, head injury, stroke&lt;/b&gt; &amp;mdash; it shifts water into brain cells burns and trauma hypovolemia and hypotension liver disease with third-spacing"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">0.45% Sodium Chloride (Half Normal Saline)</h3><div class="pron" style="margin-bottom:6px"><b>Hypotonic</b> &middot; Sodium 77 mEq/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; <b>Cellular dehydration</b> and hypernatremia</p><p>&bull; DKA after the initial saline resuscitation, once glucose starts falling</p><p>&bull; Maintenance fluid when sodium is high</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <b>Increased ICP, head injury, stroke</b> &mdash; it shifts water into brain cells</p><p>&bull; Burns and trauma</p><p>&bull; Hypovolemia and hypotension</p><p>&bull; Liver disease with third-spacing</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; <b>Cerebral edema</b></p><p>&bull; Hypotension from fluid leaving the vessels</p><p>&bull; Hyponatremia</p><p>&bull; Cell swelling and lysis</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; <span class='never'>Fluid moves OUT of the vessels and INTO the cells</span></p><p>&bull; Watch neuro status closely</p><p>&bull; Never give fast to a hypotensive client</p></div></div><div class="card ruby ref" data-t="3% sodium chloride (hypertonic saline) hypertonic &lt;b&gt;severe symptomatic hyponatremia&lt;/b&gt; with seizures or altered mental status cerebral edema and raised icp some icu volume protocols normal or high sodium heart failure and pulmonary edema renal impairment dehydration from cellular fluid loss"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">3% Sodium Chloride (Hypertonic Saline)</h3><div class="pron" style="margin-bottom:6px"><b>Hypertonic</b> &middot; Sodium 513 mEq/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; <b>Severe symptomatic hyponatremia</b> with seizures or altered mental status</p><p>&bull; Cerebral edema and raised ICP</p><p>&bull; Some ICU volume protocols</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Normal or high sodium</p><p>&bull; Heart failure and pulmonary edema</p><p>&bull; Renal impairment</p><p>&bull; Dehydration from cellular fluid loss</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; <b>Osmotic demyelination syndrome</b> if sodium is corrected too fast</p><p>&bull; Fluid overload and pulmonary edema</p><p>&bull; Hypernatremia</p><p>&bull; Phlebitis &mdash; it is irritating to veins</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; <span class='never'>Correct sodium no faster than about 8-10 mEq/L in 24 hours</span></p><p>&bull; <b>ICU setting, infusion pump, frequent sodium checks</b></p><p>&bull; Central line preferred; watch the site closely</p><p>&bull; Monitor lung sounds and neuro status hourly</p></div></div><div class="card citrine ref" data-t="d5 1/2ns and d5ns hypertonic maintenance fluid with some calories d5 &amp;frac12;ns with potassium is a common post-operative maintenance fluid preventing ketosis while keeping up with losses increased icp uncontrolled diabetes fluid overload states never with blood products"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">D5 1/2NS and D5NS</h3><div class="pron" style="margin-bottom:6px"><b>Hypertonic</b> &middot; D5&frac12;NS: dextrose 50 g/L + sodium 77 mEq/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Maintenance fluid with some calories</p><p>&bull; D5 &frac12;NS with potassium is a common post-operative maintenance fluid</p><p>&bull; Preventing ketosis while keeping up with losses</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Increased ICP</p><p>&bull; Uncontrolled diabetes</p><p>&bull; Fluid overload states</p><p>&bull; Never with blood products</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Hyperglycemia</p><p>&bull; Fluid overload</p><p>&bull; Hypernatremia with D5NS</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; Pulls fluid <b>out of cells and into the vessels</b></p><p>&bull; Check glucose regularly</p><p>&bull; Confirm urine output before adding potassium</p></div></div><div class="card topaz ref" data-t="dextrose 10% in water (d10w) hypertonic &lt;b&gt;hypoglycemia&lt;/b&gt;, especially in neonates after d50 in a client who cannot eat some tpn weaning protocols hyperglycemia intracranial bleeding severe dehydration as the only fluid"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">Dextrose 10% in Water (D10W)</h3><div class="pron" style="margin-bottom:6px"><b>Hypertonic</b> &middot; Dextrose 100 g/L</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; <b>Hypoglycemia</b>, especially in neonates</p><p>&bull; After D50 in a client who cannot eat</p><p>&bull; Some TPN weaning protocols</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; Hyperglycemia</p><p>&bull; Intracranial bleeding</p><p>&bull; Severe dehydration as the only fluid</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Hyperglycemia and rebound hypoglycemia</p><p>&bull; Phlebitis at peripheral sites</p><p>&bull; Fluid overload</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; Monitor glucose frequently</p><p>&bull; Large veins or a central line where possible</p><p>&bull; Taper rather than stopping abruptly</p></div></div><div class="card amethyst ref" data-t="albumin and colloids colloid &amp;mdash; oncotic pull hypovolemia when crystalloids are not enough hypoalbuminemia with edema large-volume paracentesis burns after the first 24 hours &lt;b&gt;heart failure and pulmonary edema&lt;/b&gt; severe anemia known hypersensitivity"><h3 style="margin:0 0 2px;font-size:1.15rem;font-weight:900">Albumin and Colloids</h3><div class="pron" style="margin-bottom:6px"><b>Colloid &mdash; oncotic pull</b> &middot; See Blood Products for detail</div><div class="fld emerald"><div class="flab">&#9989; Indications</div><div class="fbody"><p>&bull; Hypovolemia when crystalloids are not enough</p><p>&bull; Hypoalbuminemia with edema</p><p>&bull; Large-volume paracentesis</p><p>&bull; Burns after the first 24 hours</p></div></div><div class="fld ruby"><div class="flab">&#9940; Contraindications</div><div class="fbody"><p>&bull; <b>Heart failure and pulmonary edema</b></p><p>&bull; Severe anemia</p><p>&bull; Known hypersensitivity</p></div></div><div class="fld garnet"><div class="flab">&#129702; Adverse Effects</div><div class="fbody"><p>&bull; Fluid overload and pulmonary edema</p><p>&bull; Hypertension</p><p>&bull; Dilutional coagulopathy</p><p>&bull; Allergic reactions</p></div></div><div class="bbwbox"><div class="flab">&#9888;&#65039; Warnings &amp; Nursing Rules</div><p>&bull; <b>25% albumin pulls roughly 3-4 times its volume into the vasculature</b></p><p>&bull; Monitor lung sounds, blood pressure and urine output</p><p>&bull; See the Blood Products page for the full card</p></div></div></div>
+
+<h2 class="sec">&#9888;&#65039; IV complications &mdash; and what you do</h2>
+<p class="count" id="c2"></p>
+<div id="g2"><div class="card sapphire ref" data-t="infiltration non-vesicant fluid leaks into the surrounding tissue swelling, coolness, pallor, tenderness, slowed or stopped flow, no blood return"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Infiltration</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Non-vesicant fluid leaks into the surrounding tissue</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Swelling, coolness, pallor, tenderness, slowed or stopped flow, no blood return</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>Stop the infusion and remove the catheter.</b> Elevate the limb. Warm compress for most fluids, cold for some. Restart in a different site and document the size of the area.</p></div></div><div class="card ruby ref" data-t="extravasation a &lt;b&gt;vesicant&lt;/b&gt; leaks into tissue &amp;mdash; chemotherapy, vasopressors, calcium, potassium, contrast burning or severe pain, blistering, blanching, later tissue necrosis"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Extravasation</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>A <b>vesicant</b> leaks into tissue &mdash; chemotherapy, vasopressors, calcium, potassium, contrast</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Burning or severe pain, blistering, blanching, later tissue necrosis</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>STOP but leave the catheter in and aspirate</b> what you can, then give the antidote through it. <b>Phentolamine</b> for norepinephrine and dopamine. <b>Hyaluronidase</b> for many others. Elevate, mark the area, photograph it, notify the provider.</p></div></div><div class="card citrine ref" data-t="phlebitis vein inflammation from the catheter, the solution or an infection redness and warmth along the vein, a palpable cord, pain, swelling"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Phlebitis</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Vein inflammation from the catheter, the solution or an infection</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Redness and warmth along the vein, a palpable cord, pain, swelling</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Remove the catheter, restart on the <b>other</b> arm, warm compress. Culture the tip if infection is suspected. Grade it and document.</p></div></div><div class="card ruby ref" data-t="air embolism air enters the circulation through the line or during central line removal sudden dyspnea, chest pain, hypotension, tachycardia, altered mental status, a churning heart murmur"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Air Embolism</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Air enters the circulation through the line or during central line removal</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Sudden dyspnea, chest pain, hypotension, tachycardia, altered mental status, a churning heart murmur</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>Clamp the line immediately.</b> Place the client <span class='never'>on the LEFT side in Trendelenburg</span> to trap air in the right atrium. High-flow oxygen. Call for help.</p></div></div><div class="card sapphire ref" data-t="fluid overload too much volume, or given too fast dyspnea, crackles, jvd, bounding pulse, hypertension, weight gain, puffy eyelids"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Fluid Overload</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Too much volume, or given too fast</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Dyspnea, crackles, JVD, bounding pulse, hypertension, weight gain, puffy eyelids</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>Slow the rate to keep-vein-open and notify the provider.</b> Sit the client upright, give oxygen, expect a <b>loop diuretic</b>. Monitor daily weights and strict intake and output.</p></div></div><div class="card garnet ref" data-t="speed shock a medication or bolus infused far too rapidly flushing, headache, chest tightness, irregular pulse, hypotension, cardiac arrest"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Speed Shock</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>A medication or bolus infused far too rapidly</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Flushing, headache, chest tightness, irregular pulse, hypotension, cardiac arrest</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>Stop the infusion immediately</b>, keep the line open with normal saline, notify the provider, and be ready for resuscitation. Prevent it by always using a pump for high-alert drugs.</p></div></div><div class="card ruby ref" data-t="catheter-related bloodstream infection organisms enter at the insertion site or through the hub fever, chills, redness or drainage at the site, positive blood cultures"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Catheter-Related Bloodstream Infection</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Organisms enter at the insertion site or through the hub</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Fever, chills, redness or drainage at the site, positive blood cultures</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p>Remove the line, culture the tip and draw blood cultures, start antibiotics. Prevent with hand hygiene, chlorhexidine, scrubbing the hub and removing lines as soon as they are not needed.</p></div></div><div class="card ruby ref" data-t="hypersensitivity / anaphylaxis reaction to the infusate, most often an antibiotic or contrast hives, wheezing, angioedema, hypotension, stridor"><h3 style="margin:0 0 6px;font-size:1.08rem;font-weight:900">Hypersensitivity / Anaphylaxis</h3><div class="fld sapphire"><div class="flab">&#129516; Cause</div><div class="fbody"><p>Reaction to the infusate, most often an antibiotic or contrast</p></div></div><div class="fld garnet"><div class="flab">&#128064; What you see</div><div class="fbody"><p>Hives, wheezing, angioedema, hypotension, stridor</p></div></div><div class="bbwbox"><div class="flab">&#128737;&#65039; What you do</div><p><b>Stop the infusion. Epinephrine</b> for anaphylaxis, then antihistamines, steroids, oxygen and fluids. Keep the line open with normal saline through new tubing.</p></div></div></div>
+
+<div class="card sapphire">
+ <h3 style="margin:0 0 6px;font-size:1.02rem">&#128300; Infiltration vs Extravasation</h3>
+ <div class="scroll"><table><thead><tr><th>&nbsp;</th><th>Infiltration</th><th>Extravasation</th></tr></thead>
+ <tbody>
+  <tr><td><b>What leaked</b></td><td>Non-vesicant fluid</td><td><b>Vesicant</b> &mdash; chemo, vasopressor, calcium</td></tr>
+  <tr><td><b>Damage</b></td><td>Usually resolves</td><td>Blistering, <b>tissue necrosis</b></td></tr>
+  <tr><td><b>Catheter</b></td><td>Remove it</td><td><b>Leave it in</b>, aspirate, give the antidote through it</td></tr>
+  <tr><td><b>Antidote</b></td><td>None needed</td><td>Phentolamine, hyaluronidase</td></tr>
+ </tbody></table></div>
+</div>
+
+<div class="foot">Drug Guide &middot; study summary only, <b>no dosing</b> &middot; always check the current package insert, your course materials and facility policy.</div>
+</div>
+<button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+<script>window.DATA_V='7c17bece';
+
+(function(){
+  var b=document.getElementById('menuBtn'),s=document.getElementById('side'),bg=document.getElementById('navBg');
+  function set(o){document.body.classList.toggle('nav-open',o);
+    b.innerHTML=o?'✕ Close':'☰ Menu';b.setAttribute('aria-expanded',o?'true':'false');}
+  b.addEventListener('click',function(e){e.stopPropagation();set(!document.body.classList.contains('nav-open'));});
+  bg.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  s.addEventListener('click',function(e){if(e.target.closest('a'))setTimeout(function(){set(false);},120);});
+  set(false);
+})();
+
+
+window.DG=window.DG||{store:{},want:{},put:function(k,v){
+  this.store[k]=v;var w=this.want[k];if(w){delete this.want[k];w.forEach(function(f){f(v);});}}};
+DG.get=function(k,cb){
+  if(this.store[k])return cb(this.store[k]);
+  if(this.want[k]){this.want[k].push(cb);return;}
+  this.want[k]=[cb];
+  var s=document.createElement('script');s.src='data/'+k+'.js?v='+(window.DATA_V||'1');
+  s.onerror=function(){(DG.want[k]||[]).forEach(function(f){f([]);});delete DG.want[k];};
+  document.head.appendChild(s);};
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+
+var q=document.getElementById('q');
+function filterRefs(){
+  var t=q.value.trim().toLowerCase();
+  ['g1','g2'].forEach(function(id){
+    var g=document.getElementById(id); if(!g)return;
+    var n=0;
+    [...g.children].forEach(function(c){
+      var hit=!t||(c.dataset.t||c.textContent.toLowerCase()).indexOf(t)>-1;
+      c.style.display=hit?'':'none'; if(hit)n++;
+    });
+    var lbl=document.getElementById(id==='g1'?'c1':'c2');
+    if(lbl)lbl.textContent=n+' shown'+(t?' matching "'+q.value.trim()+'"':'');
+  });
+}
+q.addEventListener('input',filterRefs);
+filterRefs();
+</script><script id="a11yJS">
+/* a table wider than the screen scrolls inside its own box rather than dragging
+   the whole page sideways */
+(function(){
+  function wrap(){
+    document.querySelectorAll('table').forEach(function(t){
+      var p=t.parentNode;
+      if(!p||p.classList&&p.classList.contains('a11y-tblwrap'))return;
+      var d=document.createElement('div'); d.className='a11y-tblwrap';
+      p.insertBefore(d,t); d.appendChild(t);
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wrap);
+  else wrap();
+  setTimeout(wrap,1200);   /* catch tables built by the page's own scripts */
+})();
+</script>
+<script id="navDragJS">
+(function(){
+  var nb=document.getElementById('navBtns');
+  if(!nb||nb.dataset.dragReady) return;
+  nb.dataset.dragReady='1';
+
+  /* ── 1. modifier and middle clicks must open a new tab ───────────────
+     The ABSN link called preventDefault() every time, which killed
+     ctrl/cmd/shift-click and middle-click. Let those through. */
+  function passthrough(e){
+    return e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button===1;
+  }
+  nb.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a) return;
+    if(passthrough(e)){ e.stopImmediatePropagation(); }   /* before the page's own handler */
+  },true);
+  nb.addEventListener('auxclick',function(e){
+    var a=e.target.closest('a');
+    if(a&&e.button===1){ e.stopImmediatePropagation();
+      window.open(a.href,'_blank','noopener'); e.preventDefault(); }
+  },true);
+  /* every button in the cluster also gets a right-click / long-press menu that
+     works, because they stay real <a href> elements */
+
+  /* ── 2. a grip so it is obvious the cluster can be moved ───────────── */
+
+
+  /* ── 3. drag, and remember where she put it ─────────────────────────── */
+  var KEY='nbPos';
+  function clampPos(l,t){
+    var r=nb.getBoundingClientRect();
+    var maxL=Math.max(0,window.innerWidth-r.width-4);
+    var maxT=Math.max(0,window.innerHeight-r.height-4);
+    return [Math.min(Math.max(0,l),maxL), Math.min(Math.max(0,t),maxT)];
+  }
+  function place(l,t){
+    var p=clampPos(l,t);
+    nb.style.left=p[0]+'px'; nb.style.top=p[1]+'px';
+    nb.style.right='auto'; nb.style.bottom='auto';
+  }
+  function save(){
+    try{ localStorage.setItem(KEY,JSON.stringify({l:parseFloat(nb.style.left)||0,
+                                                  t:parseFloat(nb.style.top)||0})); }catch(e){}
+  }
+  function reset(){
+    nb.style.left=''; nb.style.top=''; nb.style.right=''; nb.style.bottom='';
+    try{ localStorage.removeItem(KEY); }catch(e){}
+  }
+  try{
+    var s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s&&typeof s.l==='number') place(s.l,s.t);
+  }catch(e){}
+
+  var dragging=false,ox=0,oy=0,moved=false;
+  function down(x,y,e){
+    var r=nb.getBoundingClientRect();
+    dragging=true; moved=false; ox=x-r.left; oy=y-r.top;
+    nb.classList.add('dragging');
+    if(e&&e.preventDefault) e.preventDefault();
+  }
+  function move(x,y){
+    if(!dragging) return;
+    moved=true; place(x-ox,y-oy);
+  }
+  function up(){
+    if(!dragging) return;
+    dragging=false; nb.classList.remove('dragging');
+    if(moved) save();
+  }
+  nb.addEventListener('mousedown',function(e){ if(e.button===0) down(e.clientX,e.clientY,e); });
+  window.addEventListener('mousemove',function(e){ move(e.clientX,e.clientY); });
+  window.addEventListener('mouseup',up);
+  nb.addEventListener('touchstart',function(e){
+    var t=e.touches[0]; down(t.clientX,t.clientY,e); },{passive:false});
+  window.addEventListener('touchmove',function(e){
+    if(!dragging) return; var t=e.touches[0]; move(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
+  window.addEventListener('touchend',up);
+  nb.addEventListener('dblclick',function(e){ e.preventDefault(); reset(); });
+  /* keyboard: focus the grip and nudge with the arrows */
+  nb.addEventListener('keydown',function(e){
+    var step=e.shiftKey?24:6, r=nb.getBoundingClientRect(), l=r.left, t=r.top, hit=true;
+    if(e.key==='ArrowLeft') l-=step; else if(e.key==='ArrowRight') l+=step;
+    else if(e.key==='ArrowUp') t-=step; else if(e.key==='ArrowDown') t+=step;
+    else if(e.key==='Home'||e.key==='Escape'){ reset(); e.preventDefault(); return; }
+    else hit=false;
+    if(hit){ place(l,t); save(); e.preventDefault(); }
+  });
+  window.addEventListener('resize',function(){
+    if(nb.style.left) place(parseFloat(nb.style.left),parseFloat(nb.style.top));
+  });
+
+  /* ── 4. step aside for full-screen viewers ───────────────────────────
+     Some overlays (the NUR 175 image lightbox, the drug guide drawer) sit
+     below this cluster in the stacking order, so the cluster covered their
+     Close buttons. Find them once, then just watch whether they are shown. */
+  var overlays=[];
+  try{
+    document.querySelectorAll('body *').forEach(function(el){
+      if(overlays.length>40) return;
+      if(el===nb||nb.contains(el)) return;
+      var cs=getComputedStyle(el);
+      if(cs.position!=='fixed') return;
+      var z=parseInt(cs.zIndex,10);
+      if(!(z>=1000)) return;
+      /* covers most of the screen in at least one dimension */
+      var w=parseFloat(cs.width), h=parseFloat(cs.height);
+      var full=(cs.inset==='0px'||cs.top==='0px'&&cs.left==='0px'&&cs.right==='0px'&&cs.bottom==='0px');
+      if(full||(w>=window.innerWidth*0.9&&h>=window.innerHeight*0.9)) overlays.push(el);
+    });
+  }catch(e){}
+  function check(){
+    var open=overlays.some(function(el){
+      var cs=getComputedStyle(el);
+      return cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity||'1')>0.05;
+    });
+    nb.classList.toggle('hidden-by-overlay',open);
+  }
+  if(overlays.length){
+    check();
+    var t=null;
+    new MutationObserver(function(){ clearTimeout(t); t=setTimeout(check,60); })
+      .observe(document.body,{attributes:true,subtree:true,
+                              attributeFilter:['class','style','hidden']});
+  }
+})();
+</script>
+
+<footer id="provenance" style="max-width:1000px;margin:34px auto 0;padding:16px 18px;
+ border-radius:14px;border:1px dashed rgba(255,255,255,.3);background:rgba(0,0,0,.38);
+ color:#e9dcff;font:400 14px/1.65 'Segoe UI',Roboto,system-ui,sans-serif">
+<b style="color:#ffd76a">Where this comes from.</b> Every drug entry is built from
+US government sources that are free to republish: the
+<a href="https://open.fda.gov/apis/drug/label/" style="color:#ffd76a">FDA's structured
+product labelling</a> via openFDA and
+<a href="https://dailymed.nlm.nih.gov/" style="color:#ffd76a">DailyMed</a>,
+<a href="https://rxnav.nlm.nih.gov/" style="color:#ffd76a">RxNorm and RxClass</a>, and
+<a href="https://medlineplus.gov/" style="color:#ffd76a">MedlinePlus</a> &mdash; all
+National Library of Medicine and FDA works. Labels were read on <b>14 August 2026</b>;
+each card names the ones it used.
+<br><br>
+<b style="color:#ffd76a">What is deliberately not here.</b> No dosing. No pronunciation
+guides, and no &ldquo;do not confuse&rdquo; pairs &mdash; those are a commercial
+publisher's editorial work rather than facts about the drug.
+<br><br>
+This is a study aid built by a nursing student. It is not a prescribing reference.
+Check the current package insert and your facility's policy before you act on anything
+here.
+</footer>
+</body></html>

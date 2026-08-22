@@ -233,6 +233,9 @@ sub,sup{font-size:.72rem}
 @media(max-width:1024px){
   #navBtns{top:6px;right:6px;gap:5px}
   #navBtns .nbLabel{display:none}
+  /* The way home keeps its name. Browsing at 200% zoom puts the viewport
+     under 1024px, and at that point a bare mortarboard is not a signpost. */
+  #navBtns .nbAbsn .nbLabel{display:inline}
   #navBtns a,#navBtns button{padding:8px 11px;font-size:1rem;line-height:1}
 }
 @media(max-width:560px){

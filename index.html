@@ -101,6 +101,11 @@ code,.num{font-family:Consolas,ui-monospace,monospace;background:rgba(0,0,0,.32)
 .mono h3{margin:0 0 2px;font-size:1.42rem;font-weight:900}
 .mono .pron{font-style:italic;opacity:.9;font-size:.88rem}
 .mono .brands{font-size:.89rem;margin:5px 0}
+.routes{font-size:.95rem;margin:6px 0;padding:7px 11px;border-radius:9px;
+  background:rgba(var(--teal),.30);border:1px solid rgba(255,255,255,.26)}
+.pill.p-rt{background:rgba(var(--teal),.92)}
+#rtrow{display:flex;flex-wrap:wrap;gap:8px;margin:9px 0 0;align-items:center}
+#rtrow .flt{min-height:44px;display:inline-flex;align-items:center}
 
 /* A-Z */
 .az{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
@@ -310,6 +315,7 @@ Every card has the same seven parts, so your eye lands in the same place every t
   <button class="tab flt" data-f="bbw" type="button">&#9888;&#65039; Black Box</button>
   <button class="tab flt" data-f="od" type="button">&#9760;&#65039; Has Antidote</button>
  </div>
+ <div id="rtrow"></div>
  <div class="az" id="az"></div>
 </div>
 <p class="count" id="count">Loading&hellip;</p>
@@ -396,6 +402,22 @@ var q=document.getElementById('q'),res=document.getElementById('results'),
     cnt=document.getElementById('count'),mono=document.getElementById('mono');
 DG.get('index',function(j){
   IDX=j;
+  (function(){
+    var row=document.getElementById('rtrow'); if(!row) return;
+    var seen={}; IDX.forEach(function(x){(x.rt||[]).forEach(function(r){seen[r]=(seen[r]||0)+1;});});
+    var rs=Object.keys(seen);
+    if(!rs.length) return;                      /* routes not fetched yet */
+    var ORD=['PO','SL','Buccal','IV','IM','Subcut','Intradermal','IO','Inhaled','Topical',
+             'Transdermal','Ophthalmic','Otic','Nasal','Rectal','Vaginal','Intrathecal','Epidural'];
+    rs.sort(function(a,b){
+      var ia=ORD.indexOf(a),ib=ORD.indexOf(b);
+      if(ia<0)ia=99; if(ib<0)ib=99;
+      return ia-ib || (seen[b]-seen[a]) || (a<b?-1:1);
+    });
+    row.innerHTML='<span style="font-weight:800;font-size:.9rem;opacity:.9">\u{1F489} Route:</span>'
+      +rs.map(function(r){return '<button class="tab flt" data-f="rt:'+r+'" type="button">'
+        +r+' <span style="opacity:.8;font-weight:700">'+seen[r]+'</span></button>';}).join('');
+  })();
   var ks=[...new Set(IDX.map(x=>x.k))].sort(), az=document.getElementById('az');
   az.innerHTML=ks.map(k=>'<button data-k="'+k+'">'+k+'</button>').join('');
   az.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
@@ -403,15 +425,20 @@ DG.get('index',function(j){
     [...az.querySelectorAll('button')].forEach(x=>x.classList.toggle('on',x.dataset.k===letter));render();});
   render();
 });
-document.querySelectorAll('.flt').forEach(function(b){b.addEventListener('click',function(){
-  filt=b.dataset.f;document.querySelectorAll('.flt').forEach(x=>x.classList.toggle('on',x===b));render();});});
+/* delegated, so chips built later (the route row) work the same as the fixed ones */
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.flt'); if(!b)return;
+  filt=b.dataset.f;
+  document.querySelectorAll('.flt').forEach(function(x){x.classList.toggle('on',x===b);});
+  mono.innerHTML=''; render();});
 function match(x,t){
   if(filt==='ha'&&!x.ha)return false;
   if(filt==='bbw'&&!x.bbw)return false;
   if(filt==='od'&&!x.od)return false;
+  if(filt.slice(0,3)==='rt:'&&(x.rt||[]).indexOf(filt.slice(3))<0)return false;
   if(letter&&x.k!==letter)return false;
   if(!t)return true;
-  var hay=(x.n+' '+x.a.join(' ')+' '+x.b.join(' ')+' '+x.cls).toLowerCase();
+  var hay=(x.n+' '+x.a.join(' ')+' '+x.b.join(' ')+' '+x.cls+' '+(x.rt||[]).join(' ')).toLowerCase();
   return SYN(t).some(function(w){return hay.indexOf(w)>-1;});
 }
 function render(){
@@ -424,7 +451,8 @@ function render(){
   var show=hits.slice(0,300);
   res.innerHTML=show.map(function(x){
     var sub=[x.b.length?'<b>'+esc(x.b.join(', '))+'</b>':'',esc(x.cls)].filter(Boolean).join(' &middot; ');
-    var pills=(x.ha?'<span class="pill p-ha">\u{1F6A8} High Alert</span>':'')
+    var pills=(x.rt&&x.rt.length?'<span class="pill p-rt">\u{1F489} '+esc(x.rt.join(' \u00b7 '))+'</span>':'')
+      +(x.ha?'<span class="pill p-ha">\u{1F6A8} High Alert</span>':'')
       +(x.bbw?'<span class="pill p-bbw">Black Box</span>':'')
       +(x.od?'<span class="pill p-od">Antidote</span>':'');
     return '<button class="hit'+(x.ha?' alert':'')+'" data-i="'+x.i+'" data-k="'+x.k+'">'
@@ -462,6 +490,7 @@ function renderDrug(x,NUR){
       +(x.pron?'<div class="pron">'+esc(x.pron)+'</div>':'')
       +(x.alias.length?'<div class="brands"><i>also listed as</i> <b>'+esc(x.alias.join(', '))+'</b></div>':'')
       +(x.brands.length?'<div class="brands">\u{1F3F7}️ <b>'+esc(x.brands.join(' · '))+'</b></div>':'')
+      +(x.rt&&x.rt.length?'<div class="routes">\u{1F489} <b>Route:</b> '+esc(x.rt.join(' \u00b7 '))+'</div>':'')
       +'<div style="margin:8px 0">'+pills+'</div>'+bbw
       +(x.dnc?'<div class="bbwline">❌ <b>Do not confuse:</b> '+esc(x.dnc)+'</div>':'')
       +fld('\u{1F3F7}️','Class','sapphire',x.cls)

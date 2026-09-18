@@ -158,6 +158,11 @@ body.nav-open #side{transform:translateX(0)}
  border-left:4px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;margin:0 0 8px;
  color:#fff;text-decoration:none;font-weight:800;font-size:.92rem}
 #side a.nav:hover{background:rgba(var(--amethyst),.7)}
+
+body,h1,h2,h3,h4,p,li,td,th,div,span{overflow-wrap:break-word;word-break:normal}
+#side a.nav.hub{background:linear-gradient(135deg,#0f7d6b,#12b886);border-left-color:#8ef3d4;min-height:44px}
+#side a.nav.hub:hover{background:linear-gradient(135deg,#12b886,#19d39c)}
+.nbbtn,.nbAbsn,.nbLook{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 #side a.nav.on{background:rgba(var(--amethyst),.85);border-left-color:#fff}
 #side a.nav.od.on{background:rgba(var(--ruby),.85)}
 #side a.nav.bl.on{background:rgba(var(--garnet),.85)}
@@ -262,6 +267,7 @@ sub,sup{font-size:.72rem}
 <div id="navBg"></div>
 <nav id="side" aria-label="Site menu">
   <span class="sbrand">&#128138; Drug Guide</span>
+  <a class="nav hub" href="https://arnold7777777.github.io/ABSN-Study-Hub/">&#8962; Back to the ABSN Study Hub<span class="nsub">all your courses, podcasts and infographics</span></a>
   <a class="nav  " href="index.html">&#128138; Drug Cards<span class="nsub">981 drugs, searchable</span></a><a class="nav od " href="antidotes.html">&#9760;&#65039; Antidotes<span class="nsub">Reversal agents</span></a><a class="nav sx " href="suffixes.html">&#128273; Suffix Reference<span class="nsub">endings &rarr; class &rarr; nursing point</span></a><a class="nav bc " href="by-class.html">&#127991;&#65039; By Drug Class<span class="nsub">what it is for &middot; 70 classes</span></a><a class="nav bm " href="by-moa.html">&#9881;&#65039; By Mechanism<span class="nsub">how it works &middot; 70 mechanisms</span></a><a class="nav tm on" href="timing.html">&#9200; When to Take It<span class="nsub">and why it matters</span></a><a class="nav hb " href="herbs.html">&#127807; Herbal Supplements<span class="nsub">and their interactions</span></a><a class="nav bl " href="blood.html">&#129656; Blood Products<span class="nsub">and transfusion reactions</span></a><a class="nav fl " href="fluids.html">&#128167; IV Fluids<span class="nsub">and IV complications</span></a>
   <div class="shead">Reminder</div>
   <p style="font-size:0.82rem;color:#cdbdf0;margin:0">This copy has <b>no dosing information</b>. Check the package insert.</p>

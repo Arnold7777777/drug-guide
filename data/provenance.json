@@ -1,6 +1,6 @@
 {
  "built": "2026-08-14",
- "drugs": 979,
+ "drugs": 980,
  "sources": [
   {
    "name": "FDA Structured Product Labeling (openFDA / DailyMed)",
@@ -26,5 +26,13 @@
  "dropped": [
   "ombitasvir/paritaprevir/ritonavir and dasabuvir",
   "transdermal"
+ ],
+ "added": [
+  {
+   "n": "famotidine",
+   "on": "2026-09-29",
+   "rxcui": "4278",
+   "via": "tools/add-drug.py, openFDA SPL + RxNav"
+  }
  ]
 }

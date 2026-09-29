@@ -52,7 +52,7 @@ def get(url, timeout=45):
         raise Unreachable(url) from e
 
 
-def clean(text, limit=4000):
+def clean(text, limit=900):
     """SPL sections arrive as lists of long strings with markup and runs of space."""
     if isinstance(text, list):
         text = " ".join(text)
@@ -60,8 +60,111 @@ def clean(text, limit=4000):
         return ""
     text = html.unescape(re.sub(r"<[^>]+>", " ", text))
     text = re.sub(r"\s+", " ", text).strip()
-    # labels repeat the section heading in caps; keep it, it reads as a lead-in
-    return text[:limit].strip()
+    # SPL sections open with their own number and heading - "12.1 Mechanism of
+    # Action ...", "4 CONTRAINDICATIONS ...". The existing records carry the prose
+    # without it, so drop it and keep the sentence.
+    text = re.sub(r"^\d+(\.\d+)*\s+", "", text)
+    text = re.sub(r"^(MECHANISM OF ACTION|INDICATIONS AND USAGE|CONTRAINDICATIONS|"
+                  r"ADVERSE REACTIONS|WARNINGS AND PRECAUTIONS|PATIENT COUNSELING INFORMATION|"
+                  r"Mechanism of Action|Indications and Usage|Patient Counseling Information)\s+",
+                  "", text)
+    # Labels repeat themselves: the Highlights block and the full section both
+    # come back, so the same sentence lands twice. Keep first occurrences only.
+    parts, seen, out = re.split(r"(?<=\.)\s+", text), set(), []
+    for sent in parts:
+        key = re.sub(r"[^a-z0-9]", "", sent.lower())[:60]
+        if key and key in seen:
+            continue
+        seen.add(key)
+        out.append(sent)
+    text = " ".join(out)
+    # standard SPL filler: the clinical-trial caveat and the trial demographics
+    text = re.sub(r"\b(Clinical Trial Experience\s+)?Because clinical trials are conducted under "
+                  r"widely varying conditions.*?(?=[A-Z][a-z])", "", text, flags=re.S)
+    # MedWatch boilerplate and section cross-references add nothing to a study card
+    text = re.sub(r"To report SUSPECTED ADVERSE REACTIONS.*?medwatch\.?", "", text, flags=re.I)
+    text = re.sub(r"\(\s*\d+(\.\d+)?\s*\)", "", text)
+    text = re.sub(r"(?<=[.:])\s+\d+\.\d+\s+(?=[A-Z])", " ", text)   # bare "6.1" between sentences
+    text = re.sub(r"\[see [^\]]{0,80}\]", "", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    # every field in the existing data stops by about 900 characters; cut on a
+    # sentence if there is one nearby, otherwise on a word, never mid-word
+    if len(text) > limit:
+        cut = text.rfind(". ", limit - 220, limit)
+        if cut > 0:
+            text = text[:cut + 1]
+        else:
+            text = text[:text.rfind(" ", 0, limit)].rstrip(" ,;") + "\u2026"
+    return text.strip()
+
+
+# Store-brand and descriptor products crowd out the brand a nurse would
+# recognise: a famotidine search returns "Leader Acid Reducer" and
+# "CareOne Acid Relief" alongside Pepcid AC. Drop anything that is a plain
+# description of the drug's effect rather than a brand.
+DESCRIPTOR = re.compile(
+    r"acid (reducer|relief|controller)|heartburn|antacid|"
+    r"\b(basic care|foster and thrive|equate|good ?sense|sunmark|care ?one|leader|"
+    r"health ?mart|topcare|rite aid|kirkland|member'?s mark|up ?and ?up|signature care|"
+    r"quality choice|premier value|berkley|calmicid)\b", re.I)
+
+
+def brands_for(name, of):
+    """Real brand names, gathered across every label for this generic.
+
+    One label usually lists the generic as its own brand, so a single fetch
+    gives "Famotidine" and misses Pepcid AC. Scan the whole result set, drop
+    the generic itself and the store-brand descriptors, and keep the rest.
+    """
+    found = {}
+    try:
+        res = get(FDA + "?" + urllib.parse.urlencode(
+            {"search": 'openfda.generic_name:"%s"' % name, "limit": 100})).get("results", [])
+    except Exception:
+        res = [{"openfda": of}]
+    for r in res:
+        o = r.get("openfda") or {}
+        gens = [g.strip().lower() for g in (o.get("generic_name") or [])]
+        if name.lower() not in gens:
+            continue
+        for b in (o.get("brand_name") or []):
+            b = b.strip()
+            k = b.lower()
+            if not b or k == name.lower() or DESCRIPTOR.search(b):
+                continue
+            found.setdefault(k, b)          # first spelling wins
+    # shortest first: "Pepcid AC" ahead of "Maximum Strength PEPCID AC Icy Cool Mint"
+    return sorted(found.values(), key=lambda x: (len(x), x.lower()))[:6]
+
+
+def classes_for(rxcui):
+    """cls and cc from RxClass, the same source the other records cite."""
+    if not rxcui:
+        return "", ""
+    try:
+        d = get("%s/rxclass/class/byRxcui.json?rxcui=%s" % (RXNAV, rxcui))
+    except Exception:
+        return "", ""
+    atc, epc, chem = [], [], []
+    for it in (d.get("rxclassDrugInfoList") or {}).get("rxclassDrugInfo", []):
+        c = it.get("rxclassMinConceptItem") or {}
+        name, typ = c.get("className", ""), c.get("classType", "")
+        if typ == "ATC1-4":
+            atc.append(name)
+        elif typ == "EPC":
+            epc.append(name)
+        elif typ == "CHEM":
+            chem.append(name)
+    # an rxcui shared with a combination product drags in the other drug's ATC
+    # class, so prefer the ATC class that echoes the FDA establishment class
+    best = ""
+    for a in atc:
+        if any(w.lower() in a.lower() for e in epc for w in re.findall(r"[A-Za-z0-9-]{4,}", e)):
+            best = a
+            break
+    cls = best or (atc[0] if atc else "")
+    cc = ""
+    return cls, cc
 
 
 def rxcui_for(name):
@@ -95,7 +198,12 @@ def build(name, fc_override=None):
         sys.exit("no FDA label found for %r - nothing written" % name)
     of = lab.get("openfda") or {}
     sid = (lab.get("set_id") or "").lower()
-    brands = sorted({b for b in (of.get("brand_name") or [])})
+    cls, cc = classes_for(rxcui)
+    epc_fc = ""
+    for e in (of.get("pharm_class_epc") or []):
+        epc_fc = re.sub(r"\s*\[EPC\]$", "", e).strip()
+        break
+    brands = brands_for(name, of)
     rx = "Rx"
     if any("OTC" in (t or "").upper() for t in (of.get("product_type") or [])):
         rx = "OTC"
@@ -121,9 +229,9 @@ def build(name, fc_override=None):
         "brands": brands,
         "rx": rx,
         "ha": 0,
-        "cls": "",
-        "fc": fc_override or "",
-        "cc": "",
+        "cls": cls,
+        "fc": fc_override or epc_fc,
+        "cc": cc,
         "moa": clean(lab.get("mechanism_of_action") or lab.get("clinical_pharmacology")),
         "ind": clean(lab.get("indications_and_usage")),
         "ci": clean(lab.get("contraindications")),
@@ -167,6 +275,8 @@ def main():
             "session set the environment's Network access to Custom and add both to\n"
             "Allowed domains, then run this again." % (host or "the data sources"))
     print("built %s  rxcui=%s  brands=%s" % (name, entry["rxcui"] or "-", ", ".join(entry["brands"][:4]) or "-"))
+    print("  cls   %s" % (entry["cls"] or "(RxClass gave none)"))
+    print("  fc    %s" % (entry["fc"] or "(label gave none)"))
     for k in ("moa", "ind", "ci", "bbw", "ae", "teach"):
         print("  %-5s %s" % (k, (entry[k][:90] + "...") if entry[k] else "(label carries none)"))
     if not entry["src"]:

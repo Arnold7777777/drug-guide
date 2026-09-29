@@ -74,6 +74,29 @@ def main():
         print("%-18s dropped %d stale entr%s (%d -> %d rows)"
               % (name, was - now, "y" if was - now == 1 else "ies", was, now))
 
+    # The two views must agree on i as well as on membership. They did not: on
+    # 29 Sep 2026 961 of 979 drugs carried a different i in the .json than in the
+    # .js, which would have made fetch-routes.py attach routes to the wrong
+    # drugs. The .js is authoritative here because it is what the site loads.
+    drift = []
+    for jsonp in sorted(DATA.glob("[A-Z].json")):
+        jsp = jsonp.with_suffix(".js")
+        if not jsp.exists():
+            continue
+        raw = jsp.read_text()
+        live = {d.get("n"): d.get("i") for d in json.loads(raw[raw.index("["):raw.rindex("]") + 1])}
+        rows = json.loads(jsonp.read_text())
+        off = [d for d in rows if d.get("n") in live and d.get("i") != live[d["n"]]]
+        if off:
+            drift.append((jsonp.name, len(off), len(rows)))
+            if not check:
+                for d in rows:
+                    if d.get("n") in live:
+                        d["i"] = live[d["n"]]
+                jsonp.write_text(json.dumps(rows, ensure_ascii=False))
+    for name, off, tot in drift:
+        print("%-18s %d of %d i values re-pointed at the .js" % (name, off, tot))
+
     changes, stale = [], 0
     for path in sorted(ROOT.glob("*.html")):
         src = path.read_text(encoding="utf-8")
@@ -105,7 +128,7 @@ def main():
     if prov.get("drugs") != n:
         print("note: provenance.json says drugs=%r, data says %d" % (prov.get("drugs"), n))
 
-    return 1 if (check and (changes or resynced)) else 0
+    return 1 if (check and (changes or resynced or drift)) else 0
 
 
 if __name__ == "__main__":

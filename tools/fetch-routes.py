@@ -120,13 +120,17 @@ def main():
 
     # data/<L>.json, data/<L>.js  (the site loads the .js; the .json is the source)
     for letter, drugs in letters.items():
-        by_i = {d.get("i"): d.get("rt") for d in drugs if d.get("rt")}
+        # Join by NAME, not by i. On 29 Sep 2026 the two views numbered the same
+        # 979 drugs differently - 961 of them - so an i-join would have written
+        # routes onto the wrong drugs. Names are unique within a letter and
+        # identical across both files; i is only an identifier.
+        by_name = {d.get("n"): d.get("rt") for d in drugs if d.get("rt")}
         (DATA / (letter + ".json")).write_text(json.dumps(drugs, ensure_ascii=False))
         jsp = DATA / (letter + ".js")
         raw = jsp.read_text()
         arr = json.loads(raw[raw.index("["):raw.rindex("]") + 1])
         for d in arr:
-            rt = by_i.get(d.get("i"))
+            rt = by_name.get(d.get("n"))
             if rt:
                 d["rt"] = rt
         jsp.write_text('DG.put("%s",%s);\n' % (letter, json.dumps(arr, ensure_ascii=False)))
@@ -138,10 +142,10 @@ def main():
     for letter, drugs in letters.items():
         for d in drugs:
             if d.get("rt"):
-                rt_by_key[(letter, str(d.get("i")))] = d["rt"]
+                rt_by_key[(letter, d.get("n"))] = d["rt"]
     n_idx = 0
     for row in idx:
-        rt = rt_by_key.get((row.get("k"), str(row.get("i"))))
+        rt = rt_by_key.get((row.get("k"), row.get("n")))
         if rt:
             row["rt"] = rt; n_idx += 1
     (DATA / "index.json").write_text(json.dumps(idx, ensure_ascii=False))

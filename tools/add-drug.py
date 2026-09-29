@@ -172,37 +172,46 @@ def main():
     if not entry["src"]:
         sys.exit("no citable source resolved - refusing to write an unsourced entry")
 
-    # insert alphabetically, then renumber i across every letter file
-    drugs.append(entry)
-    drugs.sort(key=lambda d: d.get("n", "").lower())
+    # i is an identifier, not a sort key - the pages sort by name and look drugs
+    # up by name. So give the new drug an unused i and renumber nothing: a global
+    # renumber would rewrite 979 records to add one, and would push data/*.json
+    # back out of step with the data/*.js the site actually loads.
     files = {p.stem: (drugs if p.stem == letter else json.loads(p.read_text()))
              for p in sorted(DATA.glob("[A-Z].json"))}
-    n = 0
-    for L in sorted(files):
-        for d in files[L]:
-            d["i"] = n
-            n += 1
-    print("renumbered %d entries; %s lands at i=%d"
-          % (n, name, next(d["i"] for d in drugs if d["n"] == name)))
+    used = {d.get("i") for arr in files.values() for d in arr if isinstance(d.get("i"), int)}
+    entry["i"] = max(used) + 1
+    drugs.append(entry)
+    drugs.sort(key=lambda d: d.get("n", "").lower())
+    print("%s added at i=%d (%d entries, none renumbered)"
+          % (name, entry["i"], sum(len(v) for v in files.values())))
 
     if dry:
         print("--dry-run: nothing written")
         return
 
-    for L, arr in files.items():
-        (DATA / (L + ".json")).write_text(json.dumps(arr, ensure_ascii=False))
-        (DATA / (L + ".js")).write_text('DG.put("%s",%s);\n' % (L, json.dumps(arr, ensure_ascii=False)))
+    # Only the letter that gained a drug is touched, and its .js is edited rather
+    # than regenerated: the .js carries pron, dnc, ncls, od, when and wtag, which
+    # the .json has no column for, so rebuilding it from the .json would delete
+    # every pronunciation and timing tag in that letter.
+    (DATA / (letter + ".json")).write_text(json.dumps(drugs, ensure_ascii=False))
+    jsp = DATA / (letter + ".js")
+    raw = jsp.read_text()
+    live = json.loads(raw[raw.index("["):raw.rindex("]") + 1])
+    live.append({k: entry[k] for k in ("i", "n", "alias", "brands", "rx", "ha", "cls", "moa", "ind", "ci", "bbw", "ae", "teach")})
+    live.sort(key=lambda d: d.get("n", "").lower())
+    jsp.write_text('DG.put("%s",%s);' % (letter, json.dumps(live, ensure_ascii=False)))
 
-    idx = []
-    for L in sorted(files):
-        for d in files[L]:
-            idx.append({"i": d["i"], "n": d["n"], "a": d.get("alias", []),
-                        "b": d.get("brands", []), "fc": d.get("fc", ""),
-                        "cc": d.get("cc", ""), "ha": d.get("ha", 0),
-                        "bbw": 1 if d.get("bbw") else 0, "k": L, "od": 0})
+    idxp = DATA / "index.js"
+    raw = idxp.read_text()
+    idx = json.loads(raw[raw.index("["):raw.rindex("]") + 1])
+    idx.append({"i": entry["i"], "n": name, "a": entry.get("alias", []),
+                "b": entry.get("brands", []), "fc": entry.get("fc", ""),
+                "cc": entry.get("cc", ""), "ha": 0,
+                "bbw": 1 if entry.get("bbw") else 0, "k": letter, "od": 0})
+    idx.sort(key=lambda d: d.get("n", "").lower())
+    idxp.write_text('DG.put("index",%s);' % json.dumps(idx, ensure_ascii=False))
     (DATA / "index.json").write_text(json.dumps(idx, ensure_ascii=False))
-    (DATA / "index.js").write_text('DG.put("index",%s);\n' % json.dumps(idx, ensure_ascii=False))
-    print("wrote %d letter files and the index (%d rows)" % (len(files), len(idx)))
+    print("wrote data/%s.json, data/%s.js and the index (%d rows)" % (letter, letter, len(idx)))
 
     prov = json.loads((DATA / "provenance.json").read_text())
     prov["drugs"] = len(idx)

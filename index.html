@@ -273,7 +273,7 @@ sub,sup{font-size:.72rem}
 }
 @media print{#navBtns{display:none}}
 </style>
-<div id="navBtns"><a class="nbLook" href="https://arnold7777777.github.io/NUR-198-Study-Guide/Look%20It%20Up.html" target="_blank" rel="noopener" title="Look up any topic across all your sites">&#128269;<span class="nbLabel"> Look Up</span></a><a class="nbAbsn" href="https://arnold7777777.github.io/ABSN-Study-Hub/" onclick="return nbToAbsn(event)" title="Close this page and go back to the ABSN Study Hub">&#127891;<span class="nbLabel"> ABSN Hub</span></a></div>
+<div id="navBtns"><a class="nbLook" href="https://arnold7777777.github.io/NUR-198-Study-Guide/Look%20It%20Up.html" target="_blank" rel="noopener" title="Look up any topic across all your sites">&#128269;<span class="nbLabel"> Look Up</span></a><a class="nbAbsn" href="https://arnold7777777.github.io/ABSN-Study-Hub/" onclick="return nbToAbsn(event)" title="Go back to the ABSN Study Hub">&#127891;<span class="nbLabel"> ABSN Hub</span></a></div>
 <script>if(window.top!==window.self){var _nb=document.getElementById("navBtns");if(_nb)_nb.style.display="none";}</script>
 
 
@@ -680,10 +680,24 @@ function renderDrug(x,NUR){
   var ABSN='https://arnold7777777.github.io/ABSN-Study-Hub/';
   window.nbToAbsn=function(ev){
     if(ev&&ev.preventDefault)ev.preventDefault();
-    /* close this tab so the study hub behind it is revealed. browsers only permit
-       close() on a script-opened tab, so fall back to navigating there. */
-    try{ window.close(); }catch(e){}
-    setTimeout(function(){ if(!window.closed) window.location.href=ABSN; },120);
+    /* Close this tab only if the study hub is really open in another tab - it
+       answers on the 'absnhub' channel and pulls itself forward. Otherwise open the
+       hub right here. (24 Nov: closing blindly left her with no hub at all.) */
+    var answered=false, ch=null;
+    try{
+      ch=new BroadcastChannel('absnhub');
+      ch.onmessage=function(e){ if(e.data&&e.data.t==='here') answered=true; };
+      ch.postMessage({t:'ping'});
+    }catch(e){}
+    setTimeout(function(){
+      try{ if(ch) ch.close(); }catch(e){}
+      if(answered){
+        try{ window.close(); }catch(e){}
+        setTimeout(function(){ if(!window.closed) window.location.href=ABSN; },160);
+      } else {
+        window.location.href=ABSN;
+      }
+    },250);
     return false;
   };
 })();
